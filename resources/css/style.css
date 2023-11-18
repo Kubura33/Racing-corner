@@ -1,0 +1,498 @@
+html, body{
+	font-size: 100%;
+    background-color: #191919;
+
+	font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+@media screen and (max-width: 800px) {
+    .left, .main, .right {
+      width: 100%;
+    }
+}
+a:hover{
+ text-decoration:none;
+}
+h1,h2,h3,h4,h5,h6{
+	margin:0;
+	font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+p{
+	margin:0;
+}
+ul{
+	margin:0;
+	padding:0;
+}
+label{
+	margin:0;
+}
+
+/*-- header --*/
+.top_header{
+    width: 100%;
+    height: 40px;
+    background-color: rgb(254, 231, 22);
+    padding: 1%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+h4 {
+    margin: 0;
+    color: rgb(29, 38, 62);
+    font-size: 2px;
+    line-height: 40px;
+    font-weight: 700;
+    font-style: italic;
+}
+
+span {
+    display: flex;
+}
+
+.nalog {
+    margin-left: 10px;
+    text-decoration: none;
+    float: right;
+    color: rgb(29, 38, 62);
+
+}
+/*-- /header --*/
+/*-- navbar --*/
+
+.navbar{
+    background-color: rgb(29, 38, 62) !important;
+    border-color: rgb(29, 38, 62) !important;
+}
+.navbar {
+    min-height: 0px !important;
+    margin-bottom:0px !important;
+    border-radius:0px !important;
+	border: none !important;}
+.navbar button{
+    background-color: rgb(254, 231, 22);
+    color: rgb(29, 38, 62);
+
+}
+.navbar-toggler-icon{
+    color: rgb(29, 38, 62);
+}
+.navbar-nav .nav-link,
+.navbar-nav  {
+    color: rgb(254, 231, 22);
+}
+.navbar-nav .nav-item.dropdown:hover .dropdown-menu{
+    background-color: rgb(29, 38, 62) !important;
+}
+.nav-item.dropdown .dropdown-menu .dropdown-item {
+    background-color: rgb(29, 38, 62);
+    color: rgb(254, 231, 22);
+}
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link:active,
+.navbar-nav .nav-link:focus,
+.navbar-nav .nav-link:hover {
+    color: rgb(255, 255, 255);
+}
+
+.navbar-collapse {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+}
+/*-- /navbar --*/
+/*-- banner --*/
+.banner {
+    background: url(../assets/images/borkovic.jpg);
+    background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    -moz-background-size: cover;
+    min-height: 430px;
+    width: 100%;
+}
+.banner h1 {
+    font-size: 50px;
+    margin-bottom: 70px;
+    padding: 1.2em 0 0;
+    text-align: center;
+    text-shadow:5px 5px 5px #191919;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+#naslov1{
+    font-size: 36px;
+    line-height: 40px;
+    font-weight: 700;
+    text-align: center;
+    color: rgb(29, 38, 62);
+}
+.banner_oprema{
+    background: url(../assets/images/oprema.jpg);
+    background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    -moz-background-size: cover;
+    min-height: 430px;
+    width: 100%;
+}
+.banner_oprema h1 {
+    font-size: 50px;
+    margin-bottom: 70px;
+    padding: 1.2em 0 0;
+    text-align: center;
+    text-shadow:5px 5px 5px #191919;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.banner_delovi{
+    background: url(../assets/images/delovi.jpg) no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    -moz-background-size: cover;
+    min-height: 430px;
+    width: 100%;
+}
+.banner_delovi h1 {
+    font-size: 50px;
+    margin-bottom: 70px;
+    padding: 1.2em 0 0;
+    text-align: center;
+    text-shadow:5px 5px 5px #191919;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.banner_gume{
+    background: url(../assets/images/gume.jpg) no-repeat;
+    min-height: 430px;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    -moz-background-size: cover;
+    width: 100%;
+}
+.banner_gume h1 {
+    font-size: 50px;
+    margin-bottom: 70px;
+    padding: 1.2em 0 0;
+    text-align: center;
+    text-shadow:5px 5px 5px #191919;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.banner_krug{
+    background: url(../assets/images/krug.jpg);
+    background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    -moz-background-size: cover;
+    min-height: 430px;
+    width: 100%;
+}
+.banner_krug h1 {
+    font-size: 50px;
+    margin-bottom: 70px;
+    padding: 1.2em 0 0;
+    text-align: center;
+    text-shadow:5px 5px 5px #191919;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.banner_brdo{
+    background: url(../assets/images/brdo.jpeg);
+    background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    -moz-background-size: cover;
+    min-height: 430px;
+    width: 100%;
+}
+.banner_brdo h1 {
+    font-size: 50px;
+    margin-bottom: 70px;
+    padding: 1.2em 0 0;
+    text-align: center;
+    text-shadow:5px 5px 5px #191919;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.banner_slalom{
+    background: url(../assets/images/slalom.jpeg);
+    background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    -moz-background-size: cover;
+    min-height: 430px;
+    width: 100%;
+}
+.banner_slalom h1 {
+    font-size: 50px;
+    margin-bottom: 70px;
+    padding: 1.2em 0 0;
+    text-align: center;
+    text-shadow:5px 5px 5px #191919;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.banner_karting{
+    background: url(../assets/images/karting.jpg);
+    background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    -moz-background-size: cover;
+    min-height: 430px;
+    width: 100%;
+}
+.banner_karting h1 {
+    font-size: 50px;
+    margin-bottom: 70px;
+    padding: 1.2em 0 0;
+    text-align: center;
+    text-shadow:5px 5px 5px #191919;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.banner_cross{
+    background: url(../assets/images/cross.jpg);
+    background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    -moz-background-size: cover;
+    min-height: 430px;
+    width: 100%;
+}
+.banner_cross h1 {
+    font-size: 50px;
+    margin-bottom: 70px;
+    padding: 1.2em 0 0;
+    text-align: center;
+    text-shadow:5px 5px 5px #191919;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.banner_drift{
+    background: url(../assets/images/drift.jpeg);
+    background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    -moz-background-size: cover;
+    min-height: 430px;
+    width: 100%;
+}
+.banner_drift h1 {
+    font-size: 50px;
+    margin-bottom: 70px;
+    padding: 1.2em 0 0;
+    text-align: center;
+    text-shadow:5px 5px 5px #191919;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+@media screen {
+    .banner_oprema, .banner_delovi, .banner, .banner_gume, .banner_rally, .banner_krug,
+    .banner_brdo, .banner_slalom, .banner_karting, .banner_cross, .banner_drift {
+        background-size: cover;
+        min-height: 230px;
+    }
+
+    .banner_oprema.banner_oprema, .banner_delovi, .banner, .banner_gume, .banner_rally h1 {
+        font-size: 6vw;
+        margin-bottom: 8vw;
+    }
+}
+.banner_rally{
+    background: url(../assets/images/lineups-1.jpg) no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    -moz-background-size: cover;
+    min-height: 230px;
+    width: 100%;
+}
+.banner_rally h1 {
+    font-size: 50px;
+    margin-bottom: 70px;
+    padding: 1.2em 0 0;
+    text-align: center;
+    text-shadow:5px 5px 5px #191919;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+/*-- /banner --*/
+/*--oglasi --*/
+.div-oglas{
+    margin: 2%;
+    margin-left: 4%;
+    margin-right: 4%;
+    padding: 2%;
+    width: 90%;
+    background-color: #f4f7fd;
+    border: 2px solid #5e5e5e;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px #191919;
+}
+.col{
+    margin-top: 1%;
+    width: 100%;
+}
+.card-title{
+    text-align: center;
+    font-size: 35px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.podatak{
+    font-size: large;
+    color: rgb(0, 68, 255);
+}
+.card{
+    margin-top: 2%;
+    border: 5px solid rgb(29, 38, 62);
+    border-radius: 5px;
+    width: 100%;
+    box-shadow: 7px 5px 10px rgb(29, 38, 62);
+}
+.card-img-top{
+    width: 100%;
+    height: 300px;
+    border: 3px solid gray;
+}
+.card-body{
+    text-align: center;
+}
+/*--/oglasi --*/
+/*--izabran-oglas --*/
+
+#carouselExampleFade{
+    border: 5px solid rgb(29, 38, 62);
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgb(29, 38, 62);
+    margin-top: 15px;
+    display: flex;
+    width: 70%;
+    margin: 2% 4%;
+    padding: 1%;
+    overflow: hidden;
+}
+.carousel-inner{
+    float: left;
+    width: 100%;
+    height: 100%;
+}
+.carousel-item {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+    .oglasavac_info {
+        text-align: center;
+        display: inline;
+        float: right;
+        border: 5px solid rgb(29, 38, 62);
+        border-radius: 5px;
+        box-shadow: 5px 5px 10px rgb(29, 38, 62);
+        width: 330px;
+        height: 500px;
+        margin-top: 2%;
+        background-color: rgb(220, 226, 243);
+    }
+    .oglasavac_info span{
+        margin-left: 2%
+    };
+}
+@media only screen and (max-width: 767px) {
+    .oglasavac_info {
+        text-align: center;
+        border: 5px solid rgb(29, 38, 62);
+        border-radius: 5px;
+        box-shadow: 5px 5px 10px rgb(29, 38, 62);
+        width: 100%;
+        height: 20%;
+        margin-top: 2%;
+        background-color: rgb(220, 226, 243);
+    }
+    .oglasavac_info span{
+        margin-left: 2%
+    };
+}
+/* Stil za računar (širina 500 piksela) */
+@media only screen and (min-width: 768px) {
+    #carouselExampleFade {
+        height: 500px;
+
+    }
+}
+
+/* Stil za mobilni telefon (širina 100% širine ekrana) */
+@media only screen and (max-width: 767px) {
+    #carouselExampleFade{
+        width: 90%;
+        height: 40%;
+    }
+    footer{
+        width: 97%;
+    }
+}
+.text_oglasa{
+    margin-left: 2%;
+    width: 95%;
+    border: 5px solid rgb(29, 38, 62);
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgb(29, 38, 62);
+    background-color: rgb(220, 226, 243);
+}
+.text_oglasa h1{
+    text-align: center;
+    color: rgb(29, 38, 62);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.text_oglasa h3{
+    display: inline;
+    margin-left: 3%;
+    color: rgb(29, 38, 62);
+}
+.text_oglasa span{
+    display: inline;
+}
+.text_oglasa p{
+    margin-left: 3%;
+    color: rgb(29, 38, 62);
+    font-size: large;
+
+}
+/*--/izabran-oglas --*/
+
+/*--/login--*/
+.login{
+    padding: 3%;
+    margin: 3% 5% 5% 8%;
+    width: 80%;
+    border: 5px solid rgb(29, 38, 62);
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgb(29, 38, 62);
+    background-color: rgb(220, 226, 243);
+
+}
+/*--login --*/
+
+/*--footer--*/
+footer{
+
+    background-color: rgb(29, 38, 62);
+    color: rgb(254, 231, 2);
+}
+footer h5{
+    color: rgb(254, 231, 22);
+}
+footer .nav-link{
+    color: rgb(254, 231, 22);
+}
+/*-- /footer --*/
