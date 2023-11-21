@@ -28,9 +28,18 @@ Route::get('/', function () {
 Route::get('/home', function(){
     return Inertia::render('Home/Home');
 })->name('home');
+/////////////////
+Route::get('UserHome', function(){
+    return Inertia::render('Profile/UserHome');
+})->name('UserHome');
+Route::get('/CreateAds', function (){
+    return Inertia::render('Home/CreateAds');
+})->name('CreateAds');
+////////////////
 Route::get('/tires', function (){
     return Inertia::render('Home/TiresPage');
 })->name('tires');
+
 Route::get('/equipment', function (){
     return Inertia::render('Home/EquipmentPage');
 })->name('equipment');

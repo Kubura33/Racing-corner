@@ -1,8 +1,10 @@
 <template>
+        <diV class="banner_gume"></diV>
+
     <div class="div-oglas">
         <div class="row">
             <div class="col">
-                <div class="card" style="width: 18rem;">
+                <div class="card">
                     <img src="../../../assets/images/gume_prodaja.jpeg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Naziv proizvoda</h5>
@@ -12,7 +14,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="card" style="width: 18rem;">
+                <div class="card">
                     <img src="../../../assets/images/gume_prodaja.jpeg"  class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Naziv proizvoda</h5>
@@ -22,7 +24,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="card" style="width: 18rem;">
+                <div class="card">
                     <img src="../../../assets/images/gume_prodaja.jpeg"  class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Naziv proizvoda</h5>
