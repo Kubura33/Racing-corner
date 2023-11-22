@@ -13,7 +13,7 @@
                 {{user.username}}
             </b>
             <b>
-                <a class="nalog" href="">Logout</a>
+                <Link class="nalog" :href="route('logout')">Logout</Link>
             </b>
 
         </span>
@@ -37,6 +37,9 @@
                     </li>
                     <li class="nav-item">
                         <Link class="nav-link" :href="route('parts')">Delovi</Link>
+                    </li>
+                    <li class="nav-item">
+                        <Link class="nav-link" :href="route('ads.create')">Kreiraj oglas</Link>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"

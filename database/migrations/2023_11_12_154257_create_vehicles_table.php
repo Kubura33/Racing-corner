@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
             $table->string('model');
-            $table->string('specifications');
+            $table->string('engine_displacement');
+            $table->string('vehicle_class');
             $table->text('description');
-            $table->string('discipline');
+            $table->string('discipline')->nullable();
             $table->timestamps();
         });
     }

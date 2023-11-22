@@ -347,7 +347,7 @@ span {
     .banner_karting,
     .banner_cross,
     .banner_drift{
-       
+
     } */
 .banner_rally h1 {
     font-size: 50px;
@@ -601,6 +601,10 @@ span {
 /*--kreiranje oglasa --*/
 .select_element{
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
 }
 .select_element h3{
     margin-left: 1%;
@@ -650,11 +654,11 @@ margin-bottom: 5%;
     justify-content: center;
     align-items: center;
   }
-  
+
   .modal-open {
     display: flex;
   }
-  
+
   .modal-dialog {
     max-width: 600px;
     background-color: #fff;
@@ -662,16 +666,16 @@ margin-bottom: 5%;
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   }
-  
+
   /* Dodatna stilizacija prema potrebi za header, body, footer unutar modala */
   .modal-header {
     /* Stilizacija za header */
   }
-  
+
   .modal-body {
     /* Stilizacija za body */
   }
-  
+
   .modal-footer {
     /* Stilizacija za footer */
   }

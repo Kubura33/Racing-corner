@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('ads', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(\App\Models\User::class, 'user_id');
-            $table->unsignedBigInteger('advertisable_id');
+            $table->unsignedBigInteger('advertisable_id')->nullable();
             $table->string('advertisable_type');
+            $table->string('slug')->nullable();
             $table->string('fixed')->default('0');
             $table->string('price');
             $table->date('lasts_until');

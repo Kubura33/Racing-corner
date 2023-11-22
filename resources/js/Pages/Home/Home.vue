@@ -19,7 +19,7 @@
                         <li class="list-group-item">CENA <span class="podatak">230€</span></li>
                     </ul>
                     <div class="card-body">
-                        <a href="detalji.php" class="btn btn-primary">Detaljnije</a>
+                        <Link :href="route('details')" class="btn btn-primary">Detaljnije</Link>
                     </div>
                 </div>
             </div>
@@ -61,5 +61,7 @@
     </div>
 </template>
 <script setup>
+import {Link} from "@inertiajs/vue3";
+
 
 </script>

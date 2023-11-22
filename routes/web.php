@@ -18,7 +18,7 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
+    return Inertia::render('Home/Home', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
@@ -32,20 +32,24 @@ Route::get('/home', function(){
 Route::get('UserHome', function(){
     return Inertia::render('Profile/UserHome');
 })->name('UserHome');
-Route::get('/CreateAds', function (){
-    return Inertia::render('Home/CreateAds');
-})->name('CreateAds');
+
 ////////////////
 Route::get('/tires', function (){
     return Inertia::render('Home/TiresPage');
 })->name('tires');
+//Ads handling
+Route::resource('ads', \App\Http\Controllers\AdController::class)->only(['create', 'store']);
 
+////
 Route::get('/equipment', function (){
     return Inertia::render('Home/EquipmentPage');
 })->name('equipment');
 Route::get('/parts', function (){
     return Inertia::render('Home/PartsPage');
 })->name('parts');
+Route::get('/details', function(){
+    return Inertia::render('Home/Details');
+})->name('details');
 Route::prefix('discipline')->group(function (){
     Route::get('/rally', function (){
         return Inertia::render('Discipline/Rally');
