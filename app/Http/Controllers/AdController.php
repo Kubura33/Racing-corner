@@ -5,11 +5,15 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateAdRequest;
 use App\Models\Ad;
 use App\Models\Equipment;
+use App\Models\EquipmentImages;
 use App\Models\Part;
+use App\Models\PartImages;
 use App\Models\Vehicle;
+use App\Models\VehicleImages;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class AdController extends Controller
@@ -37,7 +41,7 @@ class AdController extends Controller
     {
         $ad = Ad::create(
             [
-                'user_id' => Auth::user()->id,
+                'user_id' => Auth::user() ? Auth::user()->id : 1,
                 'slug' => $request->safe()->slug,
                 'advertisable_type' => $request->safe()->type,
                 'price' => $request->safe()->price,
@@ -55,6 +59,13 @@ class AdController extends Controller
 
                 ]);
                 $ad->update(['advertisable_id' => $vehicle->id]);
+                foreach ($request->safe()->images as $image){
+                    VehicleImages::create([
+                        'image_path' => Storage::disk('adImages')->putFile($image),
+                        'vehicle_id' => $vehicle->id,
+
+                    ]);
+                }
                 return redirect()->route('home')->with('success', 'Oglas za vozilo je uspesno kreiran');
             case 'equipment':
                 $eq = Equipment::create([
@@ -62,7 +73,13 @@ class AdController extends Controller
                     'description' => $request->safe()->description,
                 ]);
                 $ad->update(['advertisable_id' => $eq->id]);
+                foreach ($request->safe()->images as $image){
+                    EquipmentImages::create([
+                        'image_path' => Storage::disk('adImages')->putFile($image),
+                        'vehicle_id' => $eq->id,
 
+                    ]);
+                }
                 return redirect()->route('home')->with('success', 'Oglas za opremu je uspesno kreiran');
             case 'parts':
                 $part = Part::create([
@@ -70,6 +87,13 @@ class AdController extends Controller
                     'description' => $request->safe()->description,
                 ]);
                 $ad->update(['advertisable_id' => $part->id]);
+                foreach ($request->safe()->images as $image){
+                    PartImages::create([
+                        'image_path' => Storage::disk('adImages')->putFile($image),
+                        'vehicle_id' => $part->id,
+
+                    ]);
+                }
                 return redirect()->route('home')->with('success', 'Oglas za delove je uspesno kreiran');
             case 'tires':
                 $tires = Part::create([
@@ -78,6 +102,13 @@ class AdController extends Controller
                     'type' => 'tires'
                 ]);
                 $ad->update(['advertisable_id' => $tires->id]);
+                foreach ($request->safe()->images as $image){
+                    PartImages::create([
+                        'image_path' => Storage::disk('adImages')->putFile($image),
+                        'vehicle_id' => $tires->id,
+
+                    ]);
+                }
                 return redirect()->route('home')->with('success', 'Oglas za gume je uspesno kreiran');
 
 

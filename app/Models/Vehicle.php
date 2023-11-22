@@ -14,5 +14,8 @@ class Vehicle extends Model
     public function ad() : MorphMany{
         return $this->morphMany(Ad::class, 'advertisable_id');
     }
+    public function images() : HasMany{
+        return $this->hasMany(VehicleImages::class,'vehicle_id');
+    }
 
 }
