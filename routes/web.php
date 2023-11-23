@@ -28,11 +28,14 @@ Route::get('/', function () {
 Route::get('/home', function(){
     return Inertia::render('Home/Home');
 })->name('home');
-/////////////////
+
 Route::get('UserHome', function(){
     return Inertia::render('Profile/UserHome');
 })->name('UserHome');
-
+/////////////////
+Route::get('/RentCar', function (){
+    return Inertia::render('Home/RentCar');
+})->name('RentCar');
 ////////////////
 Route::get('/tires', function (){
     return Inertia::render('Home/TiresPage');

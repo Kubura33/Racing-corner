@@ -90,19 +90,13 @@
     <!--    //Start of footer-->
     <footer class="py-5">
         <div class="row" style="text-align:center">
-            <div class="col- col-md-2 mb-3">
+            <div class="col- col-md-2 mb-3" id="col">
                 <h5>Ponuda</h5>
                 <ul class="nav flex-column">
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Kruzne trke</a></li>
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Brdske trke</a></li>
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Rally trke</a></li>
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Autocross</a></li>
-
-                </ul>
-            </div>
-
-            <div class="col-6 col-md-2 mb-3">
-                <ul class="nav flex-column">
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Drift</a></li>
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Karting</a></li>
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Slalom</a></li>
@@ -111,6 +105,7 @@
                 </ul>
             </div>
 
+            
 
             <div class="col-md-5 offset-md-1 mb-3">
                 <form>

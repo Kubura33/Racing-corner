@@ -1,8 +1,8 @@
 <template>
     <div class="oglasavac_info">
         <h4>Ime i prezime: <span>{{user.name}} {{user.lastname}}</span></h4>
-        <h4>broj telefona: <span>{{user.phone}}</span></h4>
-        <h4>email: <span>{{ user.email }}</span></h4>
+        <h4>Broj telefona: <span>{{user.phone}}</span></h4>
+        <h4>Email: <span>{{ user.email }}</span></h4>
     </div>
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
         <div class="carousel-inner">
