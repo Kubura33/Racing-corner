@@ -2,7 +2,7 @@
     <div class="banner_slalom">
     </div>
     <div class="div-oglas">
-        <div class="row">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col">
                 <div class="card">
                     <img src="../../../assets/images/slalom_prodaja.jpeg" class="card-img-top" alt="...">

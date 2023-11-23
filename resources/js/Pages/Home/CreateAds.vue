@@ -86,6 +86,7 @@
                 <InputError :message="form.errors.description"/>
 
             </div>
+            <p class="p_slika">*Prva slika će se koristiti za naslovnu sliku</p>
             <div class="input-group mb-3">
                 <input
                     type="file"
