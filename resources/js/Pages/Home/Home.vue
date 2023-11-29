@@ -108,7 +108,7 @@ export default {
       activeIndex: 0,
       groups: [
         [
-          { brand: 'Marka 1', price: 230, currency: 'valuta', image: '~@../../../assets/images/drift.jpeg' },
+          { brand: 'Marka 1', price: 230, currency: 'valuta', image: '../../../assets/images/drift.jpeg' },
           { brand: 'Marka 2', price: 230, currency: 'valuta', image: '../../../assets/images/drift.jpeg' },
           { brand: 'Marka 3', price: 230, currency: 'valuta', image: '../../../assets/images/drift.jpeg' }
         ],
