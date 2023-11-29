@@ -30,13 +30,7 @@
                         <Link class="nav-link" aria-current="page" :href="route('home')">Home</Link>
                     </li>
                     <li class="nav-item">
-                        <Link class="nav-link" :href="route('equipment')">Oprema</Link>
-                    </li>
-                    <li class="nav-item">
-                        <Link class="nav-link" :href="route('tires')">Gume</Link>
-                    </li>
-                    <li class="nav-item">
-                        <Link class="nav-link" :href="route('parts')">Delovi</Link>
+                        <Link class="nav-link" :href="route('equipment')">Automobili</Link>
                     </li>
                     <li class="nav-item">
                         <Link class="nav-link" :href="route('ads.create')">Kreiraj oglas</Link>
@@ -44,29 +38,17 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Odaberi disciplinu
+                            Ostalo
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li>
-                                <Link class="dropdown-item" :href="route('rally')">Rally</Link>
+                                <Link class="dropdown-item" :href="route('tires')">Gume</Link>
                             </li>
                             <li>
-                                <Link class="dropdown-item" :href="route('lap-races')">Kružne trke</Link>
+                                <Link class="dropdown-item" :href="route('parts')">Delovi</Link>
                             </li>
                             <li>
-                                <Link class="dropdown-item" :href="route('hill-races')">Brdske trke</Link>
-                            </li>
-                            <li>
-                                <Link class="dropdown-item" :href="route('slalom')">Slalom</Link>
-                            </li>
-                            <li>
-                                <Link class="dropdown-item" :href="route('karting')">Karting</Link>
-                            </li>
-                            <li>
-                                <Link class="dropdown-item" :href="route('autocross')">Autocross</Link>
-                            </li>
-                            <li>
-                                <Link class="dropdown-item" :href="route('drift')">Drift</Link>
+                                <Link class="dropdown-item" :href="route('equipment')">Oprema</Link>
                             </li>
                         </ul>
                     </li>

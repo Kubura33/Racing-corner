@@ -1,47 +1,7 @@
 <template>
     <div class="banner_rally">
     </div>
-    <div class="premium-kartice">
-            <span class="traka" id="traka_div"></span>
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-  <div class="col" id="kolona1_premium" >
-    <div class="card">
-        <span class="traka"></span>
-      <img src="../../../assets/images/drift.jpeg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Marka</h5>
-        <p class="card-text">Kratak opis</p>
-        <h5>CENA: <span class="podatak">230<span class="podatak">valuta</span></span></h5>
-      </div>
-      <a href="#" class="btn btn-primary">Detaljnije</a>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-        <span class="traka"></span>
-      <img src="../../../assets/images/drift.jpeg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Marka</h5>
-        <p class="card-text">Kratak opis</p>
-        <h5>CENA: <span class="podatak">230<span class="podatak">valuta</span></span></h5>
-      </div>
-      <a href="#" class="btn btn-primary">Detaljnije</a>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-        <span class="traka"></span>
-      <img src="../../../assets/images/drift.jpeg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Marka</h5>
-        <p class="card-text">Kratak opis</p>
-        <h5>CENA: <span class="podatak">230<span class="podatak">valuta</span></span></h5>
-      </div>
-      <a href="#" class="btn btn-primary">Detaljnije</a>
-    </div>
-  </div>
-</div>
-    </div>
+    
     <div class="div-oglas">
         <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col">

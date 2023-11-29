@@ -632,7 +632,6 @@ progress {
   --bs-gutter-x: 1.5rem;
   --bs-gutter-y: 0;
   display: flex;
-  flex-wrap: wrap;
   margin-top: calc(var(--bs-gutter-y) * -1);
 
 }
@@ -2389,7 +2388,7 @@ textarea.form-control-lg {
   display: block;
   min-height: 1.5rem;
   padding-left: 1.5em;
-  margin-bottom: 0.125rem;
+  margin-bottom: 1rem;
 }
 .form-check .form-check-input {
   float: left;
@@ -4280,7 +4279,7 @@ textarea.form-control-lg {
 
 .card-body {
   flex: 1 1 auto;
-  padding: 1rem 1rem;
+  padding: 0.2rem 1rem;
 }
 
 .card-title {
@@ -4835,7 +4834,6 @@ textarea.form-control-lg {
   padding: 0.5rem 1rem;
   color: #212529;
   text-decoration: none;
-  background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
 .list-group-item:first-child {
@@ -5727,7 +5725,6 @@ textarea.form-control-lg {
 
 .carousel {
   position: relative;
-  height: 100%;
 }
 
 .carousel.pointer-event {
@@ -5738,6 +5735,7 @@ textarea.form-control-lg {
   position: relative;
   width: 100%;
   overflow: hidden;
+  object-fit: cover;
 }
 .carousel-inner::after {
   display: block;
@@ -5754,6 +5752,7 @@ textarea.form-control-lg {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   transition: transform 0.6s ease-in-out;
+  object-fit: cover;
 }
 @media (prefers-reduced-motion: reduce) {
   .carousel-item {
