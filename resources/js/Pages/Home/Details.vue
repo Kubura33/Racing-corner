@@ -14,7 +14,7 @@
                 <img src="/images/oglas2.jpeg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="images/wrc_games.jpeg" class="d-block w-100" alt="...">
+                <img src="/images/wrc_games.jpeg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
                 <img src="/images/wrc_images.jpg" class="d-block w-100" alt="...">
