@@ -1,7 +1,7 @@
 <template>
 
 <div class="banner">
-  <div class="slika">
+  <div class="banner_slika">
     <img src="../../../assets/images/banner2.jpg" alt="">
     <div class="div_slika">
               

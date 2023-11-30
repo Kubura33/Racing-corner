@@ -173,12 +173,12 @@ span {
     overflow: hidden;
 }
 
-.slika {
+.banner_slika {
     position: relative;
     width: 100%;
 }
 
-.slika img {
+.banner_slika img {
     width: 100%;
 }
 
@@ -779,6 +779,7 @@ span {
     }
 
     .oglasi {
+        margin-top: 3%;
         grid-column: 2 / 3;
         display: flex;
         flex-wrap: wrap;
@@ -786,12 +787,14 @@ span {
     }
 
     .wrap {
-        width: 28%;
+        width: 30%;
         margin-bottom: 20px;
         margin-left: 3%;
-        padding: 3%;
+        padding-top: 2%;
+
     }
-    .slika{
+
+    .slika {
         width: 100%;
         height: 330px;
         overflow: hidden;
@@ -800,32 +803,37 @@ span {
         object-fit: fill;
         border-radius: 10px;
     }
+
     .slika img {
         width: 100%;
         height: 80%;
         display: block;
-        object-fit: fill; 
+        object-fit: fill;
         transition: transform 0.3s ease;
     }
-    .slika img:hover{
+
+    .slika img:hover {
         transform: scale(1.1);
     }
+
     .data {
         text-align: center;
         background-color: #E0E7E9;
         height: 20%;
         padding-top: 7%;
     }
-    .data h4{
+
+    .data h4 {
         color: black;
     }
+
     .cena_traka {
         position: absolute;
-        bottom: 60px;
+        bottom: 45px;
         left: 0;
         right: 0;
         background: linear-gradient(100deg, #A3C6C4 0%, #8ca7a5 100%);
-        color: white;
+        color: rgb(0, 0, 0);
         padding: 5px;
         padding-left: 10px;
         text-align: center;
@@ -833,13 +841,14 @@ span {
         height: 40px;
         text-align: center;
     }
+
     .cena_traka::before {
         content: '';
         position: absolute;
-        top: 0px;
+        top: -0.2px;
         right: -20px;
         border-style: solid;
-        border-width: 21px 0 21px 21px;
+        border-width: 19px 0 22px 21px;
         border-color: transparent transparent transparent rgba(140, 166, 164, 1);
     }
 }
@@ -893,9 +902,9 @@ span {
 
     .slika img {
         width: 100%;
-        height:80%;
+        height: 80%;
         display: block;
-        object-fit: fill;    
+        object-fit: fill;
     }
 
     .data {
@@ -904,36 +913,101 @@ span {
         height: 20%;
         padding-top: 10%;
     }
-    .data h4{
+
+    .data h4 {
         color: black;
     }
+
     .cena_traka {
         position: absolute;
         bottom: 40px;
         left: 0;
         right: 0;
         background: linear-gradient(100deg, #A3C6C4 0%, #8ca7a5 100%);
-        color: white;
+        color: rgb(0, 0, 0);
         padding: 5px;
         padding-left: 10px;
         text-align: center;
         width: 40%;
-        height: 42px;
+        height: 39px;
         text-align: center;
     }
+
     .cena_traka::before {
         content: '';
         position: absolute;
-        top: -1px;
-        right: -21px;
+        top: -0.1180px;
+        right: -20px;
         border-style: solid;
-        border-width: 22px 0 22px 22px;
+        border-width: 18.5px 0 21.5px 20.5px;
         border-color: transparent transparent transparent rgba(140, 166, 164, 1);
     }
 
 }
 
 /*--/automobili strana--*/
+/*--filter div--*/
+/* Stil za Racunar (širina 100% širine ekrana) */
+@media only screen and (min-width: 767px) {
+    .filteri form {
+        width: 100%;
+    }
+    form label{
+        margin-left: 3%;
+    }
+    .price {
+        width: 100%;
+    }
+    .accordion {
+        margin-top: 15%;
+        padding-top: 5%;
+    }
+    .accordion-item{
+        margin-bottom: 10%;
+    }
+    .accordion-body{
+        background-color: #E0E7E9;
+    }
+    #min-price {
+        width: 100%;
+    }
+
+    #max-price {
+        width: 100%;
+    }
+}
+
+/* Stil za Mobilni telefon (širina 100% širine ekrana)*/
+@media only screen and (max-width: 767px) {
+    .filteri {
+        width: 130px;
+    }
+    .filteri form {
+        width: 100%;
+    }
+    form label{
+        margin-left: 3%;
+    }
+    .accordion-item{
+        margin-bottom: 10%;
+    }
+    .accordion-body{
+        background-color: #E0E7E9;
+    }
+    .price {
+        width: 100%;
+    }
+
+    #min-price {
+        width: 100%;
+    }
+
+    #max-price {
+        width: 100%;
+    }
+}
+
+/*--/filteri--*/
 
 /*--footer--*/
 footer {

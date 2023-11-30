@@ -4408,11 +4408,11 @@ textarea.form-control-lg {
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 1rem 1.25rem;
+  padding: 5px;
   font-size: 1rem;
   color: #212529;
   text-align: left;
-  background-color: #fff;
+  background-color: #E0E7E9;
   border: 0;
   border-radius: 0;
   overflow-anchor: none;
@@ -4491,7 +4491,7 @@ textarea.form-control-lg {
 }
 
 .accordion-body {
-  padding: 1rem 1.25rem;
+  padding: 1rem 1rem;
 }
 
 .accordion-flush .accordion-collapse {
