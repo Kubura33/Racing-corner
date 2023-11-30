@@ -25,9 +25,7 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
-Route::get('/home', function(){
-    return Inertia::render('Home/Home');
-})->name('home');
+
 
 Route::get('UserHome', function(){
     return Inertia::render('Profile/UserHome');
@@ -37,45 +35,21 @@ Route::get('/RentCar', function (){
     return Inertia::render('Home/RentCar');
 })->name('RentCar');
 ////////////////
-Route::get('/tires', function (){
-    return Inertia::render('Home/TiresPage');
-})->name('tires');
+Route::get('/tires',\App\Http\Controllers\TiresController::class)->name('tires');
 //Ads handling
-Route::resource('ads', \App\Http\Controllers\AdController::class)->only(['create', 'store']);
+Route::resource('ads', \App\Http\Controllers\AdController::class)->only(['create', 'store', 'show']);
+Route::get('/home', [\App\Http\Controllers\AdController::class, 'index'])->name('home');
 
 ////
-Route::get('/equipment', function (){
-    return Inertia::render('Home/EquipmentPage');
-})->name('equipment');
-Route::get('/parts', function (){
-    return Inertia::render('Home/PartsPage');
-})->name('parts');
+Route::get('/equipment', \App\Http\Controllers\EquipmentController::class)->name('equipment');
+Route::get('/parts', \App\Http\Controllers\PartsController::class)->name('parts');
 Route::get('/details', function(){
     return Inertia::render('Home/Details');
 })->name('details');
-Route::prefix('discipline')->group(function (){
-    Route::get('/rally', function (){
-        return Inertia::render('Discipline/Rally');
-    })->name('rally');
-    Route::get('/lap-races', function (){
-        return Inertia::render('Discipline/LapRaces');
-    })->name('lap-races');
-    Route::get('/hill-races', function (){
-        return Inertia::render('Discipline/HillRaces');
-    })->name('hill-races');
-    Route::get('/slalom', function (){
-        return Inertia::render('Discipline/Slalom');
-    })->name('slalom');
-    Route::get('/karting', function (){
-        return Inertia::render('Discipline/Karting');
-    })->name('karting');
-    Route::get('/autocross', function (){
-        return Inertia::render('Discipline/Autocross');
-    })->name('autocross');
-    Route::get('/drift', function (){
-        return Inertia::render('Discipline/Drift');
-    })->name('drift');
-});
+Route::get('/cars', function (){
+    return Inertia::render('Home/Cars');
+})->name('cars');
+
 Route::get('/about', function (){
     return Inertia::render('Home/About');
 })->name('about');

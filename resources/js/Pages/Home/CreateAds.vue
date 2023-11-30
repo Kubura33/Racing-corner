@@ -22,7 +22,7 @@
       </div>
     </div>
   </template>
-  
+
   <script>
   export default {
     data() {
@@ -35,25 +35,25 @@
         items: [
           {
             id: 1,
-            image: "resources/assets/images/toyota.jpg",
+            image: "/images/toyota.jpg",
             alt: "Toyota",
             title: "Auto",
           },
           {
             id: 2,
-            image: "delovi.jpeg",
+            image: "/images/delovi.jpeg",
             alt: "Delovi",
             title: "Delovi",
           },
           {
             id: 3,
-            image: "../../../resources/assets/images/kaciga.jpg",
+            image: "/images/kaciga.jpg",
             alt: "Kaciga",
             title: "Oprema",
           },
           {
             id: 4,
-            image: "../../../assets/images/gume_prodaja.jpeg",
+            image: "/images/gume_prodaja.jpeg",
             alt: "Gume",
             title: "Gume",
           },

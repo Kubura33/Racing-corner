@@ -462,7 +462,7 @@ span {
     height: 100%;
     margin: auto;
     max-width: 525px;
-    min-height: 670px;
+    min-height: 800px;
     position: relative;
     box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19);
     border: 2px solid #354649;
@@ -610,7 +610,12 @@ span {
 .login-html .sign-in:checked+.tab+.sign-up+.tab+.login-form .sign-in-htm {
     transform: rotate(0);
 }
-
+.sign-in-htm{
+    margin-top: 100px;
+}
+.sign-up-htm{
+    margin-top:20px;
+}
 .login-html .sign-up:checked+.tab+.login-form .sign-up-htm {
     transform: rotate(0);
 }

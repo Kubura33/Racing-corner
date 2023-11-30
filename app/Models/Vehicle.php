@@ -12,10 +12,13 @@ class Vehicle extends Model
     use HasFactory;
     protected $guarded = [];
     public function ad() : MorphMany{
-        return $this->morphMany(Ad::class, 'advertisable_id');
+        return $this->morphMany(Ad::class, 'advertisable');
     }
     public function images() : HasMany{
         return $this->hasMany(VehicleImages::class,'vehicle_id');
+    }
+    public function imageable() : MorphMany {
+        return $this->morphMany(Image::class, 'imageable');
     }
 
 }

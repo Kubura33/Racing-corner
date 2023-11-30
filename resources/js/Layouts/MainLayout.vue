@@ -5,15 +5,14 @@
             Trkačka berza
         </h4>
         <span v-if="!user">
-    <b><Link class="nalog" :href="route('register')"> Kreiraj nalog</Link></b>
-    <b> <Link class="nalog" :href="route('login')"> Uloguj se </Link></b>
+    <b> <Link class="nalog" :href="route('login')"> Sign In</Link></b>
     </span>
         <span v-else>
             <b class="nalog">
                 {{user.username}}
             </b>
             <b>
-                <Link class="nalog" :href="route('logout')">Logout</Link>
+                <Link class="nalog" method="POST" as="button" :href="route('logout')">Logout</Link>
             </b>
 
         </span>
@@ -30,7 +29,7 @@
                         <Link class="nav-link" aria-current="page" :href="route('home')">Home</Link>
                     </li>
                     <li class="nav-item">
-                        <Link class="nav-link" :href="route('equipment')">Automobili</Link>
+                        <Link class="nav-link" :href="route('cars')">Automobili</Link>
                     </li>
                     <li class="nav-item">
                         <Link class="nav-link" :href="route('ads.create')">Kreiraj oglas</Link>
@@ -87,7 +86,7 @@
                 </ul>
             </div>
 
-            
+
 
             <div class="col-md-5 offset-md-1 mb-3">
                 <form>

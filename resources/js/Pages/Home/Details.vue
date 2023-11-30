@@ -8,16 +8,16 @@
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="../../../assets/images/oglas1.jpeg" class="d-block w-100" alt="...">
+                <img src="/images/oglas1.jpeg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="../../../assets/images/oglas2.jpeg" class="d-block w-100" alt="...">
+                <img src="/images/oglas2.jpeg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="../../../assets/images/wrc_games.jpeg" class="d-block w-100" alt="...">
+                <img src="images/wrc_games.jpeg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="../../../assets/images/wrc_images.jpg" class="d-block w-100" alt="...">
+                <img src="/images/wrc_images.jpg" class="d-block w-100" alt="...">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
@@ -54,4 +54,3 @@ import {usePage} from "@inertiajs/vue3";
 const page = usePage()
 const user = page.props.auth.user
 </script>
-

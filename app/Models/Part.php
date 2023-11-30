@@ -13,7 +13,10 @@ class Part extends Model
     use HasFactory;
     protected $guarded = [];
     public function ad() : MorphMany{
-        return $this->morphMany(Ad::class, 'advertisable_id');
+        return $this->morphMany(Ad::class, 'advertisable');
+    }
+    public function imageable() : MorphMany {
+        return $this->morphMany(Image::class, 'imageable');
     }
     public function images(): HasMany{
         return $this->hasMany(PartImages::class, 'part_id');
