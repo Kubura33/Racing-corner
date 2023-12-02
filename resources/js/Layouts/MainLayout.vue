@@ -8,8 +8,11 @@
     <b> <Link class="nalog" :href="route('login')"> Sign In</Link></b>
     </span>
         <span v-else>
-            <b class="nalog">
-                {{user.username}}
+            <b >
+                <Link class="nalog" :href="route('UserHome')">
+                    {{user.username}}
+                </Link>
+
             </b>
             <b>
                 <Link class="nalog" method="POST" as="button" :href="route('logout')">Logout</Link>

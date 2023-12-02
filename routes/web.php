@@ -37,7 +37,7 @@ Route::get('/RentCar', function (){
 ////////////////
 Route::get('/tires',\App\Http\Controllers\TiresController::class)->name('tires');
 //Ads handling
-Route::resource('ads', \App\Http\Controllers\AdController::class)->only(['create', 'store', 'show']);
+Route::resource('ads', \App\Http\Controllers\AdController::class)->only(['show', 'create', 'store']);
 Route::get('/home', [\App\Http\Controllers\AdController::class, 'index'])->name('home');
 
 ////
@@ -62,6 +62,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::resource('ads', \App\Http\Controllers\AdController::class)->only(['create', 'store']);
+
 });
 
 require __DIR__.'/auth.php';

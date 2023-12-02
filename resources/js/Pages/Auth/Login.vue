@@ -44,7 +44,7 @@ const register = () => registerForm.post(route('register'))
 					<label for="check"><span class="icon"></span> Keep me Signed in</label>
 				</div>
 				<div class="group">
-					<input type="submit" class="button" value="Sign In" @submit="login" >
+					<input type="submit" class="button" value="Sign In">
 				</div>
 				<div class="hr"></div>
 				<div class="foot-lnk">
@@ -66,6 +66,11 @@ const register = () => registerForm.post(route('register'))
 					<label for="user" class="label">Username</label>
 					<input id="user" type="text" class="input" v-model="registerForm.username">
                     <InputError v-if="registerForm.errors.username" :message="registerForm.errors.username"/>
+                </div>
+                <div class="group">
+                    <label for="user" class="label">Phone</label>
+                    <input id="user" type="text" class="input" v-model="registerForm.phone">
+                    <InputError v-if="registerForm.errors.phone" :message="registerForm.errors.phone"/>
                 </div>
 				<div class="group">
 					<label for="pass" class="label">Password</label>

@@ -112,6 +112,8 @@ span {
 .nalog {
     margin-left: 10px;
     text-decoration: none;
+    border: none;
+    background: none;
     float: right;
     color: #E0E7E9;
 
@@ -494,7 +496,7 @@ span {
     height: 100%;
     margin: auto;
     max-width: 525px;
-    min-height: 800px;
+    min-height: 875px;
     position: relative;
     box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19);
     border: 2px solid #354649;
@@ -643,7 +645,7 @@ span {
     transform: rotate(0);
 }
 .sign-in-htm{
-    margin-top: 100px;
+    margin-top: 170px;
 }
 .sign-up-htm{
     margin-top:20px;
@@ -670,7 +672,6 @@ span {
     margin: 0;
     width: 100%;
     height: 100%;
-    background-color: #354649;
 }
 
 .kartica .card-img-top {
