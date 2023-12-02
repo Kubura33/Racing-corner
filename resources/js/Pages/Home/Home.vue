@@ -2,7 +2,7 @@
 
     <div class="banner">
         <div class="banner_slika">
-            <img src="../../../assets/images/banner2.jpg" alt="">
+            <img src="/images/banner2.jpg" alt="">
             <div class="div_slika">
 
             </div>
@@ -16,9 +16,10 @@
             <div class="carousel-inner">
                 <div v-for="(group, index) in groups" :key="index" :class="['carousel-item', { active: index === activeIndex }]">
                     <div class="premium-kartice">
-                        <span class="traka" id="traka_div"></span>
+                        <span class="traka" id="traka_div_comp"></span>
                         <div class="row row-cols-1 row-cols-md-3 g-4">
                             <div class="col" v-for="(card, cardIndex) in group" :key="cardIndex">
+                                <span class="traka" id="traka_div_phone"></span>
                                 <div class="card">
                                     <img :src="card.image" class="card-img-top" alt="Card image">
                                     <div class="card-body">
@@ -47,7 +48,7 @@
         <div class="row">
             <div class="col col-md-4 mb-3">
                 <div class="card">
-                    <img src="../../../assets/images/borkovic.jpg" class="card-img-top" alt="...">
+                    <img src="/images/borkovic.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">MARKA</h5>
                     </div>
@@ -63,7 +64,7 @@
             </div>
             <div class="col col-12 col-md-4 mb-3">
                 <div class="card">
-                    <img src="../../../assets/images/borkovic.jpg" class="card-img-top" alt="...">
+                    <img src="/images/borkovic.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">MARKA</h5>
                     </div>
@@ -79,7 +80,7 @@
             </div>
             <div class="col col-12 col-md-4 mb-3">
                 <div class="card">
-                    <img src="../../../assets/images/borkovic.jpg" class="card-img-top" alt="...">
+                    <img src="/images/borkovic.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">MARKA</h5>
                     </div>
