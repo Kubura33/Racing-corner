@@ -27,18 +27,14 @@ Route::get('/', function () {
 });
 
 
-Route::get('UserHome', function(){
-    return Inertia::render('Profile/UserHome');
-})->name('UserHome');
+
 /////////////////
 Route::get('/RentCar', function (){
     return Inertia::render('Home/RentCar');
 })->name('RentCar');
 ////////////////
 Route::get('/tires',\App\Http\Controllers\TiresController::class)->name('tires');
-//Ads handling
-Route::resource('ads', \App\Http\Controllers\AdController::class)->only(['show', 'create', 'store']);
-Route::get('/home', [\App\Http\Controllers\AdController::class, 'index'])->name('home');
+
 
 ////
 Route::get('/equipment', \App\Http\Controllers\EquipmentController::class)->name('equipment');
@@ -57,13 +53,15 @@ Route::get('/about', function (){
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::resource('ads', \App\Http\Controllers\AdController::class)->only(['create', 'store']);
+    Route::get('/profile', [ProfileController::class,'index'])->name('profile.index');
+    Route::resource('ads', \App\Http\Controllers\AdController::class)->except(['show', 'index']);
 
 });
-
+//Ads handling
+Route::resource('ads', \App\Http\Controllers\AdController::class)->only(['show']);
+Route::get('/home', [\App\Http\Controllers\AdController::class, 'index'])->name('home');
 require __DIR__.'/auth.php';

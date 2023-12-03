@@ -2,7 +2,6 @@
 import InputError from "@/Components/InputError.vue";
 import {useForm} from "@inertiajs/vue3";
 import {ref} from "vue";
-const radioType = ref(null);
 const form = useForm({
     email : "",
     password: "",
@@ -18,6 +17,8 @@ const registerForm = useForm({
 })
 const login= () => form.post(route('login'))
 const register = () => registerForm.post(route('register'))
+const radioType = ref(login);
+
 </script>
 
 <template>
@@ -39,10 +40,7 @@ const register = () => registerForm.post(route('register'))
 					<input id="pass" type="password" class="input" data-type="password" v-model="form.password">
 
                 </div>
-				<div class="group">
-					<input id="check" type="checkbox" class="check" checked>
-					<label for="check"><span class="icon"></span> Keep me Signed in</label>
-				</div>
+
 				<div class="group">
 					<input type="submit" class="button" value="Sign In">
 				</div>

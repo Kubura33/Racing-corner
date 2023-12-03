@@ -9,7 +9,7 @@
     </span>
         <span v-else>
             <b >
-                <Link class="nalog" :href="route('UserHome')">
+                <Link class="nalog" :href="route('profile.index')">
                     {{user.username}}
                 </Link>
 

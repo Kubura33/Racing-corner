@@ -30,6 +30,14 @@
                                     <label for="vehicle4">Tigar</label><br>
                                     <input type="checkbox" id="vehicle5" name="vehicle2" value="Dunlop">
                                     <label for="vehicle5">Dunlop</label><br>
+                                    <input type="checkbox" id="vehicle5" name="vehicle2" value="Pirelli">
+                                    <label for="vehicle5">Pirelli</label><br>
+                                    <input type="checkbox" id="vehicle5" name="vehicle2" value="Nankang">
+                                    <label for="vehicle5">Nankang</label><br>
+                                    <input type="checkbox" id="vehicle5" name="vehicle2" value="Hankook">
+                                    <label for="vehicle5">Hankook</label><br>
+                                    <input type="checkbox" id="vehicle5" name="vehicle2" value="Avon">
+                                    <label for="vehicle5">Avon</label><br>
                                 </div>
                             </div>
                         </div>

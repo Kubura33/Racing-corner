@@ -25,6 +25,7 @@ class AdController extends Controller
      */
     public function index()
     {
+
         $ads = Ad::with(['advertisable.imageable'])->get();
 
         $adsWithImages = $ads->map(function ($ad){
@@ -132,9 +133,9 @@ class AdController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Ad $id)
     {
-        //
+        return redirect()->route('home');
     }
 
     /**
