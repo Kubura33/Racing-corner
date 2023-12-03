@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
+            $table->text('manufacter')->nullable();
             $table->string('type')->default('other');
             $table->string('isUsed')->default('novo');
             $table->string('model');

@@ -80,7 +80,7 @@ class AdController extends Controller
                 return redirect()->route('home')->with('success', 'Oglas za vozilo je uspesno kreiran');
             case 'equipment':
                 $eq = Equipment::create([
-                    'name' => 'Random name',
+                    'name' => $request->safe()->name,
                     'description' => $request->safe()->description,
                 ]);
                 $ad->update(['advertisable_id' => $eq->id]);
@@ -89,7 +89,7 @@ class AdController extends Controller
                 return redirect()->route('home')->with('success', 'Oglas za opremu je uspesno kreiran');
             case 'parts':
                 $part = Part::create([
-                    'name' => 'Random name',
+                    'name' => $request->safe()->name,
                     'description' => $request->safe()->description,
                 ]);
                 $ad->update(['advertisable_id' => $part->id]);
@@ -97,7 +97,7 @@ class AdController extends Controller
                 return redirect()->route('home')->with('success', 'Oglas za delove je uspesno kreiran');
             case 'tires':
                 $tires = Part::create([
-                    'name' => 'Random name',
+                    'name' => $request->safe()->name,
                     'description' => $request->safe()->description,
                     'type' => 'tires'
                 ]);

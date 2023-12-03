@@ -26,6 +26,7 @@ class CreateAdRequest extends FormRequest
             'vehicle_class' => ['required_if:type,vehicle'],
             'description' => ['required', 'string'],
             'images' => ['required'],
+            'name' => ['required', 'string', 'max:255']
         ];
     }
     public function messages()
@@ -42,6 +43,7 @@ class CreateAdRequest extends FormRequest
             'vehicle_class.required_if' => "Ovo polje je obavezno",
             'description.required' => "Ovo polje je obavezno",
             'images.required' => "Slike su obavezne",
+            'name.required' => "Ime je obavezno",
         ];
     }
 }
