@@ -173,6 +173,7 @@ span {
     position: relative;
     width: 100%;
     overflow: hidden;
+    margin-bottom: 2%;
 }
 
 .banner_slika {
@@ -194,6 +195,425 @@ span {
     height: 98%;
     background-color: rgba(152, 152, 152, 0.7);
     border-radius: 10px;
+    text-align: center;
+    padding: 4%;
+}
+
+.banner h2 {
+    margin-top: 20%;
+}
+
+/* Stil za računar (širina 500 piksela) */
+@media only screen and (min-width: 768px) {
+    .banner h2 {
+        margin-top: 0;
+        font-size: 50px;
+        position: absolute;
+        top: 40%;
+        left: 70%;
+        transform: translate(-50%, -40%);
+        margin: 0;
+        color: transparent;
+        -webkit-text-stroke: 0.2px rgb(255, 255, 255);
+        z-index: 1;
+    }
+
+    .banner h2:hover {
+        margin-top: 0;
+        font-size: 50px;
+        position: absolute;
+        top: 40%;
+        left: 70%;
+        transform: translate(-50%, -40%);
+        margin: 0;
+        color: white;
+        z-index: 0;
+    }
+    .savezi{
+        width: 100%;
+        height: 500px;
+        background-color: rgb(221, 221, 221);
+        border-radius: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-self: normal;
+        padding: 3%;
+    }
+    .savezi a{
+        text-decoration: none;
+    }
+    .savezi h2{
+        text-align: center;
+        flex-wrap: nowrap;
+        height: 20px;
+        display: inline;
+        width: 100%;
+        font-weight: bold;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    .zastave{
+        flex-wrap: wrap;
+        width: 30%;
+        height: 130px;
+        border-radius: 10px;
+        background-color: #000000;
+        margin-left: 25px;
+        margin-top: 35px;
+    }
+    #srbija{
+        background-image: url('../../public/images/srbija.jpg');
+        background-size: cover; 
+        background-position: center;
+        text-align: center;
+    }
+    #srbija h4{
+        margin-top: 0;
+        font-size: 40px;
+        margin-top: 14%;
+        color: transparent;
+        -webkit-text-stroke: 2px rgb(0, 0, 0);
+        z-index: 1;
+    }
+    #srbija:hover h4{
+        margin-top: 0;
+        font-size: 40px;
+        margin-top: 14%;
+        color: black;
+        -webkit-text-stroke: 1px rgb(0, 0, 0);
+        z-index: 0;
+    }
+
+    #hrvatska{
+        background-image: url('../../public/images/hrvatska.jpg');
+        background-size: cover; 
+        background-position: center;
+        text-align: center;
+    }
+    #hrvatska h4{
+        margin-top: 0;
+        font-size: 40px;
+        margin-top: 14%;
+        color: transparent;
+        -webkit-text-stroke: 2px rgb(0, 0, 0);
+        z-index: 1;
+    }
+    #hrvatska:hover h4{
+        margin-top: 0;
+        font-size: 40px;
+        margin-top: 14%;
+        color: black;
+        -webkit-text-stroke: 1px rgb(0, 0, 0);
+        z-index: 0;
+    }
+
+    #makedonija{
+        background-image: url('../../public/images/makedonija.jpg');
+        background-size: cover; 
+        background-position: center;
+        text-align: center;
+    }
+    #makedonija h4{
+        margin-top: 0;
+        font-size: 40px;
+        margin-top: 14%;
+        color: transparent;
+        -webkit-text-stroke: 2px rgb(0, 0, 0);
+        z-index: 1;
+    }
+    #makedonija:hover h4{
+        margin-top: 0;
+        font-size: 40px;
+        margin-top: 14%;
+        color: black;
+        -webkit-text-stroke: 1px rgb(0, 0, 0);
+        z-index: 0;
+    }
+
+    #crna_gora{
+        background-image: url('../../public/images/crna_gora.jpg');
+        background-size: cover; 
+        background-position: center;
+        text-align: center;
+    }
+    #crna_gora h4{
+        margin-top: 0;
+        font-size: 40px;
+        margin-top: 14%;
+        color: transparent;
+        -webkit-text-stroke: 2px rgb(0, 0, 0);
+        z-index: 1;
+    }
+    #crna_gora:hover h4{
+        margin-top: 0;
+        font-size: 40px;
+        margin-top: 14%;
+        color: black;
+        -webkit-text-stroke: 1px rgb(0, 0, 0);
+        z-index: 0;
+    }
+
+    #bugarska{
+        background-image: url('../../public/images/bugarska.jpg');
+        background-size: cover; 
+        background-position: center;
+        text-align: center;
+    }
+    #bugarska h4{
+        margin-top: 0;
+        font-size: 40px;
+        margin-top: 14%;
+        color: transparent;
+        -webkit-text-stroke: 2px rgb(0, 0, 0);
+        z-index: 1;
+    }
+    #bugarska:hover h4{
+        margin-top: 0;
+        font-size: 40px;
+        margin-top: 14%;
+        color: black;
+        -webkit-text-stroke: 1px rgb(0, 0, 0);
+        z-index: 0;
+    }
+
+    #fia{
+        background-image: url('../../public/images/fia.jpg');
+        background-size: cover; 
+        background-position: center;
+        text-align: center;
+    }
+    #fia h4{
+        margin-top: 0;
+        font-size: 40px;
+        margin-top: 14%;
+        color: transparent;
+        -webkit-text-stroke: 2px rgb(0, 0, 0);
+        z-index: 1;
+    }
+    #fia:hover h4{
+        margin-top: 0;
+        font-size: 40px;
+        margin-top: 14%;
+        color: black;
+        -webkit-text-stroke: 1px rgb(0, 0, 0);
+        z-index: 0;
+    }
+}
+/* Stil za mobilni telefon (širina 100% širine ekrana) */
+@media only screen and (max-width: 767px) {
+    .banner {
+        position: relative;
+        width: 100%;
+        height: 150px;
+        overflow: hidden;
+        margin-bottom: 2%;
+    }
+
+    .banner_slika {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .banner_slika img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .banner h2 {
+        margin-top: 0;
+        font-size: 16px;
+        position: absolute;
+        top: 40%;
+        left: 70%;
+        transform: translate(-50%, -40%);
+        margin: 0;
+        color: transparent;
+        -webkit-text-stroke: 0.1px rgb(255, 255, 255);
+        z-index: 1;
+    }
+    .banner:active h2{
+        margin-top: 0;
+        font-size: 16px;
+        position: absolute;
+        top: 40%;
+        left: 70%;
+        transform: translate(-50%, -40%);
+        margin: 0;
+        color: white;
+        -webkit-text-stroke: 0.1px rgb(255, 255, 255);
+        z-index: 1;
+    }
+    .savezi{
+        width: 100%;
+        height: 550px;
+        background-color: rgb(221, 221, 221);
+        border-radius: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-self: normal;
+        padding: 1%;
+    }
+    .savezi a{
+        text-decoration: none;
+    }
+    .savezi h2{
+        text-align: center;
+        flex-wrap: nowrap;
+        height: 20px;
+        display: inline;
+        width: 100%;
+        font-weight: bold;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    .zastave{
+        width: 40%;
+        height: 90px;
+        border-radius: 10px;
+        background-color: #000000;
+        margin-left: 25px;
+    }
+    #srbija{
+        background-image: url('../../public/images/srbija.jpg');
+        background-size: cover; 
+        background-position: center;
+        text-align: center;
+        margin-top: 5%;
+    }
+    #srbija h4{
+        margin-top: 0;
+        font-size: 40px;
+        margin-top: 14%;
+        color: transparent;
+        -webkit-text-stroke: 1.5px rgb(0, 0, 0);
+        z-index: 1;
+    }
+    #srbija:active h4{
+        margin-top: 0;
+        font-size: 40px;
+        margin-top: 14%;
+        color: black;
+        -webkit-text-stroke: 1px rgb(0, 0, 0);
+        z-index: 0;
+    }
+
+    #hrvatska{
+        background-image: url('../../public/images/hrvatska.jpg');
+        background-size: cover; 
+        background-position: center;
+        text-align: center;
+        margin-top: -10%;
+    }
+    #hrvatska h4{
+        margin-top: 0;
+        font-size: 40px;
+        margin-top: 14%;
+        color: transparent;
+        -webkit-text-stroke: 1.5px rgb(0, 0, 0);
+        z-index: 1;
+    }
+    #hrvatska:active h4{
+        margin-top: 0;
+        font-size: 40px;
+        margin-top: 14%;
+        color: black;
+        -webkit-text-stroke: 1px rgb(0, 0, 0);
+        z-index: 0;
+    }
+
+    #makedonija{
+        background-image: url('../../public/images/makedonija.jpg');
+        background-size: cover; 
+        background-position: center;
+        text-align: center;
+        margin-top: -10%;
+    }
+    #makedonija h4{
+        margin-top: 0;
+        font-size: 40px;
+        margin-top: 14%;
+        color: transparent;
+        -webkit-text-stroke: 1.5px rgb(0, 0, 0);
+        z-index: 1;
+    }
+    #makedonija:active h4{
+        margin-top: 0;
+        font-size: 40px;
+        margin-top: 14%;
+        color: black;
+        -webkit-text-stroke: 1px rgb(0, 0, 0);
+        z-index: 0;
+    }
+    #crna_gora{
+        background-image: url('../../public/images/crna_gora.jpg');
+        background-size: cover; 
+        background-position: center;
+        text-align: center;
+        margin-top: -10%;
+    }
+    #crna_gora h4{
+        margin-top: 0;
+        font-size: 40px;
+        margin-top: 14%;
+        color: transparent;
+        -webkit-text-stroke: 1.5px rgb(0, 0, 0);
+        z-index: 1;
+    }
+    #crna_gora:active h4{
+        margin-top: 0;
+        font-size: 40px;
+        margin-top: 14%;
+        color: black;
+        -webkit-text-stroke: 1px rgb(0, 0, 0);
+        z-index: 0;
+    }
+
+    #bugarska{
+        background-image: url('../../public/images/bugarska.jpg');
+        background-size: cover; 
+        background-position: center;
+        text-align: center;
+        margin-top: -10%;
+    }
+    #bugarska h4{
+        margin-top: 0;
+        font-size: 40px;
+        margin-top: 14%;
+        color: transparent;
+        -webkit-text-stroke: 1.5px rgb(0, 0, 0);
+        z-index: 1;
+    }
+    #bugarska:active h4{
+        margin-top: 0;
+        font-size: 40px;
+        margin-top: 14%;
+        color: black;
+        -webkit-text-stroke: 1px rgb(0, 0, 0);
+        z-index: 0;
+    }
+
+    #fia{
+        background-image: url('../../public/images/fia.jpg');
+        background-size: cover; 
+        background-position: center;
+        text-align: center;
+        margin-top: 5%;
+    }
+    #fia h4{
+        margin-top: 0;
+        font-size: 40px;
+        margin-top: 14%;
+        color: transparent;
+        -webkit-text-stroke: 1.5px rgb(0, 0, 0);
+        z-index: 1;
+    }
+    #fia:active h4{
+        margin-top: 0;
+        font-size: 40px;
+        margin-top: 14%;
+        color: black;
+        -webkit-text-stroke: 1px rgb(0, 0, 0);
+        z-index: 0;
+    }
 }
 
 /*-- /banner --*/
@@ -235,10 +655,11 @@ span {
         margin-top: 2%;
         margin-left: 1%;
         margin-right: 1%;
+        margin-bottom: 3%;
         border-radius: 20px;
-        background: linear-gradient(170deg, #A3C6C4 0%, #8ca7a5 100%);
+        background: linear-gradient(140deg, #A3C6C4 50%, #c5f0ee 100%);
         position: relative;
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.55);
+        box-shadow: 10px 10px 10px rgba(0, 0, 69, 0.55);
         cursor: pointer;
         transition: all .3s;
     }
@@ -260,7 +681,7 @@ span {
         position: absolute;
         width: 150%;
         height: 40px;
-        background-image: linear-gradient(45deg, #ff6547 0%, #ffb144 51%, #ff7053 100%);
+        background-image: linear-gradient(100deg, #ffb144 0%, #ff7053 100%);
         transform: rotate(-45deg) translateY(-20px);
         display: flex;
         align-items: center;
@@ -271,9 +692,11 @@ span {
         text-transform: uppercase;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.23);
     }
-    #traka_div_phone{
+
+    #traka_div_phone {
         display: none;
     }
+
     .row {
         margin-left: 3%;
     }
@@ -301,71 +724,10 @@ span {
         border-radius: 5px;
         box-shadow: 5px 5px 10px #191919;
     }
-
-    .oglasavac_info {
-        display: inline;
-        float: right;
-        border: 5px solid #6C7A89;
-        border-radius: 5px;
-        box-shadow: 5px 5px 10px #6C7A89;
-        width: 300px;
-        height: 300px;
-        margin-right: 20px;
-        background-color: #e9e9e9;
-    }
-
-    .oglasavac_info span {
-        margin-left: 2%;
-        font-size: larger;
-    }
-
-    .text_oglasa {
-        margin-left: 2%;
-        width: 95%;
-        border: 5px solid rgb(29, 38, 62);
-        border-radius: 10px;
-        box-shadow: 5px 5px 10px rgb(29, 38, 62);
-        background-color: #e9e9e9;
-        margin-bottom: 1%;
-    }
-
-    .text_oglasa h1 {
-        text-align: center;
-        color: rgb(29, 38, 62);
-        font-family: Georgia, 'Times New Roman', Times, serif;
-    }
-
-    .text_oglasa h3 {
-        display: inline;
-        margin-left: 3%;
-        color: rgb(29, 38, 62);
-    }
-
-    .text_oglasa span {
-        display: inline;
-    }
-
-    .text_oglasa p {
-        padding-left: 3%;
-        padding-right: 5%;
-        margin-left: 3%;
-        color: rgb(29, 38, 62);
-    }
-
-    .hr {
-        margin-left: 3%;
-        width: 90%;
-    }
 }
 
 /* Stil za mobilni telefon (širina 100% širine ekrana) */
 @media only screen and (max-width: 767px) {
-    #carouselExampleControls {
-        width: 100%;
-        flex-wrap: nowrap;
-        height: 390px;
-    }
-
     .div-oglas .row {
         flex-wrap: wrap;
     }
@@ -386,6 +748,7 @@ span {
     }
 
     .card {
+        padding: 5%;
         margin-top: 2%;
         border: 5px solid rgb(29, 38, 62);
         border-radius: 5px;
@@ -399,15 +762,22 @@ span {
 
     .card-img-top {
         width: 100%;
-        height: 220px;
+        height: 270px;
     }
 
-    .carousel-inner,
-    .carousel-item,
+    .card-body {
+        height: 40%;
+    }
+
+    .card-body h5 {
+        font-size: 20px;
+        font-weight: bolder;
+    }
+
     .premium-kartice,
     .row,
     .card {
-        height: 100%;
+        height: 90%;
 
     }
 
@@ -419,34 +789,23 @@ span {
         display: inline;
     }
 
-    .oglasavac_info {
-        text-align: center;
-        border: 5px solid rgb(29, 38, 62);
-        border-radius: 5px;
-        box-shadow: 5px 5px 10px rgb(29, 38, 62);
-        width: 100%;
-        height: 20%;
-        margin-top: 2%;
-        background-color: #e9e9e9;
-    }
     .traka {
         position: absolute;
         overflow: hidden;
         width: 150px;
-        height: 150px;
-        top: -10px;
-        left: -10px;
+        height: 170px;
+        top: 0px;
+        left: 5px;
         display: flex;
         align-items: center;
         justify-content: center;
     }
-
     .traka::before {
         content: 'Premium';
         position: absolute;
         width: 150%;
         height: 40px;
-        background-image: linear-gradient(45deg, #ff6547 0%, #ffb144 51%, #ff7053 100%);
+        background-image: linear-gradient(100deg, #ffb144 0%, #ff7053 100%);
         transform: rotate(-45deg) translateY(-20px);
         display: flex;
         align-items: center;
@@ -457,13 +816,11 @@ span {
         text-transform: uppercase;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.23);
     }
-    #traka_div_rac{
+
+    #traka_div_rac {
         display: none;
     }
-    .oglasavac_info span {
-        margin-left: 2%;
-        font-size: larger;
-    }
+
 }
 
 .card-body {
@@ -490,6 +847,54 @@ span {
     margin-bottom: 5%;
 }
 
+/*--Home page--*/
+#poslednje_dodato {
+    text-align: center;
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-top: 2%;
+}
+
+#pogledaj_vise {
+    text-align: center;
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+
+/* Stil za računar (širina 500 piksela) */
+@media only screen and (min-width: 768px) {
+    .oglasi_home {
+        margin-top: 3%;
+        grid-column: 2 / 3;
+        display: flex;
+        flex-wrap: wrap;
+        justify-self: normal;
+    }
+
+    #pogledaj_vise button {
+        width: 240px;
+        height: 70px;
+        border-radius: 25px;
+    }
+}
+
+/* Stil za mobilni telefon (širina 100% širine ekrana) */
+@media only screen and (max-width: 767px) {
+    .oglasi {
+        grid-column: 2 / 3;
+        display: flex;
+        flex-wrap: wrap;
+        justify-self: normal;
+    }
+
+    #pogledaj_vise button {
+        width: 180px;
+        height: 50px;
+        border-radius: 25px;
+    }
+}
+
+/*--/Home page--*/
 /*--Login--*/
 .login-wrap {
     width: 100%;
@@ -644,21 +1049,20 @@ span {
 .login-html .sign-in:checked+.tab+.sign-up+.tab+.login-form .sign-in-htm {
     transform: rotate(0);
 }
-.sign-in-htm{
+
+.sign-in-htm {
     margin-top: 170px;
 }
-.sign-up-htm{
-    margin-top:20px;
+
+.sign-up-htm {
+    margin-top: 20px;
 }
+
 .login-html .sign-up:checked+.tab+.login-form .sign-up-htm {
     transform: rotate(0);
 }
 
-.hr {
-    height: 2px;
-    margin: 60px 0 50px 0;
-    background: rgba(255, 255, 255, .2);
-}
+
 
 .foot-lnk {
     text-align: center;
@@ -668,11 +1072,7 @@ span {
 /*--Login--*/
 
 /*--odabir forme--*/
-#kartice-div {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-}
+
 
 .kartica .card-img-top {
     border: 1px solid #354649;
@@ -726,16 +1126,15 @@ span {
         color: transparent;
         background-color: 0 0 5px rgba(0, 0, 0, 1);
         -webkit-text-stroke: 2px rgb(255, 255, 255);
-        /* Obris teksta kako bi bio vidljiv na slici */
         z-index: 1;
         padding: 10px 20px;
     }
 }
 
 /* Stil za Racunar (širina 100% širine ekrana) */
-@media only screen and (min-width: 767px) {
+@media only screen and (min-width: 768px) {
     #kartice-div {
-        height: 500px;
+        height: 1200px;
     }
 
     .kartice-div {
@@ -759,7 +1158,7 @@ span {
     }
 
     .kartica img {
-        height: 90%;
+        height: 100%;
         width: 100%;
         transition: transform 0.3s ease;
     }
@@ -794,21 +1193,25 @@ span {
     display: inline;
 }
 
+
 /* Stil za Racunar (širina 100% širine ekrana) */
-@media only screen and (min-width: 767px) {
+@media only screen and (min-width: 768px) {
     .auto-div {
         width: 100%;
         height: 100%;
     }
-    #filtriraj{
+
+    #filtriraj {
         display: none;
     }
-    #collapseWidthExample{
-            display: block !important;
-            visibility: visible !important;
-            height: auto !important;
-            overflow: visible !important;
+
+    #collapseWidthExample {
+        display: block !important;
+        visibility: visible !important;
+        height: auto !important;
+        overflow: visible !important;
     }
+
     .wrapper {
         display: grid;
         grid-template-columns: auto 0.9fr;
@@ -873,6 +1276,7 @@ span {
     .data h4 {
         color: black;
     }
+
     .traka_premium {
         position: absolute;
         overflow: hidden;
@@ -890,7 +1294,7 @@ span {
         position: absolute;
         width: 150%;
         height: 40px;
-        background-image: linear-gradient(45deg, #ff6547 0%, #ffb144 51%, #ff7053 100%);
+        background-image: linear-gradient(100deg, #ffb144 0%, #ff7053 100%);
         transform: rotate(-45deg) translateY(-20px);
         display: flex;
         align-items: center;
@@ -901,12 +1305,15 @@ span {
         text-transform: uppercase;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.23);
     }
-    .premium_ads .cena_traka{
-        background-image: linear-gradient(45deg, #ff6547 0%, #ffb144 51%, #ff7053 100%);
+
+    .premium_ads .cena_traka {
+        background-image: linear-gradient(100deg, #ffb144 0%, #ff7053 100%);
     }
-    .premium_ads .cena_traka::before{
+
+    .premium_ads .cena_traka::before {
         border-color: transparent transparent transparent #ff7053;
     }
+
     .cena_traka {
         position: absolute;
         bottom: 45px;
@@ -931,6 +1338,51 @@ span {
         border-width: 19px 0 21.5px 20.9px;
         border-color: transparent transparent transparent rgba(140, 166, 164, 1);
     }
+
+    .box {
+        position: relative;
+    }
+
+    .input {
+        padding: 10px;
+        width: 50px;
+        height: 50px;
+        background: none;
+        border: 4px solid #354649;
+        border-radius: 50px;
+        box-sizing: border-box;
+        font-family: Comic Sans MS;
+        font-size: 20px;
+        color: #354649;
+        outline: none;
+        transition: .5s;
+    }
+
+    .input::placeholder {
+        opacity: 0;
+    }
+
+    .box:hover input {
+        width: 250px;
+        background: none;
+        border-radius: 10px;
+    }
+
+    .box:hover input::placeholder {
+        opacity: 1;
+    }
+
+    .box svg {
+        position: absolute;
+        left: 17px;
+        top: 17px;
+
+    }
+
+    .box:hover svg {
+        opacity: 0;
+        z-index: -1;
+    }
 }
 
 /* Stil za mobilni telefon (širina 100% širine ekrana) */
@@ -939,12 +1391,14 @@ span {
         width: 100%;
         height: 100%;
     }
-    #filtriraj{
+
+    #filtriraj {
         margin-left: 2%;
         margin-top: 2%;
         width: 120px;
         padding: 0;
     }
+
     .wrapper {
         display: grid;
         grid-template-columns: auto 1fr;
@@ -960,9 +1414,11 @@ span {
         padding: 3%;
         border-radius: 10px;
     }
-    .filteri h5{
+
+    .filteri h5 {
         display: none;
     }
+
     .oglasi {
         grid-column: 2 / 3;
         display: flex;
@@ -973,18 +1429,19 @@ span {
     .wrap {
         width: 100%;
         margin-bottom: 20px;
-        padding: 3%;
+        padding: 4%;
         border-radius: 10px;
     }
 
     .slika {
-        width: 100%;
-        height: 280px;
+        width: 90%;
+        height: 240px;
         overflow: hidden;
         position: relative;
         display: block;
         object-fit: fill;
         border-radius: 10px;
+        margin-left: 5%;
     }
 
     .slika img {
@@ -998,12 +1455,13 @@ span {
         text-align: center;
         background-color: #E0E7E9;
         height: 20%;
-        padding-top: 8%;
+        padding-top: 5%;
     }
 
     .data h4 {
         color: black;
     }
+
     .traka_premium {
         position: absolute;
         overflow: hidden;
@@ -1021,7 +1479,7 @@ span {
         position: absolute;
         width: 150%;
         height: 40px;
-        background-image: linear-gradient(45deg, #ff6547 0%, #ffb144 51%, #ff7053 100%);
+        background-image: linear-gradient(100deg, #ffb144 0%, #ff7053 100%);
         transform: rotate(-45deg) translateY(-20px);
         display: flex;
         align-items: center;
@@ -1032,12 +1490,15 @@ span {
         text-transform: uppercase;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.23);
     }
-    .premium_ads .cena_traka{
-        background-image: linear-gradient(45deg, #ff6547 0%, #ffb144 51%, #ff7053 100%);
+
+    .premium_ads .cena_traka {
+        background-image: linear-gradient(100deg, #ffb144 0%, #ff7053 100%);
     }
-    .premium_ads .cena_traka::before{
+
+    .premium_ads .cena_traka::before {
         border-color: transparent transparent transparent #ff7053;
     }
+
     .cena_traka {
         position: absolute;
         bottom: 40px;
@@ -1063,37 +1524,89 @@ span {
         border-color: transparent transparent transparent rgba(140, 166, 164, 1);
     }
 
+    .box {
+        position: relative;
+    }
+
+    .input {
+        padding: 10px;
+        padding-left: 5px;
+        padding-right: 23px;
+        width: 100%;
+        background: none;
+        border-radius: 10px;
+        height: 30px;
+        border: 2px solid #354649;
+        box-sizing: border-box;
+        font-family: Comic Sans MS;
+        font-size: 14 px;
+        color: #354649;
+        outline: none;
+        transition: .5s;
+    }
+
+    .box svg {
+        position: absolute;
+        left: 100px;
+        top: 7px;
+    }
 }
 
 /*--/automobili strana--*/
+/*kreiraj oglas forma--*/
+/* Stil za Racunar (širina 100% širine ekrana) */
+@media only screen and (min-width: 768px) {}
+
+/* Stil za mobilni telefon (širina 100% širine ekrana) */
+@media only screen and (max-width: 767px) {
+    .info img {
+        display: none;
+    }
+
+    .signupForm {
+        width: 100%;
+    }
+}
+
+/*--/kreiraj oglas forma--*/
+
+
+
 /*--filter div--*/
 /* Stil za Racunar (širina 100% širine ekrana) */
-@media only screen and (min-width: 767px) {
+@media only screen and (min-width: 768px) {
     .filteri form {
         width: 100%;
     }
-    form label{
+
+    form label {
         margin-left: 3%;
     }
+
     .price {
         width: 100%;
     }
+
     .accordion {
         margin-top: 15%;
         padding-top: 5%;
     }
-    .accordion-item{
+
+    .accordion-item {
         margin-bottom: 10%;
     }
-    .accordion-body{
+
+    .accordion-body {
         background-color: #E0E7E9;
     }
+
     #min-price {
-        width: 100%;
+        width: 95px;
+        margin-bottom: 5%;
     }
 
     #max-price {
-        width: 100%;
+        width: 95px;
     }
 }
 
@@ -1102,18 +1615,23 @@ span {
     .filteri {
         width: 130px;
     }
+
     .filteri form {
         width: 100%;
     }
-    form label{
+
+    form label {
         margin-left: 3%;
     }
-    .accordion-item{
+
+    .accordion-item {
         margin-bottom: 10%;
     }
-    .accordion-body{
+
+    .accordion-body {
         background-color: #E0E7E9;
     }
+
     .price {
         width: 100%;
     }
@@ -1128,7 +1646,257 @@ span {
 }
 
 /*--/filteri--*/
+/*--Korinsik profil--*/
+/* Stil za Racunar (širina 100% širine ekrana) */
+@media only screen and (min-width: 768px) {
+    .profil-info {
+        width: 80%;
+        margin-top: 3%;
+        margin-left: 10%;
+        padding: 5%;
+        border: 0.5px solid gray;
+        border-radius: 10px;
+    }
 
+    .profil-info h3 {
+        text-align: center;
+    }
+
+    .profil-info button {
+        width: 30%;
+        margin-left: 30%;
+    }
+
+}
+
+/* Stil za Mobilni telefon (širina 100% širine ekrana)*/
+@media only screen and (max-width: 767px) {
+    .profil-info {
+        margin-top: 3%;
+        padding: 3%;
+        border: 0.5px solid gray;
+        border-radius: 10px;
+    }
+
+    .profil-info h3 {
+        text-align: center;
+    }
+
+    .profil-info button {
+        width: 30%;
+        margin-left: 30%;
+    }
+}
+
+/*--/Korinsik profil--*/
+/*--Stranica detalji--*/
+/* Stil za Racunar (širina 100% širine ekrana) */
+@media only screen and (min-width: 768px) {
+    .detalji #carouselExampleFade {
+        width: 70%;
+        height: 500px;
+        margin-top: 1%;
+        margin-left: 1%;
+    }
+
+    .detalji .carousel-inner {
+        width: 100%;
+        height: 100%;
+        background-color: #000000;
+        border-radius: 10px;
+    }
+
+    .detalji .carousel-item {
+
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    .detalji .carousel-item img {
+        width: auto;
+        height: 500px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .detalji .icon_slider {
+        width: 25px;
+        height: 33px;
+        background-color: #000000
+    }
+
+    .oglasavac_info_telefon {
+        display: none;
+    }
+
+    .oglasavac_info {
+        float: right;
+        width: 25%;
+        height: 350px;
+        margin-top: 5%;
+        background-color: #E0E7E9;
+        margin-right: 2%;
+        color: black;
+
+    }
+
+    .oglasavac_info h4 {
+        background-color: #354649;
+        padding: 10%;
+        ;
+        margin-top: 2%;
+        margin-bottom: 2%;
+        width: 70%;
+        height: 30%;
+        color: #ffffff;
+        text-align: center;
+        display: block;
+        margin-left: 15%;
+    }
+
+    .oglasavac_info h4:hover {
+        background-color: #fff;
+        color: #354649;
+    }
+
+    .text_oglasa {
+        height: auto;
+        margin: 1%;
+        width: 98%;
+        padding: 4%;
+        background-color: #ededed;
+        border-radius: 10px;
+    }
+
+    .text_oglasa h1 {
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .text_oglasa span {
+        display: inline;
+        font-weight: bold;
+    }
+
+    #celokupni_opis {
+        font-weight: bolder;
+    }
+
+    .text_oglasa p {
+        font-size: 17px;
+    }
+
+
+}
+
+/* Stil za Mobilni telefon (širina 100% širine ekrana)*/
+@media only screen and (max-width: 767px) {
+    .detalji #carouselExampleFade {
+        width: 100%;
+        height: 200px;
+    }
+
+    .detalji .carousel-inner {
+        width: 100%;
+        height: 100%;
+        background-color: #000000;
+    }
+
+    .detalji .carousel-item {
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+
+    }
+
+    .detalji .carousel-item img {
+        width: auto;
+        height: 200px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .detalji .icon_slider {
+        width: 25px;
+        height: 33px;
+        background-color: #000000
+    }
+
+    .oglasavac_info {
+        display: none;
+    }
+
+    .oglasavac_info_telefon {
+        width: 100%;
+        height: 120px;
+        padding-top: 1%;
+        padding-bottom: 2%;
+        background-color: #ffffff;
+        color: black;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .oglasavac_info_telefon h4 {
+        background-color: #354649;
+        padding: 1%;
+        margin-top: 1%;
+        display: grid;
+        width: 50%;
+        height: 30%;
+        color: #ffffff;
+        text-align: center;
+        border: 1px solid white;
+        font-size: 20px;
+    }
+
+    #email_info {
+        display: block;
+        width: 100%;
+        margin-top: -35px;
+        border-radius: 10px;
+    }
+
+    .oglasavac_info_telefon h4:active {
+        background-color: #fff;
+        color: #354649;
+    }
+
+    .text_oglasa {
+        height: auto;
+        margin: 1%;
+        width: 98%;
+        padding: 5%;
+        border: 0.5px solid gray;
+        border-radius: 10px;
+    }
+
+    .text_oglasa h1 {
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .text_oglasa span {
+        font-weight: bold;
+    }
+
+    .text_oglasa span {
+        display: inline;
+    }
+
+    #celokupni_opis {
+        font-weight: bolder;
+    }
+
+    .text_oglasa p {
+        font-size: 17px;
+    }
+}
+
+/*--/Stranica detalji--*/
 /*--footer--*/
 footer {
     background-color: #354649;

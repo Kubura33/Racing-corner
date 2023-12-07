@@ -3,15 +3,14 @@
     <div class="banner">
         <div class="banner_slika">
             <img src="/images/banner2.jpg" alt="">
-            <div class="div_slika">
-
-            </div>
+                <h2>
+                    “The only way to define your limits is by going beyond them.”
+                </h2>
         </div>
     </div>
 
 
-
-    <div>
+        <div>
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div v-for="(group, index) in groups" :key="index" :class="['carousel-item', { active: index === activeIndex }]">
@@ -32,7 +31,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+        </div>
             <button @click="prev" class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Prethodno</span>
@@ -43,8 +42,115 @@
             </button>
         </div>
     </div>
+    <h2 id="poslednje_dodato">Poslednje dodato</h2>
+    <div class="oglasi_home">
+                <div class="wrap">
+                    <div class="slika">
+                        <a href="">
+                            <img src="/images/borkovic.jpg" alt="">
+                        </a>
+                        <div class="data">
+                            <h4>
+                                Marka
+                            </h4>
+                        </div>
+                        <span class="cena_traka" id="traka_cena">Cena</span>
+                    </div>
+                </div>
+                <div class="wrap">
+                    <div class="slika">
+                        <a href="">
+                            <img src="/images/drift.jpeg" alt="">
+                        </a>
+                        <div class="data">
+                            <h4>
+                                Marka
+                            </h4>
+                        </div>
+                        <span class="cena_traka" id="traka_cena">Cena</span>
+                    </div>
+                </div>
+                <div class="wrap">
+                    <div class="slika">
+                        <a href="">
+                            <img src="/images/drift.jpeg" alt="">
+                        </a>
+                        <div class="data">
+                            <h4>
+                                Marka
+                            </h4>
+                        </div>
+                        <span class="cena_traka" id="traka_cena">Cena</span>
+                    </div>
+                </div>
+                <div class="wrap">
+                    <div class="slika">
+                        <a href="">
+                            <img src="/images/wrc_games.jpeg" alt="">
+                        </a>
+                        <div class="data">
+                            <h4>
+                                Marka
+                            </h4>
+                        </div>
+                        <span class="cena_traka" id="traka_cena">Cena</span>
+                    </div>
+                </div>
+            </div>
+            <div id="pogledaj_vise"><button type="button" class="btn btn-outline-success">Pogledaj vise</button></div>
+            <div class="savezi">
+                <h2>Linkovi ka zvaničnim sportskim savezima</h2>
+                <a href="https://www.fia.com/" class="zastave" id="fia"><h4>FIA</h4></a>
+                <a href="http://www.sakss.org.rs/" class="zastave" id="srbija"><h4>SAKSS</h4></a>
+                <a href="https://haks.hr/" class="zastave" id="hrvatska"><h4>HAKS</h4></a>
+                <a href="https://amsm.mk/" class="zastave" id="makedonija"><h4>AMSM</h4></a>
+                <a href="http://akscg.me/" class="zastave" id="crna_gora"><h4>AKSCG</h4></a>
+                <a href="https://bfas.bg/" class="zastave" id="bugarska"><h4>БФАС</h4></a>  
+            </div>
+</template>
+<script setup>
+import { Link } from "@inertiajs/vue3";
 
-    <div class="div-oglas">
+
+</script>
+<script>
+export default {
+    data() {
+        return {
+            activeIndex: 0,
+            groups: [
+                [
+                    { brand: 'Marka 1', price: 230, currency: 'valuta', image: '/images/drift.jpeg' },
+                    { brand: 'Marka 2', price: 230, currency: 'valuta', image: '/images/drift.jpeg' },
+                    { brand: 'Marka 3', price: 230, currency: 'valuta', image: '/images/drift.jpeg' }
+                ],
+                [
+                    { brand: 'Marka', price: 230, currency: 'valuta', image: '/images/drift.jpeg' },
+                    { brand: 'Marka', price: 230, currency: 'valuta', image: '/images/drift.jpeg' },
+                    { brand: 'Marka', price: 230, currency: 'valuta', image: '/images/drift.jpeg' }
+                ]
+            ]
+        };
+    },
+    methods: {
+        prev() {
+            this.activeIndex = (this.activeIndex - 1 + this.groups.length) % this.groups.length;
+        },
+        next() {
+            this.activeIndex = (this.activeIndex + 1) % this.groups.length;
+        },
+        startAutoChange() {
+            setInterval(() => {
+                this.activeIndex = (this.activeIndex + 1) % this.groups.length;
+            }, 5000);
+        }
+    },
+    mounted() {
+        this.startAutoChange();
+    }
+};
+</script>
+ <!--   <div class="div-oglas">
         <div class="row">
             <div class="col col-md-4 mb-3">
                 <div class="card">
@@ -95,47 +201,4 @@
                 </div>
             </div>
         </div>
-    </div>
-</template>
-<script setup>
-import { Link } from "@inertiajs/vue3";
-
-
-</script>
-<script>
-export default {
-    data() {
-        return {
-            activeIndex: 0,
-            groups: [
-                [
-                    { brand: 'Marka 1', price: 230, currency: 'valuta', image: '/images/drift.jpeg' },
-                    { brand: 'Marka 2', price: 230, currency: 'valuta', image: '/images/drift.jpeg' },
-                    { brand: 'Marka 3', price: 230, currency: 'valuta', image: '/images/drift.jpeg' }
-                ],
-                [
-                    { brand: 'Marka', price: 230, currency: 'valuta', image: '/images/drift.jpeg' },
-                    { brand: 'Marka', price: 230, currency: 'valuta', image: '/images/drift.jpeg' },
-                    { brand: 'Marka', price: 230, currency: 'valuta', image: '/images/drift.jpeg' }
-                ]
-            ]
-        };
-    },
-    methods: {
-        prev() {
-            this.activeIndex = (this.activeIndex - 1 + this.groups.length) % this.groups.length;
-        },
-        next() {
-            this.activeIndex = (this.activeIndex + 1) % this.groups.length;
-        },
-        startAutoChange() {
-            setInterval(() => {
-                this.activeIndex = (this.activeIndex + 1) % this.groups.length;
-            }, 5000);
-        }
-    },
-    mounted() {
-        this.startAutoChange();
-    }
-};
-</script>
+    </div> -->

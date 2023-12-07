@@ -1,54 +1,79 @@
 <template>
-    <div class="table-responsive">
-        <h3>Pregled vaših oglasa</h3>
-  <table class="table">
-    <caption style="margin-left: 2%;">Pregled okačenih oglasa</caption>
-  <thead>
-    <tr>
-      <th scope="col">Vrsta oglas</th>
-      <th scope="col">Proizvod</th>
-      <th scope="col">Broj praćenja</th>
-      <th scope="col">Ažuriraj oglas</th>
-      <th scope="col">Obriši oglas</th>
+  <div class="profil-info">
+    <h3>Vaši podaci</h3>
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Ime</label>
+      <input class="form-control" type="text" placeholder="Ime" aria-label="default input example">
+      <label for="exampleFormControlInput1" class="form-label">Prezime</label>
+      <input class="form-control" type="text" placeholder="Prezime" aria-label="default input example">
+      <label for="exampleFormControlInput1" class="form-label">Korisnicko ime</label>
+      <input class="form-control" type="text" placeholder="Korisnicko ime" aria-label="default input example">
+      <label for="exampleFormControlInput1" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+      <label for="exampleFormControlInput1" class="form-label">Stala lozinka</label>
+      <input type="password" class="form-control" id="inputPassword" placeholder="Old password">
+      <label for="exampleFormControlInput1" class="form-label">Nova lozinka</label>
+      <input type="password" class="form-control" id="inputPassword" placeholder="New password">
+    </div>
+    <button type="button" class="btn btn-success">Update</button>
+  </div>
+  <div>
+    
+  </div>
+  <hr>
+  <div class="table-responsive">
+    <h3>Pregled vaših oglasa</h3>
+    <table class="table">
+      <caption style="margin-left: 2%;">Pregled okačenih oglasa</caption>
+      <thead>
+        <tr>
+          <th scope="col">Vrsta oglas</th>
+          <th scope="col">Proizvod</th>
+          <th scope="col">Broj praćenja</th>
+          <th scope="col">Ažuriraj oglas</th>
+          <th scope="col">Status oglasa</th>
+          <th scope="col">Obriši oglas</th>
 
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">Auto</th>
-      <td>Yugo kabrio Batitsuta</td>
-      <td>10</td>
-      <td><button type="button" class="btn btn-success">Edit</button></td>
-      <td><button type="button" class="btn btn-danger" @click="confirmDelete(index)">Obriši</button>
-</td>
-    </tr>
-    <tr>
-      <th scope="row">Delovi</th>
-      <td>Menjač</td>
-      <td>10</td>
-      <td><button type="button" class="btn btn-success">Edit</button></td>
-      <td><button type="button" class="btn btn-danger" @click="confirmDelete(index)">Obriši</button></td>
-    </tr>
-  </tbody>
-  </table>
-</div>
-<div class="modal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Auto</th>
+          <td>Yugo kabrio Batitsuta</td>
+          <td>10</td>
+          <td><button type="button" class="btn btn-success">Edit</button></td>
+          <td><button type="button" class="btn btn-info">Aktivan</button></td>
+          <td><button type="button" class="btn btn-danger" @click="confirmDelete(index)">Obriši</button>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Delovi</th>
+          <td>Menjač</td>
+          <td>10</td>
+          <td><button type="button" class="btn btn-success">Edit</button></td>
+          <td><button type="button" class="btn btn-info">Ne aktivan</button></td>
+          <td><button type="button" class="btn btn-danger" @click="confirmDelete(index)">Obriši</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Modal body text goes here.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </template>
 <script setup>
 import { ref } from 'vue';

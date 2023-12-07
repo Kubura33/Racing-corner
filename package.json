@@ -135,6 +135,7 @@
     "update-browserslist-db": "^1.0.13",
     "util-deprecate": "^1.0.2",
     "vite-plugin-full-reload": "^1.0.5",
+    "vue-media-upload": "^2.1.2",
     "wrappy": "^1.0.2",
     "yaml": "^2.3.4"
   },

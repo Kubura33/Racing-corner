@@ -46,9 +46,9 @@
                             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    <input type="number" id="min-price" name="min-price" value="0">
+                                    <input type="number" id="min-price" name="min-price" value="">
                                     <label for="min-price">Min</label> <br>
-                                    <input type="number" id="max-price" name="max-price" value="1000000">
+                                    <input type="number" id="max-price" name="max-price" value="">
                                     <label for="max-price">Max</label> <br><br>
                                 </div>
                             </div>
