@@ -83,21 +83,8 @@
                         <span class="cena_traka" id="traka_cena">Cena</span>
                     </div>
                 </div>
-                <div class="wrap">
-                    <div class="slika">
-                        <a href="">
-                            <img src="/images/wrc_games.jpeg" alt="">
-                        </a>
-                        <div class="data">
-                            <h4>
-                                Marka
-                            </h4>
-                        </div>
-                        <span class="cena_traka" id="traka_cena">Cena</span>
-                    </div>
-                </div>
+
             </div>
-            <div id="pogledaj_vise"><button type="button" class="btn btn-outline-success">Pogledaj vise</button></div>
             <div class="savezi">
                 <h2>Linkovi ka zvaničnim sportskim savezima</h2>
                 <a href="https://www.fia.com/" class="zastave" id="fia"><h4>FIA</h4></a>
@@ -105,7 +92,7 @@
                 <a href="https://haks.hr/" class="zastave" id="hrvatska"><h4>HAKS</h4></a>
                 <a href="https://amsm.mk/" class="zastave" id="makedonija"><h4>AMSM</h4></a>
                 <a href="http://akscg.me/" class="zastave" id="crna_gora"><h4>AKSCG</h4></a>
-                <a href="https://bfas.bg/" class="zastave" id="bugarska"><h4>БФАС</h4></a>  
+                <a href="https://bfas.bg/" class="zastave" id="bugarska"><h4>БФАС</h4></a>
             </div>
 </template>
 <script setup>

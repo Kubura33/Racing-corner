@@ -17,8 +17,9 @@ return new class extends Migration
             $table->text('description');
             $table->text('manufacter')->nullable();
             $table->string('type')->default('other');
-            $table->string('isUsed')->default('novo');
-            $table->string('model');
+            $table->string('dot')->nullable();
+            $table->string('dimensions')->nullable();
+            $table->string('isNew')->default('1');
             $table->timestamps();
         });
     }

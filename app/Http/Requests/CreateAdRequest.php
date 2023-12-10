@@ -20,13 +20,24 @@ class CreateAdRequest extends FormRequest
         return [
             'type' => ['required'],
             'discipline' => ['required_if:type,vehicle'],
-            'slug' => ['required', 'string', 'max:250'],
             'price' => ['required', 'numeric', 'min:0'],
             'engine_displacement' => ['required_if:type,vehicle'],
             'vehicle_class' => ['required_if:type,vehicle'],
+            'vehicle_model' =>['required_if:type,vehicle'],
             'description' => ['required', 'string'],
+            'fixed' => ['required'],
             'images' => ['required'],
-            'name' => ['required', 'string', 'max:255']
+            'name' => ['required', 'string', 'max:255'],
+            'size' => ['required_if:type, equipment'],
+            'brand' => ['required_if:type, equipment'],
+            'isNew' => ['required_if: type, equipment'],
+            'homologacija' => ['required_if:type, equipment'],
+            'homologacija_info' => ['required_if:type, equipment', 'required_if:homologacija, true'],
+            'manufacter' => ['required_if:type, tires'],
+            'dot' => ['required_if:type, tires'],
+            'dimensions' => ['required_if:type, tires'],
+            'model' => ['required_if:type, tires'],
+
         ];
     }
     public function messages()
@@ -35,15 +46,25 @@ class CreateAdRequest extends FormRequest
             'type.required' => "Tip je obavezan!",
             'discipline.required_if' => "Za izabran tip, disciplina je obavezna",
             'slug.required' => "Kratak opis teksta je obavezan",
-            'slug.max' => "Maksimalan broj karaktera kratkog oglasa je 250 karaktera",
             'price.required' => "Cena je obavezna",
             'price.numeric' => "Cena mora biti napisana brojevima",
             'price.min' => "Cena ne moze biti manja od 0",
             'engine_displacement.required_if' => "Ovo polje je obavezno",
             'vehicle_class.required_if' => "Ovo polje je obavezno",
+            'vehicle_model.required_if' => "Model je obavezan",
             'description.required' => "Ovo polje je obavezno",
             'images.required' => "Slike su obavezne",
             'name.required' => "Ime je obavezno",
+            'fixed.required' => "Ovo polje je obavezno",
+            'size.required_if' => "Velicina je obavezna",
+            'brand.required_if' => "Brend je obavezan",
+            'isNew.required_if' => "Ovo polje je obavezno",
+            'homologacija.required_if' => "Ovo polje je obavezno",
+            'homologacija_info' => "Ovo polje je obavezno",
+            'manufacter.required_if' => "Ovo polje je obavezno",
+            'dot.required_if' => "Ovo polje je obavezno",
+            'dimensions.required_if' => "Ovo polje je obavezno",
+            'model.required_if' => "Ovo polje je obavezno",
         ];
     }
 }

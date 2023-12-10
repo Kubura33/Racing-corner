@@ -15,8 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->string('isUsed');
+            $table->string('isNew');
             $table->string('brand');
+            $table->string('size')->nullable();
+            $table->string('homologacija')->default('no');
+            $table->string('homologacija_info')->nullable();
             $table->timestamps();
         });
     }

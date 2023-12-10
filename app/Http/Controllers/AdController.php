@@ -26,20 +26,7 @@ class AdController extends Controller
     public function index()
     {
 
-        $ads = Ad::with(['advertisable.imageable'])->get();
-
-        $adsWithImages = $ads->map(function ($ad){
-            $ad->image_path = $ad->advertisable->imageable->map(function ($imageable) {
-                return $imageable->imagePath;
-            })->toArray();
-            return $ad;
-        });
-        return Inertia::render(
-            'Home/Home',
-            [
-                'ads' => $adsWithImages
-            ]
-        );
+        return Inertia::render('Home/Home');
     }
 
     /**
@@ -58,9 +45,9 @@ class AdController extends Controller
         $ad = Ad::create(
             [
                 'user_id' => Auth::user() ? Auth::user()->id : 1,
-                'slug' => $request->safe()->slug,
                 'advertisable_type' => $request->safe()->type,
                 'price' => $request->safe()->price,
+                'fixed' => $request->safe()->fixed,
                 'lasts_until' => Carbon::now()->addMonth(),
             ]
         );
@@ -68,7 +55,7 @@ class AdController extends Controller
         switch ($request->safe()->type) {
             case 'vehicle':
                 $vehicle = Vehicle::create([
-                    'model' => $request->safe()->vehicle_class,
+                    'model' => $request->safe()->vehicle_model,
                     'engine_displacement' => $request->safe()->engine_displacement,
                     'vehicle_class' => $request->safe()->vehicle_class,
                     'description' => $request->safe()->description,
@@ -82,6 +69,11 @@ class AdController extends Controller
                 $eq = Equipment::create([
                     'name' => $request->safe()->name,
                     'description' => $request->safe()->description,
+                    'isNew' => $request->safe()->isNew,
+                    'brand' => $request->safe()->brand,
+                    'size' => $request->safe()->size,
+                    'homologacija' => $request->safe()->homologacija,
+                    'homologacija_info' => $request->safe()->homologacija_info,
                 ]);
                 $ad->update(['advertisable_id' => $eq->id]);
                 UploadImages::run('equipment', $eq->id,$request->file('images'));
@@ -91,6 +83,9 @@ class AdController extends Controller
                 $part = Part::create([
                     'name' => $request->safe()->name,
                     'description' => $request->safe()->description,
+                    'isNew' => $request->safe()->isNew,
+
+
                 ]);
                 $ad->update(['advertisable_id' => $part->id]);
                 UploadImages::run('parts', $part->id,$request->file('images'));
@@ -99,9 +94,13 @@ class AdController extends Controller
                 $tires = Part::create([
                     'name' => $request->safe()->name,
                     'description' => $request->safe()->description,
+                    'isNew' => $request->safe()->isNew,
+                    'dot' => $request->safe()->dot,
+                    'dimensions' => $request->safe()->dimensions,
+                    'manufacter' => $request->safe()->manufacter,
                     'type' => 'tires'
                 ]);
-                $ad->update(['advertisable_id' => $tires->id, 'advertisable_type' => 'part']);
+                $ad->update(['advertisable_id' => $tires->id, 'advertisable_type' => 'parts']);
                 UploadImages::run('parts', $tires->id,$request->file('images'));
                 return redirect()->route('home')->with('success', 'Oglas za gume je uspesno kreiran');
 

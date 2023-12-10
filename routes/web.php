@@ -64,4 +64,10 @@ Route::middleware('auth')->group(function () {
 //Ads handling
 Route::resource('ads', \App\Http\Controllers\AdController::class)->only(['show']);
 Route::get('/home', [\App\Http\Controllers\AdController::class, 'index'])->name('home');
+Route::get('/admin/dashboard', [\App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');
+Route::get('/admin/users', [\App\Http\Controllers\UserController::class, 'index'])->name('admin.users');
+Route::get('/admin/ads', [\App\Http\Controllers\AdminController::class, 'ads'])->name('admin.ads');
+Route::prefix('admin')->group(function (){
+    Route::resource('users', \App\Http\Controllers\UserController::class)->only(['edit', 'update', 'destroy']);
+});
 require __DIR__.'/auth.php';
