@@ -32,7 +32,7 @@ console.log(props.ads)
             <tbody>
             <tr v-for="ad in ads">
                 <th scope="row">{{ ad.id }}</th>
-                <td  style="text-transform: capitalize">{{ ad.advertisable.model}}</td>
+                <td  style="text-transform: capitalize">{{ ad.title}}</td>
                 <td style="text-transform: capitalize">{{ ad.advertisable_type }}</td>
                 <td >{{ ad.price }}</td>
                 <td>{{ useDateFormatting(ad.created_at)}}</td>
