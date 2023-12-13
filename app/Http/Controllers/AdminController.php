@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ad;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -13,6 +14,10 @@ class AdminController extends Controller
     }
 
     public function ads(){
-        return Inertia::render('Admin/Ads');
+        $ads = Ad::with('advertisable')->get();
+        return Inertia::render('Admin/Ads',
+        [
+            'ads' => $ads
+        ]);
     }
 }

@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('parts', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->text('description');
             $table->text('manufacter')->nullable();
             $table->string('type')->default('other');
             $table->string('dot')->nullable();
+            $table->string('number_of_tires')->nullable();
             $table->string('dimensions')->nullable();
             $table->string('isNew')->default('1');
             $table->timestamps();

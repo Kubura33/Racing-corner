@@ -51,3 +51,7 @@
     text-align: center;
 }
 
+#adminAdTable > thead > tr > th, #adminAdTable > tbody > tr > td{
+    text-align: center;
+}
+

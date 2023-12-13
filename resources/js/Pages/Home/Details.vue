@@ -1,24 +1,19 @@
 <template>
     <div class="oglasavac_info">
-        <h4>Ime i prezime</h4><!-- <span class="span_oglas">{{user.name}} {{user.lastname}}</span> -->
-        <h4>Broj telefona</h4><!-- <span class="span_oglas">{{user.phone}}</span>-->
-        <h4>Email </h4><!-- <span class="span_oglas">{{ user.email }}</span>-->
+        <h4>{{ad.user.name}} {{ad.user.lastname}}</h4><!-- <span class="span_oglas">{{user.name}} {{user.lastname}}</span> -->
+        <h4>{{ ad.user.phone }}</h4><!-- <span class="span_oglas">{{user.phone}}</span>-->
+        <h4 style="word-break: break-all;">{{ad.user.email}} </h4><!-- <span class="span_oglas">{{ user.email }}</span>-->
     </div>
     <div class="detalji">
         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="/images/oglas1.jpeg" class="d-block w-100" alt="...">
+                    <img :src="naslovna" class="d-block w-100" alt="...">
                 </div>
-                <div class="carousel-item">
-                    <img src="/images/oglas2.jpeg" class="d-block w-100" alt="...">
+                <div class="carousel-item" v-for="image in ad.image_path">
+                    <img :src="image" class="d-block w-100" alt="...">
                 </div>
-                <div class="carousel-item">
-                    <img src="/images/wrc_games.jpeg" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="/images/wrc_images.jpg" class="d-block w-100" alt="...">
-                </div>
+
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
                 <div class="icon_slider"><span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -31,28 +26,45 @@
             </button>
         </div>
     </div>
-    <div class="oglasavac_info_telefon">
-        <h4>Ime i prezime</h4><!-- <span class="span_oglas">{{user.name}} {{user.lastname}}</span> -->
-        <h4>Broj telefona</h4><!-- <span class="span_oglas">{{user.phone}}</span>-->
-        <h4 id="email_info">Email </h4><!-- <span class="span_oglas">{{ user.email }}</span>-->
-    </div>
+
 
     <div class="text_oglasa">
-        <h1>MARKA</h1>
-        <h3>Kubikaža: <span>1150ccm</span></h3>
+        <h1>{{ad.title}}</h1>
+        <h3 v-if="ad.advertisable_type == 'vehicle'">Model: <span>{{ ad.advertisable.model }}</span></h3>
+        <h3 v-else-if="ad.advertisable_type === 'equipment'">Brend: <span>{{ ad.advertisable.brand }}</span></h3>
+        <h3 v-else-if="ad.advertisable_type === 'parts' && ad.advertisable.type==='tires'">Proizvodjac: <span>{{ ad.advertisable.manufacter }}</span></h3>
+
+        <hr class="hr" v-if="ad.advertisable_type != 'parts' || (ad.advertisable_type=='parts' ? ad.advertisable.type=='tires' : 0) ">
+        <h3 v-if="ad.advertisable_type =='vehicle'">Kubikaža: <span>{{ ad.advertisable.engine_displacement }}</span></h3>
+        <h3 v-if="ad.advertisable_type == 'equipment'">Velicina: <span>{{ ad.advertisable.size }}</span></h3>
+        <h3 v-else-if="ad.advertisable_type == 'parts' && ad.advertisable.type=='tires'">DOT: <span>{{ ad.advertisable.dot }}</span></h3>
+
+
+        <hr class="hr" v-if="ad.advertisable_type != 'parts' || (ad.advertisable_type=='parts' ? ad.advertisable.type=='tires' : 0) ">
+
+        <h3 v-if="ad.advertisable_type=='vehicle'">Godište: <span>{{ ad.advertisable.year }}</span></h3>
+        <h3 v-if="ad.advertisable_type == 'equipment' && ad.advertisable.homologacija==1">Homologacija: <span>{{ ad.advertisable.homologacija ? "Da" : "Ne" }}</span></h3>
+        <p v-if="ad.advertisable_type == 'equipment' && ad.advertisable.homologacija==1">
+            {{ ad.advertisable.homologacija_info}}
+        </p>
+        <h3 v-else-if="ad.advertisable_type == 'parts' && ad.advertisable.type=='tires'">Dimnezije: <span>{{ ad.advertisable.dimensions }}</span></h3>
+
         <hr class="hr">
-        <h3>Godište: <span>2010</span></h3>
+        <h3>Cena: <span>{{ad.price}} &euro;</span></h3>
         <hr class="hr">
-        <h3>Cena: <span>4300€</span></h3>
+        <h3>Fiksna cena: <span>{{ad.fixed ? "Da" : "Ne"}} </span></h3>
         <hr class="hr">
-        <h3>Klasa: <span>Yugo sport</span></h3>
+
+        <h3 v-if="ad.advertisable_type == 'parts' && ad.advertisable.type=='tires'">Broj guma: <span>{{ad.advertisable.number_of_tires}} </span></h3>
+
+        <h3 v-if="ad.advertisable_type == 'vehicle' ">Klasa: <span>{{ad.advertisable.vehicle_class}}</span></h3>
+        <h3 v-else-if="ad.advertisable_type == 'parts' || ad.advertisable_type=='equipment'">Novo: <span>{{ ad.advertisable.isNew ? "Da" : "Ne" }}</span></h3>
+
         <hr class="hr">
         <h3 id="celokupni_opis">Celokupni opis oglas:</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, aut! Eius modi magni fugiat aliquam, possimus
-            officiis quis voluptatum officia dicta nostrum! Reiciendis, officia quis repudiandae distinctio quas cupiditate
-            explicabo! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos dolorem ducimus voluptatum animi, odio
-            ipsam sed
-            enim rem sequi quibusdam esse minus earum tenetur perspiciatis mollitia ut, minima aperiam laboriosam.
+        <p>{{
+                ad.advertisable.description
+            }}
         </p>
     </div>
 </template>
@@ -60,4 +72,10 @@
 import { usePage } from "@inertiajs/vue3";
 const page = usePage()
 const user = page.props.auth.user
+const props = defineProps({
+    ad : Object
+})
+const naslovna = props.ad.image_path[0]
+props.ad.image_path.splice(0,1)
+
 </script>

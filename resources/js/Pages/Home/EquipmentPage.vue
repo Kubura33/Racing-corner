@@ -72,59 +72,23 @@
                     <input type="submit" class="btn btn-outline-secondary" value="Pretraži">
                 </form>
             </div>
-            <div class="oglasi">
+            <div class="oglasi" v-for="ad in ads" :key="ad.id">
                 <div class="wrap">
                     <div class="slika">
-                        <a href="">
-                            <img src="/images/rukavice.jpg" alt="">
-                        </a>
+                        <Link :href="route('ads.show', {ad: ad.id})">
+                            <img :src="ad.image_path[0]" alt="">
+                        </Link>
                         <div class="data">
                             <h4>
-                                Marka
+                                {{ ad.title }}
                             </h4>
                         </div>
-                        <span class="cena_traka" id="traka_cena">Cena</span>
+                        <span class="cena_traka" id="traka_cena">{{ ad.price }} &euro;</span>
                     </div>
                 </div>
-                <div class="wrap">
-                    <div class="slika">
-                        <a href="">
-                            <img src="/images/oprema.jpg" alt="">
-                        </a>
-                        <div class="data">
-                            <h4>
-                                Marka
-                            </h4>
-                        </div>
-                        <span class="cena_traka" id="traka_cena">Cena</span>
-                    </div>
-                </div>
-                <div class="wrap">
-                    <div class="slika">
-                        <a href="">
-                            <img src="/images/oprema.jpg" alt="">
-                        </a>
-                        <div class="data">
-                            <h4>
-                                Marka
-                            </h4>
-                        </div>
-                        <span class="cena_traka" id="traka_cena">Cena</span>
-                    </div>
-                </div>
-                <div class="wrap">
-                    <div class="slika">
-                        <a href="">
-                            <img src="/images/rukavice.jpg" alt="">
-                        </a>
-                        <div class="data">
-                            <h4>
-                                Marka
-                            </h4>
-                        </div>
-                        <span class="cena_traka" id="traka_cena">Cena</span>
-                    </div>
-                </div>
+
+
+
             </div>
         </div>
     </div>

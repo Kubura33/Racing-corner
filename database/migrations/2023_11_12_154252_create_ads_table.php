@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(\App\Models\User::class, 'user_id');
             $table->unsignedBigInteger('advertisable_id')->nullable();
+            $table->string('title');
+            $table->string('home_page')->default('ne');
             $table->string('advertisable_type');
             $table->string('fixed')->default('0');
             $table->string('price');

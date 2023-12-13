@@ -21,6 +21,7 @@ class CreateAdRequest extends FormRequest
             'type' => ['required'],
             'discipline' => ['required_if:type,vehicle'],
             'price' => ['required', 'numeric', 'min:0'],
+            'year' => ['required_if:type, vehicle', 'numeric'],
             'engine_displacement' => ['required_if:type,vehicle'],
             'vehicle_class' => ['required_if:type,vehicle'],
             'vehicle_model' =>['required_if:type,vehicle'],
@@ -37,6 +38,7 @@ class CreateAdRequest extends FormRequest
             'dot' => ['required_if:type, tires'],
             'dimensions' => ['required_if:type, tires'],
             'model' => ['required_if:type, tires'],
+            'number_of_tires' => ['required_if:type, tires']
 
         ];
     }
@@ -65,6 +67,8 @@ class CreateAdRequest extends FormRequest
             'dot.required_if' => "Ovo polje je obavezno",
             'dimensions.required_if' => "Ovo polje je obavezno",
             'model.required_if' => "Ovo polje je obavezno",
+            'year.required_if' => "Godiste je obavezno",
+            'number_of_tires.required_if' => "Broj guma je obavezan",
         ];
     }
 }

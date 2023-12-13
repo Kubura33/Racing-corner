@@ -1,3 +1,14 @@
+<script setup>
+import {Link} from "@inertiajs/vue3";
+
+const props = defineProps(
+    {
+        premiumAds: Array,
+        ads : Array,
+    }
+)
+
+</script>
 <template>
 
     <div class="banner">
@@ -11,7 +22,7 @@
 
 
         <div>
-        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" v-if="premiumAds.length>0">
             <div class="carousel-inner">
                 <div v-for="(group, index) in groups" :key="index" :class="['carousel-item', { active: index === activeIndex }]">
                     <div class="premium-kartice">
@@ -25,7 +36,7 @@
                                         <h5 class="card-title">{{ card.brand }}</h5>
                                         <h5>CENA: <span class="podatak">{{ card.price }}<span class="podatak">{{ card.currency }}</span></span></h5>
                                     </div>
-                                    <a href="#" class="btn btn-primary">Detaljnije</a>
+                                    <Link :href="route('ads.show', {ad : card.id})" class="btn btn-primary">Detaljnije</Link>
                                 </div>
                             </div>
                         </div>
@@ -42,47 +53,22 @@
             </button>
         </div>
     </div>
-    <h2 id="poslednje_dodato">Poslednje dodato</h2>
+    <h2 id="poslednje_dodato" v-if="ads">Poslednje dodato</h2>
+    <h2 id="poslednje_dodato" v-else>Trenutno nema oglasa</h2>
     <div class="oglasi_home">
-                <div class="wrap">
+                <Link :href="route('ads.show', {ad:ad.id})" class="wrap" v-for="ad in ads" :key="ad.id">
                     <div class="slika">
                         <a href="">
-                            <img src="/images/borkovic.jpg" alt="">
+                            <img :src="ad.image_path[0]" alt="">
                         </a>
                         <div class="data">
                             <h4>
-                                Marka
+                                {{ ad.title }}
                             </h4>
                         </div>
-                        <span class="cena_traka" id="traka_cena">Cena</span>
+                        <span class="cena_traka" id="traka_cena">{{ ad.price }} &euro;</span>
                     </div>
-                </div>
-                <div class="wrap">
-                    <div class="slika">
-                        <a href="">
-                            <img src="/images/drift.jpeg" alt="">
-                        </a>
-                        <div class="data">
-                            <h4>
-                                Marka
-                            </h4>
-                        </div>
-                        <span class="cena_traka" id="traka_cena">Cena</span>
-                    </div>
-                </div>
-                <div class="wrap">
-                    <div class="slika">
-                        <a href="">
-                            <img src="/images/drift.jpeg" alt="">
-                        </a>
-                        <div class="data">
-                            <h4>
-                                Marka
-                            </h4>
-                        </div>
-                        <span class="cena_traka" id="traka_cena">Cena</span>
-                    </div>
-                </div>
+                </Link>
 
             </div>
             <div class="savezi">
@@ -95,27 +81,18 @@
                 <a href="https://bfas.bg/" class="zastave" id="bugarska"><h4>БФАС</h4></a>
             </div>
 </template>
-<script setup>
-import { Link } from "@inertiajs/vue3";
 
-
-</script>
 <script>
 export default {
+    props :{
+        premiumAds : Array,
+        ads : Array,
+    } ,
     data() {
         return {
             activeIndex: 0,
             groups: [
-                [
-                    { brand: 'Marka 1', price: 230, currency: 'valuta', image: '/images/drift.jpeg' },
-                    { brand: 'Marka 2', price: 230, currency: 'valuta', image: '/images/drift.jpeg' },
-                    { brand: 'Marka 3', price: 230, currency: 'valuta', image: '/images/drift.jpeg' }
-                ],
-                [
-                    { brand: 'Marka', price: 230, currency: 'valuta', image: '/images/drift.jpeg' },
-                    { brand: 'Marka', price: 230, currency: 'valuta', image: '/images/drift.jpeg' },
-                    { brand: 'Marka', price: 230, currency: 'valuta', image: '/images/drift.jpeg' }
-                ]
+                []
             ]
         };
     },
@@ -130,10 +107,23 @@ export default {
             setInterval(() => {
                 this.activeIndex = (this.activeIndex + 1) % this.groups.length;
             }, 5000);
+        },
+        addItemToGroup(items){
+            let groupIndex = 0
+            for(let i=0;i<items.length;i++){
+                const item = { id: items[i].id, brand : items[i].title , price: items[i].price, currency : ' €', image: items[i].image_path[0]}
+                if((i+1)%3==0)
+                    groupIndex=groupIndex+1
+                this.groups[groupIndex].push(item)
+            }
         }
     },
     mounted() {
+        if(this.premiumAds)
+            this.addItemToGroup(this.premiumAds)
         this.startAutoChange();
+        console.log(this.premiumAds)
+        console.log(this.ads)
     }
 };
 </script>

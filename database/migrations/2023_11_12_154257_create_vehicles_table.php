@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('model');
             $table->string('engine_displacement');
+            $table->string('year');
             $table->string('vehicle_class');
             $table->text('description');
             $table->string('discipline')->nullable();

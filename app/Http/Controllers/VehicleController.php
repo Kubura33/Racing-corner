@@ -6,11 +6,13 @@ use App\Models\Ad;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class EquipmentController extends Controller
+class VehicleController extends Controller
 {
-    public function __invoke(){
-        $adsWithImages = Ad::with( 'user')
-            ->where('advertisable_type', 'equipment')
+    public function __invoke()
+    {
+
+        $adsWithImages = Ad::with('user')
+            ->where('advertisable_type', 'vehicle')
             ->get()
             ->map(function ($ad) {
                 $ad->load('advertisable.imageable');
@@ -20,10 +22,11 @@ class EquipmentController extends Controller
                 unset($ad->advertisable->imageable);
                 return $ad;
             });
-
-        return Inertia::render('Home/EquipmentPage',
+        return Inertia::render('Home/Cars',
         [
-            'ads' => $adsWithImages
+            'premiumAds' => $adsWithImages->where('home_page', 'da'),
+            'ads' => $adsWithImages->where('home_page', 'ne'),
+
         ]);
     }
 }

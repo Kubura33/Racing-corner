@@ -1,8 +1,9 @@
 <script setup>
 import {useForm} from "@inertiajs/vue3";
 import InputError from "@/Components/InputError.vue";
-import  {ref} from "vue";
+import {computed, ref} from "vue";
 const fileInput = ref(null)
+const message = ref(null)
 const form = useForm({
     name: "",
     description: "",
@@ -32,6 +33,9 @@ const handleFileChange = () => {
         }
     }
 }
+const useMessage = computed(() => {
+    message ? message.value : null
+})
 const store = () => form.post(route('ads.store'))
 </script>
 <template>
@@ -153,7 +157,7 @@ const store = () => form.post(route('ads.store'))
                                     <div class="Neon-input-icon"><i class="fa fa-file-image-o"></i></div>
                                     <div class="Neon-input-text">
                                         <h3 v-if="form.images.length===0 && !message">*Prva slika je naslovna, max broj slika je 5</h3>
-                                        <h3 v-if="message" style="color: red">{{message}}</h3>
+                                        <h3 v-if="useMessage" style="color: red">{{ useMessage }}</h3>
                                         <div v-else>
                                             <span v-for="image in form.images">
                                                 {{image.name}}

@@ -17,6 +17,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
+use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Route;
 
 class AdController extends Controller
 {
@@ -25,8 +27,25 @@ class AdController extends Controller
      */
     public function index()
     {
-
-        return Inertia::render('Home/Home');
+        $adsWithImages = Ad::with('advertisable.imageable', 'user')
+            ->get()
+            ->map(function ($ad) {
+                $ad->load('advertisable.imageable');
+                $ad->image_path = $ad->advertisable->imageable->map(function ($imageable) {
+                    return $imageable->imagePath;
+                })->toArray();
+                unset($ad->advertisable->imageable);
+                return $ad;
+            });
+        return Inertia::render('Home/Home',
+            [
+                'premiumAds' => $adsWithImages->where('home_page', 'da'),
+                'ads' => $adsWithImages->sortByDesc('created_at')->take(3),
+                'canLogin' => Route::has('login'),
+                'canRegister' => Route::has('register'),
+                'laravelVersion' => Application::VERSION,
+                'phpVersion' => PHP_VERSION,
+            ]);
     }
 
     /**
@@ -46,6 +65,8 @@ class AdController extends Controller
             [
                 'user_id' => Auth::user() ? Auth::user()->id : 1,
                 'advertisable_type' => $request->safe()->type,
+                'title' => $request->safe()->name,
+                'home_page' => $request->user()->role === 1 ? 'da' : 'ne',
                 'price' => $request->safe()->price,
                 'fixed' => $request->safe()->fixed,
                 'lasts_until' => Carbon::now()->addMonth(),
@@ -58,16 +79,16 @@ class AdController extends Controller
                     'model' => $request->safe()->vehicle_model,
                     'engine_displacement' => $request->safe()->engine_displacement,
                     'vehicle_class' => $request->safe()->vehicle_class,
+                    'year' => $request->safe()->year,
                     'description' => $request->safe()->description,
                     'discipline' => $request->safe()->discipline,
 
                 ]);
                 $ad->update(['advertisable_id' => $vehicle->id]);
-                UploadImages::run('vehicle', $vehicle->id,$request->file('images'));
+                UploadImages::run('vehicle', $vehicle->id, $request->file('images'));
                 return redirect()->route('home')->with('success', 'Oglas za vozilo je uspesno kreiran');
             case 'equipment':
                 $eq = Equipment::create([
-                    'name' => $request->safe()->name,
                     'description' => $request->safe()->description,
                     'isNew' => $request->safe()->isNew,
                     'brand' => $request->safe()->brand,
@@ -76,32 +97,31 @@ class AdController extends Controller
                     'homologacija_info' => $request->safe()->homologacija_info,
                 ]);
                 $ad->update(['advertisable_id' => $eq->id]);
-                UploadImages::run('equipment', $eq->id,$request->file('images'));
+                UploadImages::run('equipment', $eq->id, $request->file('images'));
 
                 return redirect()->route('home')->with('success', 'Oglas za opremu je uspesno kreiran');
             case 'parts':
                 $part = Part::create([
-                    'name' => $request->safe()->name,
                     'description' => $request->safe()->description,
                     'isNew' => $request->safe()->isNew,
 
 
                 ]);
                 $ad->update(['advertisable_id' => $part->id]);
-                UploadImages::run('parts', $part->id,$request->file('images'));
+                UploadImages::run('parts', $part->id, $request->file('images'));
                 return redirect()->route('home')->with('success', 'Oglas za delove je uspesno kreiran');
             case 'tires':
                 $tires = Part::create([
-                    'name' => $request->safe()->name,
                     'description' => $request->safe()->description,
                     'isNew' => $request->safe()->isNew,
                     'dot' => $request->safe()->dot,
                     'dimensions' => $request->safe()->dimensions,
                     'manufacter' => $request->safe()->manufacter,
+                    'number_of_tires' => $request->safe()->number_of_tires,
                     'type' => 'tires'
                 ]);
                 $ad->update(['advertisable_id' => $tires->id, 'advertisable_type' => 'parts']);
-                UploadImages::run('parts', $tires->id,$request->file('images'));
+                UploadImages::run('parts', $tires->id, $request->file('images'));
                 return redirect()->route('home')->with('success', 'Oglas za gume je uspesno kreiran');
 
 
@@ -113,20 +133,17 @@ class AdController extends Controller
      */
     public function show(Ad $ad)
     {
-
         //Could be changed to an object instead of instance using ->first();
-        $ad = $ad->with(['advertisable.imageable','user'])->get();
+        $adWithImages = $ad->load(['advertisable.imageable', 'user']);
 
-        $adsWithImages = $ad->map(function ($ad){
-            $ad->image_path = $ad->advertisable->imageable->map(function ($imageable) {
-                return $imageable->imagePath;
-            })->toArray();
-            return $ad;
-        });
+        $adWithImages->image_path = $adWithImages->advertisable->imageable->map(function ($imageable) {
+            return $imageable->imagePath;
+        })->toArray();
+
         return Inertia::render('Home/Details',
-        [
-            'ad' => $adsWithImages,
-        ]);
+            [
+                'ad' => $adWithImages,
+            ]);
     }
 
     /**

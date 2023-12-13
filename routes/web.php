@@ -17,14 +17,7 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Home/Home', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+
 
 
 
@@ -39,12 +32,8 @@ Route::get('/tires',\App\Http\Controllers\TiresController::class)->name('tires')
 ////
 Route::get('/equipment', \App\Http\Controllers\EquipmentController::class)->name('equipment');
 Route::get('/parts', \App\Http\Controllers\PartsController::class)->name('parts');
-Route::get('/details', function(){
-    return Inertia::render('Home/Details');
-})->name('details');
-Route::get('/cars', function (){
-    return Inertia::render('Home/Cars');
-})->name('cars');
+
+Route::get('/cars',\App\Http\Controllers\VehicleController::class)->name('cars');
 
 Route::get('/about', function (){
     return Inertia::render('Home/About');
@@ -63,7 +52,7 @@ Route::middleware('auth')->group(function () {
 });
 //Ads handling
 Route::resource('ads', \App\Http\Controllers\AdController::class)->only(['show']);
-Route::get('/home', [\App\Http\Controllers\AdController::class, 'index'])->name('home');
+Route::get('/', [\App\Http\Controllers\AdController::class, 'index'])->name('home');
 Route::get('/admin/dashboard', [\App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');
 Route::get('/admin/users', [\App\Http\Controllers\UserController::class, 'index'])->name('admin.users');
 Route::get('/admin/ads', [\App\Http\Controllers\AdminController::class, 'ads'])->name('admin.ads');

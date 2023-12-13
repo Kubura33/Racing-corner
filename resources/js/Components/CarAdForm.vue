@@ -13,6 +13,7 @@ const form = useForm({
     price: 0,
     discipline: 0,
     fixed: 1,
+    year: "",
     type: 'vehicle',
     images: [],
 
@@ -73,6 +74,12 @@ const store = () => form.post(route('ads.store'))
                         <input v-model="form.engine_displacement" type="text" class="inputFields" id="kubikaza"
                                name="kubikaza" placeholder="Kubikaza    "/>
                         <InputError v-if="form.errors.engine_displacement" :message="form.errors.engine_displacement"/>
+                    </li>
+                    <li>
+                        <label for="godiste"></label>
+                        <input v-model="form.year" type="number" class="inputFields" id="kubikaza"
+                               name="godiste" placeholder="Godiste    "/>
+                        <InputError v-if="form.errors.year" :message="form.errors.year"/>
                     </li>
                     <li>
                         <label for="opis"></label>

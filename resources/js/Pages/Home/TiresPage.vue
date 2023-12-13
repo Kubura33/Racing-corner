@@ -8,6 +8,12 @@
         <div class="wrapper">
             <div class="filteri collapse collapse-horizontal" id="collapseWidthExample">
                 <h5>Filtriraj pretragu</h5>
+                <div class="box">
+                    <form name="search">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+                        <input type="text" class="input" name="txt" onmouseout="this.value = ''; this.blur();" placeholder="Search">
+                    </form>
+                </div>
                 <form action="/action_page.php">
                     <div class="accordion" id="accordionExample">
                         <div class="accordion-item">
@@ -76,58 +82,22 @@
                 </form>
             </div>
             <div class="oglasi">
-                <div class="wrap">
+                <div class="wrap" v-for="ad in ads" :key="ad.id">
                     <div class="slika">
-                        <a href="">
-                            <img src="/images/gume.jpg" alt="">
-                        </a>
+                        <Link :href="route('ads.show', {ad:ad.id})">
+                            <img :src="ad.image_path[0]" alt="">
+                        </Link>
                         <div class="data">
                             <h4>
-                                Marka
+                                {{ ad.title }}
                             </h4>
                         </div>
-                        <span class="cena_traka" id="traka_cena">Cena</span>
+                        <span class="cena_traka" id="traka_cena">{{ ad.price }} &euro;</span>
                     </div>
                 </div>
-                <div class="wrap">
-                    <div class="slika">
-                        <a href="">
-                            <img src="/images/gume_prodaja.jpeg" alt="">
-                        </a>
-                        <div class="data">
-                            <h4>
-                                Marka
-                            </h4>
-                        </div>
-                        <span class="cena_traka" id="traka_cena">Cena</span>
-                    </div>
-                </div>
-                <div class="wrap">
-                    <div class="slika">
-                        <a href="">
-                            <img src="/images/gume_prodaja.jpeg" alt="">
-                        </a>
-                        <div class="data">
-                            <h4>
-                                Marka
-                            </h4>
-                        </div>
-                        <span class="cena_traka" id="traka_cena">Cena</span>
-                    </div>
-                </div>
-                <div class="wrap">
-                    <div class="slika">
-                        <a href="">
-                            <img src="/images/gume.jpg" alt="">
-                        </a>
-                        <div class="data">
-                            <h4>
-                                Marka
-                            </h4>
-                        </div>
-                        <span class="cena_traka" id="traka_cena">Cena</span>
-                    </div>
-                </div>
+
+
+
             </div>
         </div>
     </div>
