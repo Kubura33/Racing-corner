@@ -39,8 +39,8 @@ const useMessage = computed(() => {
 const store = () => form.post(route('ads.store'))
 </script>
 <template>
-    <div
-        style="display: flex;flex-direction: row;align-items: center;justify-content: center;justify-items: center; width: 100%;padding: 100px;">
+    <div class="signupSection_top"
+        style="display: flex;flex-direction: row;align-items: center;justify-content: center;justify-items: center; width: 100%;">
 
 
         <div class="signupSection">

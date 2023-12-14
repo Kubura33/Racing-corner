@@ -2,14 +2,16 @@
 @media only screen and (min-width: 768px) {
     .signupSection {
         background: url(https://source.unsplash.com/TV2gg2kZD1o/1600x800);
+        background-size: cover;
         background-repeat: no-repeat;
-        width: 1000px;
         text-align: center;
         display: flex;
         color: white;
         box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, 0.5);
     }
-
+    .signupSection_top{
+        padding: 100px;
+    }
     .info {
         width: 45%;
         background: rgba(20, 20, 20, 0.8);
@@ -40,7 +42,6 @@
         padding: 30px 0;
         background: rgba(20, 40, 40, 0.8);
         transition: 0.2s;
-
     }
 
     .signupForm h2 {
@@ -141,15 +142,17 @@
         background-image: url('../../public/images/toyota.jpg');
         background-size: cover;
         background-repeat: no-repeat;
-        width: 1000px;
+        width: 100%;
         text-align: center;
         display: flex;
         color: white;
         box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, 0.5);
+        padding: 5px;
     }
-
+    .signupSection_top{
+        padding: 5px;
+    }
     .info {
-        width: 45%;
         background: rgba(20, 20, 20, 0.8);
     }
 
@@ -183,7 +186,7 @@
         margin: 15px 0;
         font-size: 16px;
         padding: 10px;
-        width: 350px;
+        width: 250px;
         border: 1px solid #0ab4b4;
         border-top: none;
         border-left: none;
@@ -217,14 +220,14 @@
     .icon {
         position: absolute;
         rotate: 180deg;
-        width: 80px;
+        width: 35px;
         height: 60px;
         cursor: pointer;
     }
 
     .arrow {
         position: absolute;
-        top: 10px;
+        top: 9px;
         right: 10px;
         width: 80%;
         height: 6px;
@@ -237,19 +240,18 @@
     .arrow::before {
         content: '';
         position: absolute;
-        width: 60%;
+        width: 80%;
         height: 5px;
-        right: -8px;
         background-color: #fff;
     }
 
     .arrow::after {
-        top: -12px;
+        top: -5.9px;
         transform: rotate(45deg);
     }
 
     .arrow::before {
-        top: 12px;
+        top: 5.9px;
         box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
         transform: rotate(-45deg);
     }
@@ -283,7 +285,7 @@
 
 .Neon-input-dragDrop {
     display: block;
-    width: 343px;
+    width: 90%;
     margin: 0 auto 25px auto;
     padding: 25px;
     color: #8d9499;

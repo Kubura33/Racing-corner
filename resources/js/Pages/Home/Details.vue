@@ -1,8 +1,10 @@
 <template>
     <div class="oglasavac_info">
-        <h4>{{ad.user.name}} {{ad.user.lastname}}</h4><!-- <span class="span_oglas">{{user.name}} {{user.lastname}}</span> -->
+        <h4>{{ ad.user.name }} {{ ad.user.lastname }}</h4>
+        <!-- <span class="span_oglas">{{user.name}} {{user.lastname}}</span> -->
         <h4>{{ ad.user.phone }}</h4><!-- <span class="span_oglas">{{user.phone}}</span>-->
-        <h4 style="word-break: break-all;">{{ad.user.email}} </h4><!-- <span class="span_oglas">{{ user.email }}</span>-->
+        <h4 id="email_info" style="word-break: break-all;">{{ ad.user.email }} </h4>
+        <!-- <span class="span_oglas">{{ user.email }}</span>-->
     </div>
     <div class="detalji">
         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
@@ -29,42 +31,50 @@
 
 
     <div class="text_oglasa">
-        <h1>{{ad.title}}</h1>
+        <h1>{{ ad.title }}</h1>
         <h3 v-if="ad.advertisable_type == 'vehicle'">Model: <span>{{ ad.advertisable.model }}</span></h3>
         <h3 v-else-if="ad.advertisable_type === 'equipment'">Brend: <span>{{ ad.advertisable.brand }}</span></h3>
-        <h3 v-else-if="ad.advertisable_type === 'parts' && ad.advertisable.type==='tires'">Proizvodjac: <span>{{ ad.advertisable.manufacter }}</span></h3>
+        <h3 v-else-if="ad.advertisable_type === 'parts' && ad.advertisable.type === 'tires'">Proizvodjac: <span>{{
+            ad.advertisable.manufacter }}</span></h3>
 
-        <hr class="hr" v-if="ad.advertisable_type != 'parts' || (ad.advertisable_type=='parts' ? ad.advertisable.type=='tires' : 0) ">
-        <h3 v-if="ad.advertisable_type =='vehicle'">Kubikaža: <span>{{ ad.advertisable.engine_displacement }}</span></h3>
+        <hr class="hr"
+            v-if="ad.advertisable_type != 'parts' || (ad.advertisable_type == 'parts' ? ad.advertisable.type == 'tires' : 0)">
+        <h3 v-if="ad.advertisable_type == 'vehicle'">Kubikaža: <span>{{ ad.advertisable.engine_displacement }}</span></h3>
         <h3 v-if="ad.advertisable_type == 'equipment'">Velicina: <span>{{ ad.advertisable.size }}</span></h3>
-        <h3 v-else-if="ad.advertisable_type == 'parts' && ad.advertisable.type=='tires'">DOT: <span>{{ ad.advertisable.dot }}</span></h3>
+        <h3 v-else-if="ad.advertisable_type == 'parts' && ad.advertisable.type == 'tires'">DOT: <span>{{ ad.advertisable.dot
+        }}</span></h3>
 
 
-        <hr class="hr" v-if="ad.advertisable_type != 'parts' || (ad.advertisable_type=='parts' ? ad.advertisable.type=='tires' : 0) ">
+        <hr class="hr"
+            v-if="ad.advertisable_type != 'parts' || (ad.advertisable_type == 'parts' ? ad.advertisable.type == 'tires' : 0)">
 
-        <h3 v-if="ad.advertisable_type=='vehicle'">Godište: <span>{{ ad.advertisable.year }}</span></h3>
-        <h3 v-if="ad.advertisable_type == 'equipment' && ad.advertisable.homologacija==1">Homologacija: <span>{{ ad.advertisable.homologacija ? "Da" : "Ne" }}</span></h3>
-        <p v-if="ad.advertisable_type == 'equipment' && ad.advertisable.homologacija==1">
-            {{ ad.advertisable.homologacija_info}}
+        <h3 v-if="ad.advertisable_type == 'vehicle'">Godište: <span>{{ ad.advertisable.year }}</span></h3>
+        <h3 v-if="ad.advertisable_type == 'equipment' && ad.advertisable.homologacija == 1">Homologacija: <span>{{
+            ad.advertisable.homologacija ? "Da" : "Ne" }}</span></h3>
+        <p v-if="ad.advertisable_type == 'equipment' && ad.advertisable.homologacija == 1">
+            {{ ad.advertisable.homologacija_info }}
         </p>
-        <h3 v-else-if="ad.advertisable_type == 'parts' && ad.advertisable.type=='tires'">Dimnezije: <span>{{ ad.advertisable.dimensions }}</span></h3>
+        <h3 v-else-if="ad.advertisable_type == 'parts' && ad.advertisable.type == 'tires'">Dimnezije: <span>{{
+            ad.advertisable.dimensions }}</span></h3>
 
         <hr class="hr">
-        <h3>Cena: <span>{{ad.price}} &euro;</span></h3>
+        <h3>Cena: <span>{{ ad.price }} &euro;</span></h3>
         <hr class="hr">
-        <h3>Fiksna cena: <span>{{ad.fixed ? "Da" : "Ne"}} </span></h3>
+        <h3>Fiksna cena: <span>{{ ad.fixed ? "Da" : "Ne" }} </span></h3>
         <hr class="hr">
 
-        <h3 v-if="ad.advertisable_type == 'parts' && ad.advertisable.type=='tires'">Broj guma: <span>{{ad.advertisable.number_of_tires}} </span></h3>
+        <h3 v-if="ad.advertisable_type == 'parts' && ad.advertisable.type == 'tires'">Broj guma:
+            <span>{{ ad.advertisable.number_of_tires }} </span></h3>
 
-        <h3 v-if="ad.advertisable_type == 'vehicle' ">Klasa: <span>{{ad.advertisable.vehicle_class}}</span></h3>
-        <h3 v-else-if="ad.advertisable_type == 'parts' || ad.advertisable_type=='equipment'">Novo: <span>{{ ad.advertisable.isNew ? "Da" : "Ne" }}</span></h3>
+        <h3 v-if="ad.advertisable_type == 'vehicle'">Klasa: <span>{{ ad.advertisable.vehicle_class }}</span></h3>
+        <h3 v-else-if="ad.advertisable_type == 'parts' || ad.advertisable_type == 'equipment'">Novo: <span>{{
+            ad.advertisable.isNew ? "Da" : "Ne" }}</span></h3>
 
         <hr class="hr">
         <h3 id="celokupni_opis">Celokupni opis oglas:</h3>
         <p>{{
-                ad.advertisable.description
-            }}
+            ad.advertisable.description
+        }}
         </p>
     </div>
 </template>
@@ -73,9 +83,9 @@ import { usePage } from "@inertiajs/vue3";
 const page = usePage()
 const user = page.props.auth.user
 const props = defineProps({
-    ad : Object
+    ad: Object
 })
 const naslovna = props.ad.image_path[0]
-props.ad.image_path.splice(0,1)
+props.ad.image_path.splice(0, 1)
 
 </script>

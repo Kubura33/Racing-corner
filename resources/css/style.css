@@ -259,6 +259,10 @@ span {
         background-color: #000000;
         margin-left: 25px;
         margin-top: 35px;
+        transition: transform 0.8s ease;
+    }
+    .zastave:hover{
+        transform: scale(1.1);
     }
     #srbija{
         background-image: url('../../public/images/srbija.jpg');
@@ -282,7 +286,6 @@ span {
         -webkit-text-stroke: 1px rgb(0, 0, 0);
         z-index: 0;
     }
-
     #hrvatska{
         background-image: url('../../public/images/hrvatska.jpg');
         background-size: cover; 
@@ -1083,7 +1086,7 @@ span {
     #kartice-div {
         height: auto;
     }
-
+    
     .kartice-div {
         width: auto;
         height: 100%;
@@ -1134,19 +1137,21 @@ span {
 /* Stil za Racunar (širina 100% širine ekrana) */
 @media only screen and (min-width: 768px) {
     #kartice-div {
-        height: 1200px;
+        height: auto;
+        padding-bottom: 10%;
+        padding-top: 5%;
+        padding-left: 3%;
+        padding-right: 3%;
     }
 
     .kartice-div {
         width: 100%;
-        height: 350px;
-        margin-bottom: 5%;
+        height: 100%;
     }
 
     .kartice-div .row {
         height: 350px;
         margin-left: 3%;
-        margin-bottom: 5%;
     }
 
     .kartica {
@@ -1160,7 +1165,7 @@ span {
     .kartica img {
         height: 100%;
         width: 100%;
-        transition: transform 0.3s ease;
+        transition: transform 0.8s ease;
     }
 
     .kartica img:hover {
@@ -1259,7 +1264,7 @@ span {
         height: 80%;
         display: block;
         object-fit: fill;
-        transition: transform 0.3s ease;
+        transition: transform 0.8s ease;
     }
 
     .slika img:hover {
@@ -1345,44 +1350,24 @@ span {
 
     .input {
         padding: 10px;
-        width: 50px;
-        height: 50px;
+        padding-right: 30px;
+        width: 200px;
+        height: 40px;
         background: none;
         border: 4px solid #354649;
-        border-radius: 50px;
+        border-radius: 10px;
         box-sizing: border-box;
         font-family: Comic Sans MS;
         font-size: 20px;
         color: #354649;
-        outline: none;
-        transition: .5s;
     }
-
-    .input::placeholder {
-        opacity: 0;
-    }
-
-    .box:hover input {
-        width: 250px;
-        background: none;
-        border-radius: 10px;
-    }
-
-    .box:hover input::placeholder {
-        opacity: 1;
-    }
-
     .box svg {
         position: absolute;
-        left: 17px;
-        top: 17px;
-
+        left: 170px;
+        top: 12px;
     }
 
-    .box:hover svg {
-        opacity: 0;
-        z-index: -1;
-    }
+    
 }
 
 /* Stil za mobilni telefon (širina 100% širine ekrana) */
@@ -1825,10 +1810,6 @@ span {
     }
 
     .oglasavac_info {
-        display: none;
-    }
-
-    .oglasavac_info_telefon {
         width: 100%;
         height: 120px;
         padding-top: 1%;
@@ -1838,12 +1819,14 @@ span {
         margin: 0;
         display: flex;
         flex-wrap: wrap;
+        margin-bottom: -35px;
     }
 
-    .oglasavac_info_telefon h4 {
+    .oglasavac_info h4 {
         background-color: #354649;
         padding: 1%;
         margin-top: 1%;
+        border-radius: 10px;
         display: grid;
         width: 50%;
         height: 30%;
@@ -1860,7 +1843,7 @@ span {
         border-radius: 10px;
     }
 
-    .oglasavac_info_telefon h4:active {
+    .oglasavac_info h4:active {
         background-color: #fff;
         color: #354649;
     }
@@ -1897,6 +1880,36 @@ span {
 }
 
 /*--/Stranica detalji--*/
+/*--How to--*/
+    
+    /* Stil za Racunar (širina 100% širine ekrana)*/
+@media only screen and (min-width: 768px) {
+    .how_to{
+        margin: 20px;
+        padding: 10px;
+    }
+    #accordionPanelsStayOpenExample{
+        padding: 5px;
+        margin-top: 0;
+    }
+
+    #accordion-item1, #accordion-item2, #accordion-item3{
+        margin: 5px;
+    }
+    #accordionPanelsStayOpenExample button{
+        width: 100%;
+        height: 50px;
+        font-weight: bolder;
+        font-size: large;
+    }
+}
+    /* Stil za Mobilni telefon (širina 100% širine ekrana)*/
+@media only screen and (max-width: 767px) {
+    #accordionPanelsStayOpenExample{
+        padding: 0;
+    }
+}
+/*--/How to--*/
 /*--footer--*/
 footer {
     background-color: #354649;
