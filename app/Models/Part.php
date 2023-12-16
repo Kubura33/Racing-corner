@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -20,5 +21,17 @@ class Part extends Model
     }
     public function images(): HasMany{
         return $this->hasMany(PartImages::class, 'part_id');
+    }
+
+    public function scopeDiscipline(Builder $query ,$disciplines) : Builder {
+        info($disciplines);
+        return $query->when(
+            isset($disciplines) && is_array($disciplines),
+            function ($query) use ($disciplines) {
+                foreach ($disciplines as $discipline) {
+                    $query->where('manufacter', $discipline);
+                }
+            }
+        );
     }
 }

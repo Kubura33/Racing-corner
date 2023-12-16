@@ -1,5 +1,6 @@
 <script setup>
 import {useDateFormatting} from "@/Composables/useDateFormatting.js";
+import {Link, router} from "@inertiajs/vue3";
 
 const props = defineProps(
     {
@@ -38,10 +39,10 @@ console.log(props.ads)
                 <td>{{ useDateFormatting(ad.created_at)}}</td>
                 <td>{{useDateFormatting(ad.lasts_until)}}</td>
                 <td style="text-transform: capitalize"> {{ad.home_page}}</td>
-                <td><button class="btn btn-warning">Edit</button></td>
-                <td><button class="btn btn-primary">Pogledaj oglas</button></td>
-                <td><button class="btn btn-danger">Delete</button></td>
-                <td><button class="btn btn-secondary">Postavi na naslovnu</button></td>
+                <td><Link :href="route('ads.edit', {ad: ad.id})" class="btn btn-warning">Edit</Link></td>
+                <td><Link :href="route('ads.show', {ad: ad.id})" class="btn btn-primary">Pogledaj oglas</Link></td>
+                <td><Link :href="route('ads.destroy', {ad:ad.id})" method="delete" as="button" class="btn btn-danger">Delete</Link></td>
+                <td><Link :href="route('set-advert-to-premium', {ad : ad.id})" method="post" as="button" class="btn btn-secondary">Postavi na naslovnu</Link></td>
             </tr>
 
             </tbody>

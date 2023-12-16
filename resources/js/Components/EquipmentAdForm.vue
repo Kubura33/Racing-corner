@@ -4,17 +4,22 @@ import InputError from "@/Components/InputError.vue";
 import {computed, ref} from "vue";
 const fileInput = ref(null)
 const message = ref(null)
+const edits = ref(null)
+const props = defineProps({
+    ad : Object,
+    isEditting : false,
+})
 const form = useForm({
-    name: "",
-    description : "",
-    price: 0,
-    isNew : 1,
-    fixed: 1,
-    brand: "",
+    name: props.ad ? props.ad.title :  "",
+    description : props.ad ? props.ad.advertisable.description : "",
+    price: props.ad ? props.ad.price : 0,
+    isNew : props.ad ? props.ad.advertisable.isNew : 1,
+    fixed: props.ad ? props.ad.fixed : 1,
+    brand: props.ad ? props.ad.advertisable.brand : "",
     type: "equipment",
-    size : 0,
-    homologacija: 0,
-    homologacija_info : "",
+    size : props.ad ? props.ad.advertisable.size : 0,
+    homologacija: props.ad ? props.ad.advertisable.homologacija : 0,
+    homologacija_info : props.ad ? props.ad.advertisable.homologacija_info : "",
     images: [],
 
 })
@@ -36,19 +41,29 @@ const store = () => form.post(route('ads.store'))
 const useMessage = computed(() => {
     message ? message.value : null
 })
+const update = () => form.put(route('ads.update', {ad : props.ad}))
+const ruta = computed(() => {
+    if(props.isEditting)
+        return update()
+    else
+        return store()
+})
+if(form.errors){
+    console.log(form.errors)
+}
 </script>
 <template>
     <div class="signupSection_top" style="display: flex;flex-direction: row;align-items: center;justify-content: center;justify-items: center; width: 100%;">
 
 
         <div class="signupSection">
-            <div class="info">
-                <div class="icon" @click="emitAction">
+            <div  class="info">
+                <div v-if="!isEditting" class="icon" @click="emitAction">
                     <div class="arrow"></div>
                 </div>
                 <img src="/images/kaciga.jpg" alt="" style="width: 100%;height: 100%">
             </div>
-            <form  @submit.prevent="store" class="signupForm" name="signupform">
+            <form  @submit.prevent="ruta" class="signupForm" name="signupform">
                 <h2>Oglas za opremu</h2>
                 <ul class="noBullet">
                     <li>
@@ -127,7 +142,7 @@ const useMessage = computed(() => {
                     </li>
                         </Transition>
                     <li>
-                        <div class="Neon Neon-theme-dragdropbox">
+                        <div class="Neon Neon-theme-dragdropbox" v-if="!isEditting">
                             <input ref="fileInput" name="files[]" id="filer_input2" multiple="multiple" type="file" hidden @change="handleFileChange">
                             <div class="Neon-input-dragDrop">
                                 <div class="Neon-input-inner">
@@ -149,10 +164,13 @@ const useMessage = computed(() => {
                                 </div>
                             </div>
                         </div>
+                        <div v-if="isEditting">
+                            Slike mozete promeniti ovde
+                        </div>
                     </li>
 
                     <li id="center-btn" style="margin-top: 50px;">
-                        <input type="submit" id="join-btn" name="join" alt="Join" value="Kreiraj oglas">
+                        <input type="submit" id="join-btn" name="join" alt="Join" :value="isEditting ? 'Edituj oglas' : 'Kreiraj oglas'">
                     </li>
                 </ul>
             </form>
@@ -160,12 +178,16 @@ const useMessage = computed(() => {
     </div>
 </template>
 <script>
+
 export default {
+
+
     methods: {
         emitAction() {
             this.$emit('arrow-clicked');
         }
-    }
+    },
+
 };
 </script>
 

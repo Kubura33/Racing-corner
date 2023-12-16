@@ -4,18 +4,24 @@ import InputError from "@/Components/InputError.vue";
 import {computed, ref} from "vue";
 const fileInput = ref(null)
 const message = ref(null)
+const props = defineProps(
+    {
+        ad: Object,
+        isEditting:false,
+    }
+)
 const form = useForm({
-    name: "",
-    description: "",
-    manufacter: 0,
-    price: 0,
-    number_of_tires: 0,
-    dot: "",
-    dimensions: "",
+    name: props.ad ? props.ad.title :  "",
+    description: props.ad ? props.ad.advertisable.description : "",
+    manufacter: props.ad ? props.ad.advertisable.manufacter : 0,
+    price: props.ad ? props.ad.price : 0,
+    number_of_tires: props.ad ? props.ad.advertisable.number_of_tires : 0,
+    dot: props.ad ? props.ad.advertisable.dot : "",
+    dimensions: props.ad ? props.ad.advertisable.dimensions : "",
     images: [],
 
-    isNew: 1,
-    fixed: 1,
+    isNew: props.ad ? props.ad.advertisable.isNew : 1,
+    fixed: props.ad ? props.ad.advertisable.fixed : 1,
     type: "tires",
 
 })
@@ -37,6 +43,13 @@ const useMessage = computed(() => {
     message ? message.value : null
 })
 const store = () => form.post(route('ads.store'))
+const update = () => form.put(route('ads.update', {ad:props.ad.id}))
+const ruta = computed(()=> {
+    if(props.isEditting)
+        return update()
+    else
+        return store()
+})
 </script>
 <template>
     <div class="signupSection_top"
@@ -45,12 +58,12 @@ const store = () => form.post(route('ads.store'))
 
         <div class="signupSection">
             <div class="info">
-                <div class="icon" @click="emitAction">
+                <div v-if="!isEditting" class="icon" @click="emitAction">
                     <div class="arrow"></div>
                 </div>
                 <img src="/images/gume_prodaja.jpeg" alt="" style="width: 100%;height: 100%">
             </div>
-            <form @submit.prevent="store" class="signupForm" name="signupform">
+            <form @submit.prevent="ruta" class="signupForm" name="signupform">
                 <h2>Oglas za gume</h2>
                 <ul class="noBullet">
                     <li>
@@ -106,7 +119,7 @@ const store = () => form.post(route('ads.store'))
                     </li>
                     <li>
                         <label for="cena"></label>
-                        <input type="text" class="inputFields" id="cena" name="cena" placeholder="Cena(€)" required/>
+                        <input type="text" v-model="form.price" class="inputFields" id="cena" name="cena" placeholder="Cena(€)" required/>
                         <InputError v-if="form.errors.price" :message="form.errors.price"/>
 
                     </li>
@@ -150,7 +163,7 @@ const store = () => form.post(route('ads.store'))
 
                     </li>
                     <li>
-                        <div class="Neon Neon-theme-dragdropbox">
+                        <div class="Neon Neon-theme-dragdropbox" v-if="!isEditting">
                             <input ref="fileInput" name="files[]" id="filer_input2" multiple="multiple" type="file" hidden @change="handleFileChange">
                             <div class="Neon-input-dragDrop">
                                 <div class="Neon-input-inner">
@@ -158,6 +171,7 @@ const store = () => form.post(route('ads.store'))
                                     <div class="Neon-input-text">
                                         <h3 v-if="form.images.length===0 && !message">*Prva slika je naslovna, max broj slika je 5</h3>
                                         <h3 v-if="useMessage" style="color: red">{{ useMessage }}</h3>
+
                                         <div v-else>
                                             <span v-for="image in form.images">
                                                 {{image.name}}
@@ -171,9 +185,12 @@ const store = () => form.post(route('ads.store'))
                                 </div>
                             </div>
                         </div>
+                        <div v-if="isEditting">
+                            Slike mozete promeniti ovde
+                        </div>
                     </li>
                     <li id="center-btn" style="margin-top: 50px;">
-                        <input type="submit" id="join-btn" name="join" alt="Join" value="Kreiraj oglas">
+                        <input type="submit" id="join-btn" name="join" alt="Join" :value="isEditting ? 'Edituj oglas' : 'Kreiraj oglas'">
                     </li>
                 </ul>
             </form>

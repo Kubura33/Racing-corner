@@ -14,7 +14,7 @@
                         <input type="text" class="input" name="txt" onmouseout="this.value = ''; this.blur();" placeholder="Search">
                     </form>
                 </div>
-                <form action="/action_page.php">
+                <form @submit.prevent="filter">
                     <div class="accordion" id="accordionExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
@@ -26,24 +26,24 @@
                             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
                                  data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Yokohama">
-                                    <label for="vehicle1">Yokohama</label><br>
-                                    <input type="checkbox" id="vehicle2" name="vehicle2" value="Continental">
-                                    <label for="vehicle2">Continental</label><br>
-                                    <input type="checkbox" id="vehicle3" name="vehicle3" value="Michelin">
-                                    <label for="vehicle3">Michelin</label><br>
-                                    <input type="checkbox" id="vehicle4" name="vehicle1" value="Tigar">
-                                    <label for="vehicle4">Tigar</label><br>
-                                    <input type="checkbox" id="vehicle5" name="vehicle2" value="Dunlop">
-                                    <label for="vehicle5">Dunlop</label><br>
-                                    <input type="checkbox" id="vehicle5" name="vehicle2" value="Pirelli">
-                                    <label for="vehicle5">Pirelli</label><br>
-                                    <input type="checkbox" id="vehicle5" name="vehicle2" value="Nankang">
-                                    <label for="vehicle5">Nankang</label><br>
-                                    <input type="checkbox" id="vehicle5" name="vehicle2" value="Hankook">
-                                    <label for="vehicle5">Hankook</label><br>
-                                    <input type="checkbox" id="vehicle5" name="vehicle2" value="Avon">
-                                    <label for="vehicle5">Avon</label><br>
+                                    <input v-model="filterForm.disciplines.Yokohama" type="checkbox" id="yokohoma" name="vehicle1" value="Yokohama">
+                                    <label for="yokohoma">Yokohama</label><br>
+                                    <input v-model="filterForm.disciplines.Continental" type="checkbox" id="continental" name="vehicle2" value="Continental">
+                                    <label for="continental">Continental</label><br>
+                                    <input v-model="filterForm.disciplines.Michelin" type="checkbox" id="michelin" name="vehicle3" value="Michelin">
+                                    <label for="michelin">Michelin</label><br>
+                                    <input v-model="filterForm.disciplines.Tigar" type="checkbox" id="tigar" name="vehicle1" value="Tigar">
+                                    <label for="tigar">Tigar</label><br>
+                                    <input v-model="filterForm.disciplines.Dunlop" type="checkbox" id="dunlop" name="vehicle2" value="Dunlop">
+                                    <label for="dunlop">Dunlop</label><br>
+                                    <input v-model="filterForm.disciplines.Pirelli" type="checkbox" id="pirelli" name="vehicle2" value="Pirelli">
+                                    <label for="pirelli">Pirelli</label><br>
+                                    <input v-model="filterForm.disciplines.Nankang" type="checkbox" id="nankang" name="vehicle2" value="Nankang">
+                                    <label for="nankang">Nankang</label><br>
+                                    <input v-model="filterForm.disciplines.Hankook" type="checkbox" id="Hankook" name="vehicle2" value="Hankook">
+                                    <label for="Hankook">Hankook</label><br>
+                                    <input v-model="filterForm.disciplines.Avon" type="checkbox" id="Avon" name="vehicle2" value="Avon">
+                                    <label for="Avon">Avon</label><br>
                                 </div>
                             </div>
                         </div>
@@ -57,9 +57,9 @@
                             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                                  data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    <input type="number" id="min-price" name="min-price" value="0">
+                                    <input type="number" id="min-price" name="min-price" value="0" v-model.number="filterForm.priceFrom">
                                     <label for="min-price">Min</label> <br>
-                                    <input type="number" id="max-price" name="max-price" value="1000000">
+                                    <input type="number" id="max-price" name="max-price" value="1000000" v-model.number="filterForm.priceTo">
                                     <label for="max-price">Max</label> <br><br>
                                 </div>
                             </div>
@@ -79,6 +79,7 @@
                         </div>
                     </div>
                     <input type="submit" class="btn btn-outline-secondary" value="Pretraži">
+                    <input type="submit" class="btn btn-outline-secondary" value="Ponisti" @click.prevent="clear" style="margin-left: 10px;">
                 </form>
             </div>
             <div class="oglasi">
@@ -105,9 +106,56 @@
 
 
 <script setup>
-import {Link} from "@inertiajs/vue3";
+import {Link, useForm} from "@inertiajs/vue3";
 
 const props = defineProps({
-    ads : Array
+    ads : Array,
+    filters : Object
 })
+console.log(props.filters)
+
+const filterForm = useForm({
+    priceFrom : props.filters ? props.filters.priceFrom : null,
+    priceTo : props.filters ? props.filters.priceTo :  null,
+    disciplines: props.filters?.disciplines ?? {
+        Yokohama : false,
+        Continental : false,
+        Michelin : false,
+        Tigar : false,
+        Dunlop : false,
+        Pirelli : false,
+        Nankang : false,
+        Hankook: false,
+        Avon : false,
+
+    }
+
+})
+const filter = () => {
+    filterForm.get(route('tires'), {
+        preserveState:true,
+        preserveScroll: true,
+    })
+
+
+}
+const clear = () => {
+    filterForm.priceFrom = null
+    filterForm.priceTo = null
+    filterForm.disciplines = {
+        Yokohama : false,
+        Continental : false,
+        Michelin : false,
+        Tigar : false,
+        Dunlop : false,
+        Pirelli : false,
+        Nankang : false,
+        Hankook: false,
+        Avon : false,
+
+    }
+    filter()
+}
+
+
 </script>

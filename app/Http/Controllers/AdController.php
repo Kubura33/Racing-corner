@@ -149,24 +149,77 @@ class AdController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Ad $id)
+    public function edit(Ad $ad)
     {
-        return redirect()->route('home');
+        $ad->load('advertisable.imageable');
+        foreach ($ad->advertisable->imageable as $imageable){
+            $imagePaths[] = $imageable->imagePath;
+        }
+        $ad['image_path'] = $imagePaths;
+        return Inertia::render(
+            'Home/EditAd',
+            [
+                'ad' => $ad
+            ]
+        );
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Ad $ad)
     {
-        //
+        $ad->update([
+            'title' => $request->name,
+            'price' => $request->price,
+            'fixed' => $request->fixed,
+        ]);
+        if($ad->advertisable_type==='equipment'){
+
+            $ad->advertisable->update([
+                'description' => $request->description,
+                'isNew' => $request->isNew,
+                'brand' => $request->brand,
+                'size' => $request->size,
+                'homologacija' => $request->homologacija,
+                'homologacija_info' => $request->homologacija_info,
+            ]);
+            $ad->save();
+        }
+        else if($ad->advertisable_type==='vehicle'){
+            $ad->advertisable->update([
+                'model' => $request->vehicle_model,
+                'engine_displacement'=> $request->engine_displacement,
+                'year' => $request->year,
+                'vehicle_class' => $request->vehicle_class,
+                'description' => $request->description,
+                'discipline' => $request->discipline,
+
+            ]);
+            $ad->save();
+        }
+        else if($request->type==='parts'){
+            $ad->advertisable->update([
+                'description' => $request->description,
+                'isNew' => $request->isNew,
+            ]);
+        }
+        else if($request->type==='tires'){
+            $ad->advertisable->update([
+                'manufacter' => $request->manufacter,
+                'dot' => $request->dot,
+                'dimensions' => $request->dimensions,
+            ]);
+        }
+        return redirect()->back()->with('message', 'Oglas uspesno izmenjen');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Ad $ad)
     {
-        //
+        $ad->delete();
+        return redirect()->back()->with('success', 'Oglas uspesno obrisan');
     }
 }

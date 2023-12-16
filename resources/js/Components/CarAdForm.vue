@@ -4,20 +4,27 @@ import InputError from "@/Components/InputError.vue";
 import {ref, computed} from "vue";
 const message = ref(null)
 const fileInput = ref(null)
+const props = defineProps(
+    {
+        ad:Object,
+        isEditting : false
+    }
+)
 const form = useForm({
-    name: "",
-    vehicle_model: "",
-    vehicle_class: "",
-    engine_displacement: "",
-    description: "",
-    price: 0,
-    discipline: 0,
-    fixed: 1,
-    year: "",
+    name: props.ad ? props.ad.title : "",
+    vehicle_model: props.ad ? props.ad.advertisable.model : "",
+    vehicle_class: props.ad ? props.ad.advertisable.vehicle_class : "",
+    engine_displacement: props.ad ? props.ad.advertisable.engine_displacement : "",
+    description: props.ad ? props.ad.advertisable.description : "",
+    price: props.ad ? props.ad.price : 0,
+    discipline: props.ad ? props.ad.advertisable.discipline : 0,
+    fixed: props.ad ? props.ad.fixed : 1,
+    year: props.ad ? props.ad.advertisable.year : "",
     type: 'vehicle',
     images: [],
 
 })
+
 const openFileInput = () => {
     fileInput.value.click()
 }
@@ -34,6 +41,13 @@ const handleFileChange = () => {
 const useMessage = computed(() => {message ? message.value : null
 })
 const store = () => form.post(route('ads.store'))
+const update = () => form.put(route('ads.update', {ad:props.ad.id}))
+const ruta = computed(()=> {
+    if(props.isEditting)
+        return update()
+    else
+        return store()
+})
 </script>
 
 <template>
@@ -43,12 +57,12 @@ const store = () => form.post(route('ads.store'))
 
         <div class="signupSection">
             <div class="info">
-                <div class="icon" @click="emitAction">
+                <div v-if="!isEditting" class="icon" @click="emitAction">
                     <div class="arrow"></div>
                 </div>
                 <img src="/images/toyota.jpg" alt="">
             </div>
-            <form @submit.prevent="store" class="signupForm" name="signupform">
+            <form @submit.prevent="ruta" class="signupForm" name="signupform">
                 <h2>Oglas za automobile</h2>
                 <ul class="noBullet">
                     <li>
@@ -134,33 +148,35 @@ const store = () => form.post(route('ads.store'))
                     </li>
 
                     <li>
-                        <div class="Neon Neon-theme-dragdropbox">
-                            <input ref="fileInput" name="files[]" id="filer_input2" multiple="multiple" type="file"
-                                   hidden @change="handleFileChange">
+                        <div class="Neon Neon-theme-dragdropbox" v-if="!isEditting">
+                            <input ref="fileInput" name="files[]" id="filer_input2" multiple="multiple" type="file" hidden @change="handleFileChange">
                             <div class="Neon-input-dragDrop">
                                 <div class="Neon-input-inner">
                                     <div class="Neon-input-icon"><i class="fa fa-file-image-o"></i></div>
                                     <div class="Neon-input-text">
-                                        <h3 v-if="form.images.length===0 && !message">*Prva slika je naslovna, max broj
-                                            slika je 5</h3>
+                                        <h3 v-if="form.images.length===0 && !message">*Prva slika je naslovna, max broj slika je 5</h3>
                                         <h3 v-if="useMessage" style="color: red">{{ useMessage }}</h3>
+
                                         <div v-else>
                                             <span v-for="image in form.images">
-                                                {{ image.name }}
+                                                {{image.name}}
                                             </span>
 
                                         </div>
                                         <span
                                             style="display:inline-block; margin: 20px 0"></span>
                                     </div>
-                                    <a href="#" class="Neon-input-choose-btn blue" @click.prevent="openFileInput">Odaberi
-                                        slike</a>
+                                    <a href="#" class="Neon-input-choose-btn blue" @click.prevent="openFileInput">Odaberi slike</a>
                                 </div>
                             </div>
                         </div>
+                        <div v-if="isEditting">
+                            Slike mozete promeniti ovde
+                        </div>
                     </li>
                     <li id="center-btn">
-                        <input type="submit" id="join-btn" name="join" alt="Join" value="Kreiraj oglas">
+
+                        <input type="submit" id="join-btn" name="join" alt="Join" :value="isEditting ? 'Edituj oglas' : 'Kreiraj oglas'">
                     </li>
                 </ul>
             </form>

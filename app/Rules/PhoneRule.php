@@ -14,10 +14,11 @@ class PhoneRule implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        $pattern = '/^\+38[0-9][1-9][0-9][1-9]{3}[1-9]{3}$/';
+        $pattern =  '/^\+381\d{9}$/';
+
         if(!preg_match($pattern,$value))
         {
-             $fail('Format broja telefona mora da bude +38 1-9...');
+             $fail('Format broja telefona mora da bude +381-9...');
         }
     }
 }

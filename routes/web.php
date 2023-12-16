@@ -59,4 +59,5 @@ Route::get('/admin/ads', [\App\Http\Controllers\AdminController::class, 'ads'])-
 Route::prefix('admin')->group(function (){
     Route::resource('users', \App\Http\Controllers\UserController::class)->only(['edit', 'update', 'destroy']);
 });
+Route::post('/set-ad-to-premium/{ad}', \App\Actions\SetAdvertToPremium::class)->name('set-advert-to-premium');
 require __DIR__.'/auth.php';
