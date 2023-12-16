@@ -41,4 +41,7 @@ class Ad extends Model
         }
            return $q;
     }
+    public function scopeDiscipline(Builder $q, $disciplines) : Builder{
+        return $q;
+    }
 }
