@@ -88,7 +88,7 @@ if(form.errors){
                         <InputError v-if="form.errors.price" :message="form.errors.price" />
                     </li>
                     <select v-model="form.size" name="discipline" id="discipline" class="inputFields"
-                            style="color: white;">homologacija
+                            style="color: rgb(0, 0, 0);">homologacija
                         <option value="0" selected>-- Izaberite Velicinu --</option>
                         <option value="S">
                             S

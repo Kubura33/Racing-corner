@@ -110,7 +110,7 @@ const ruta = computed(()=> {
                     <li>
                         <label for="discipline"></label>
                         <select v-model="form.discipline" name="discipline" id="discipline" class="inputFields"
-                                style="color: white;">
+                                style="color: rgb(0, 0, 0);">
                             <option value="0" selected>-- Izaberite disciplinu --</option>
                             <option value="Reli">
                                 Reli

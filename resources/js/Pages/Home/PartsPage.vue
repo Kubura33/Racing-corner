@@ -15,7 +15,7 @@
                 </div>
                 <form action="/action_page.php">
                     <div class="accordion" id="accordionExample">
-                        <div class="accordion-item">
+                        <!-- <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -37,7 +37,7 @@
                                     <label for="vehicle5">Dunlop</label><br>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingTwo">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -52,19 +52,6 @@
                                     <label for="min-price">Min</label> <br>
                                     <input type="number" id="max-price" name="max-price" value="1000000">
                                     <label for="max-price">Max</label> <br><br>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingThree">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    Accordion Item #3
-                                </button>
-                            </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
                                 </div>
                             </div>
                         </div>
