@@ -134,7 +134,7 @@ class AdController extends Controller
     public function show(Ad $ad)
     {
         //Could be changed to an object instead of instance using ->first();
-        $adWithImages = $ad->load(['advertisable.imageable', 'user']);
+        $adWithImages = $ad->load(['advertisable.imageable', 'user', 'likes']);
 
         $adWithImages->image_path = $adWithImages->advertisable->imageable->map(function ($imageable) {
             return $imageable->imagePath;

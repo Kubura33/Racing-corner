@@ -4,7 +4,7 @@ import { Link } from "@inertiajs/vue3";
 const props = defineProps(
     {
         premiumAds: Array,
-        ads: Array,
+        ads: Object,
     }
 )
 
@@ -88,7 +88,7 @@ const props = defineProps(
                 <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse"
                     aria-labelledby="panelsStayOpen-headingOne">
                     <div class="accordion-body">
-                        <strong>Koraci za kačenje oglasa</strong> 
+                        <strong>Koraci za kačenje oglasa</strong>
                         <ul>
                             <li>Kreiraj nalog ili se uloguj ukoliko već poseduješ nalog</li>
                             <li>Nakon uspešne registracije, idi na karticu kreiraj oglas</li>
@@ -110,7 +110,7 @@ const props = defineProps(
                 <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
                     aria-labelledby="panelsStayOpen-headingTwo">
                     <div class="accordion-body">
-                        <strong>racing-corner@gmail.com</strong> 
+                        <strong>racing-corner@gmail.com</strong>
                     </div>
                 </div>
             </div>
@@ -127,7 +127,7 @@ const props = defineProps(
                     <div class="accordion-body">
                         <strong>Racing-corner berza</strong>
                         <p>Ova platforma je osmišljena da olakša potražnju i kupovinu trkačke opreme, guma, delova i samih vozila.
-    
+
                         </p>
                     </div>
                 </div>
@@ -155,14 +155,14 @@ const props = defineProps(
             <h4>БФАС</h4>
         </a>
     </div>
-   
+
 </template>
 
 <script>
 export default {
     props: {
         premiumAds: Array,
-        ads: Array,
+        ads: Object,
     },
     data() {
         return {
@@ -190,6 +190,9 @@ export default {
                 const item = { id: items[i].id, brand: items[i].title, price: items[i].price, currency: ' €', image: items[i].image_path[0] }
                 if ((i + 1) % 3 == 0)
                     groupIndex = groupIndex + 1
+                if (!this.groups[groupIndex]) {
+                    this.groups[groupIndex] = [];
+                }
                 this.groups[groupIndex].push(item)
             }
         }
@@ -198,8 +201,7 @@ export default {
         if (this.premiumAds)
             this.addItemToGroup(this.premiumAds)
         this.startAutoChange();
-        console.log(this.premiumAds)
-        console.log(this.ads)
+
     }
 };
 </script>

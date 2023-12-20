@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use App\Models\Equipment;
@@ -20,6 +21,9 @@ class Ad extends Model
     }
     public function user() : BelongsTo{
         return $this->belongsTo(User::class, 'user_id');
+    }
+    public function likes() : BelongsToMany{
+        return $this->belongsToMany(User::class, "likes");
     }
     public function scopeFilter(Builder $query, $filters) : Builder{
         return $query
@@ -42,6 +46,11 @@ class Ad extends Model
            return $q;
     }
     public function scopeDiscipline(Builder $q, $disciplines) : Builder{
+        if ($disciplines) {
+            $q->where('advertisable_type', '=', 'vehicle')->whereHasMorph('advertisable', [Vehicle::class], function ($query) use ($disciplines) {
+                $query->whereIn('discipline', $disciplines);
+            });
+        }
         return $q;
     }
 }

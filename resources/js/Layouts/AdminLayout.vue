@@ -1,10 +1,13 @@
 <script setup>
 import {Link, usePage} from '@inertiajs/vue3'
-import {computed} from "vue";
+import {computed, ref} from "vue";
+
 
 const page = usePage()
 const user = computed(() => page.props.auth.user)
 const messages = computed(() => page.props.messages)
+const isVisible = ref(false)
+
 </script>
 
 <template>
@@ -24,10 +27,10 @@ const messages = computed(() => page.props.messages)
         </header>
 
         <div style="display: flex; flex-direction: row; align-items: center;justify-content: center;justify-items: center;">
-            <div onclick="this.remove()" style="text-align: center; font-size: 27px; padding: 20px; background-color: green; width: 33%; margin-top: 10px; border-radius:0.375rem" v-if="messages.success">
+            <div @click="messages.success= null" style="text-align: center; font-size: 27px; padding: 20px; background-color: green; width: 33%; margin-top: 10px; border-radius:0.375rem" v-if="messages.success">
                 {{messages.success}}
             </div>
-            <div onclick="this.remove()" style="text-align: center; font-size: 27px; padding: 20px; background-color: red; width: 33%; margin-top: 10px; border-radius:0.375rem" v-else-if="messages.error">
+            <div @click="messages.error= null" style="text-align: center; font-size: 27px; padding: 20px; background-color: red; width: 33%; margin-top: 10px; border-radius:0.375rem" v-else-if="messages.error">
                 {{messages.error}}
             </div>
         </div>

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('advertisable_type');
             $table->string('fixed')->default('0');
             $table->string('price');
+            $table->string('isSold')->default('0');
             $table->date('lasts_until');
             $table->timestamps();
         });

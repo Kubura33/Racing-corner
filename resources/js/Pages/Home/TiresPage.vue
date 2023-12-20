@@ -59,7 +59,7 @@
                                 <div class="accordion-body">
                                     <input type="number" id="min-price" name="min-price" value="0" v-model.number="filterForm.priceFrom">
                                     <label for="min-price">Min</label> <br>
-                                    <input type="number" id="max-price" name="max-price" value="1000000" v-model.number="filterForm.priceTo">
+                                    <input type="number" id="max-price" name="max-price" :min="filterForm.priceFrom+1" :value="filterForm.priceFrom+1" v-model.number="filterForm.priceTo">
                                     <label for="max-price">Max</label> <br><br>
                                 </div>
                             </div>

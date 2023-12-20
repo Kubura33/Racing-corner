@@ -266,7 +266,7 @@ span {
     }
     #srbija{
         background-image: url('../../public/images/srbija.jpg');
-        background-size: cover; 
+        background-size: cover;
         background-position: center;
         text-align: center;
     }
@@ -288,7 +288,7 @@ span {
     }
     #hrvatska{
         background-image: url('../../public/images/hrvatska.jpg');
-        background-size: cover; 
+        background-size: cover;
         background-position: center;
         text-align: center;
     }
@@ -311,7 +311,7 @@ span {
 
     #makedonija{
         background-image: url('../../public/images/makedonija.jpg');
-        background-size: cover; 
+        background-size: cover;
         background-position: center;
         text-align: center;
     }
@@ -334,7 +334,7 @@ span {
 
     #crna_gora{
         background-image: url('../../public/images/crna_gora.jpg');
-        background-size: cover; 
+        background-size: cover;
         background-position: center;
         text-align: center;
     }
@@ -357,7 +357,7 @@ span {
 
     #bugarska{
         background-image: url('../../public/images/bugarska.jpg');
-        background-size: cover; 
+        background-size: cover;
         background-position: center;
         text-align: center;
     }
@@ -380,7 +380,7 @@ span {
 
     #fia{
         background-image: url('../../public/images/fia.jpg');
-        background-size: cover; 
+        background-size: cover;
         background-position: center;
         text-align: center;
     }
@@ -477,7 +477,7 @@ span {
     }
     #srbija{
         background-image: url('../../public/images/srbija.jpg');
-        background-size: cover; 
+        background-size: cover;
         background-position: center;
         text-align: center;
         margin-top: 5%;
@@ -501,7 +501,7 @@ span {
 
     #hrvatska{
         background-image: url('../../public/images/hrvatska.jpg');
-        background-size: cover; 
+        background-size: cover;
         background-position: center;
         text-align: center;
         margin-top: -10%;
@@ -525,7 +525,7 @@ span {
 
     #makedonija{
         background-image: url('../../public/images/makedonija.jpg');
-        background-size: cover; 
+        background-size: cover;
         background-position: center;
         text-align: center;
         margin-top: -10%;
@@ -548,7 +548,7 @@ span {
     }
     #crna_gora{
         background-image: url('../../public/images/crna_gora.jpg');
-        background-size: cover; 
+        background-size: cover;
         background-position: center;
         text-align: center;
         margin-top: -10%;
@@ -572,7 +572,7 @@ span {
 
     #bugarska{
         background-image: url('../../public/images/bugarska.jpg');
-        background-size: cover; 
+        background-size: cover;
         background-position: center;
         text-align: center;
         margin-top: -10%;
@@ -596,7 +596,7 @@ span {
 
     #fia{
         background-image: url('../../public/images/fia.jpg');
-        background-size: cover; 
+        background-size: cover;
         background-position: center;
         text-align: center;
         margin-top: 5%;
@@ -1086,7 +1086,7 @@ span {
     #kartice-div {
         height: auto;
     }
-    
+
     .kartice-div {
         width: auto;
         height: 100%;
@@ -1367,7 +1367,7 @@ span {
         top: 12px;
     }
 
-    
+
 }
 
 /* Stil za mobilni telefon (širina 100% širine ekrana) */
@@ -1635,9 +1635,9 @@ span {
 /* Stil za Racunar (širina 100% širine ekrana) */
 @media only screen and (min-width: 768px) {
     .profil-info {
-        width: 80%;
+        width: 50%;
         margin-top: 3%;
-        margin-left: 10%;
+        margin-left: 2%;
         padding: 5%;
         border: 0.5px solid gray;
         border-radius: 10px;
@@ -1881,7 +1881,7 @@ span {
 
 /*--/Stranica detalji--*/
 /*--How to--*/
-    
+
     /* Stil za Racunar (širina 100% širine ekrana)*/
 @media only screen and (min-width: 768px) {
     .how_to{

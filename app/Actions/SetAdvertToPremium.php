@@ -12,8 +12,11 @@ class SetAdvertToPremium
 
     public function handle(Ad $ad)
     {
-        $ad->update(['home_page' => 'da']);
-        $ad->save();
-        return redirect()->back()->with('success', 'Oglas postavljen kao premium');
+        if ($ad->home_page != 'da') {
+            $ad->update(['home_page' => 'da']);
+            $ad->save();
+            return redirect()->back()->with('success', 'Oglas postavljen kao premium');
+        }
+        return redirect()->back()->with('error', 'Oglas je vec postavljen kao premium');
     }
 }

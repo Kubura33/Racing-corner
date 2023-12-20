@@ -19,8 +19,8 @@ class ProfileController extends Controller
     public function index(Request $request){
         return Inertia::render('Profile/UserHome',
         [
-            'ads' => $request->user()->ads->load('advertisable'),
-            'user' => $request->user(),
+            'ads' => $request->user()->ads->load(['advertisable', 'likes']),
+            'user' => $request->user()->load('likes'),
         ]);
     }
     /**

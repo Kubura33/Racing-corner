@@ -60,4 +60,7 @@ Route::prefix('admin')->group(function (){
     Route::resource('users', \App\Http\Controllers\UserController::class)->only(['edit', 'update', 'destroy']);
 });
 Route::post('/set-ad-to-premium/{ad}', \App\Actions\SetAdvertToPremium::class)->name('set-advert-to-premium');
+Route::put('/set-user-to-premium/{user}', \App\Actions\SetUserPremium::class)->name('set-user-to-premium');
+Route::post('/follow-advert/{ad}', \App\Actions\FollowAdvert::class)->name('follow-advert');
+
 require __DIR__.'/auth.php';

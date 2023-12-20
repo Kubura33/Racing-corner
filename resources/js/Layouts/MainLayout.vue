@@ -62,10 +62,10 @@
         </div>
     </nav>
     <!--    //End of header-->
-    <div onclick="this.remove()" v-if="messages.success" class="alert alert-success" role="alert">
+    <div @click="messages.success=null" v-if="messages.success" class="alert alert-success" role="alert">
         {{ messages.success}}
     </div>
-    <div onclick="this.remove()" v-if="messages.error" class="alert alert-danger" role="alert">
+    <div onclick="messages.error=null" v-if="messages.error" class="alert alert-danger" role="alert">
         {{ messages.error}}
     </div>
     <!--    //Start of main content of the page-->

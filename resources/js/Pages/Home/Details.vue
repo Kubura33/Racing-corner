@@ -6,6 +6,7 @@
         <h4 id="email_info" style="word-break: break-all;">{{ ad.user.email }} </h4>
         <!-- <span class="span_oglas">{{ user.email }}</span>-->
     </div>
+
     <div class="detalji">
         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
@@ -76,10 +77,13 @@
             ad.advertisable.description
         }}
         </p>
+        <div style="display: flex;flex-direction: row;align-items: center;justify-items: center;justify-content: center; margin-top: 33px;">
+            <Link method="post" as="button" :href="route('follow-advert', {ad : ad.id})" class="btn btn-primary">{{checkIfUserLiked()}}</Link>
+        </div>
     </div>
 </template>
 <script setup>
-import { usePage } from "@inertiajs/vue3";
+import { usePage, Link } from "@inertiajs/vue3";
 const page = usePage()
 const user = page.props.auth.user
 const props = defineProps({
@@ -88,4 +92,13 @@ const props = defineProps({
 const naslovna = props.ad.image_path[0]
 props.ad.image_path.splice(0, 1)
 
+
+const checkIfUserLiked = () => {
+    for(let i=0;i<props.ad.likes.length;i++){
+        if(props.ad.likes[i].id === user.id){
+            return "Otprati oglas"
+        }
+    }
+    return "Prati oglas"
+}
 </script>
