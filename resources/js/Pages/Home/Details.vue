@@ -32,7 +32,7 @@
 
 
     <div class="text_oglasa">
-        <h1>{{ ad.title }}</h1>
+        <h1>{{ ad.title }} <span v-if="ad.isSold==1" style="font-weight: bold;color: red; font-size: 38px;">(PRODATO)</span></h1>
         <h3 v-if="ad.advertisable_type == 'vehicle'">Model: <span>{{ ad.advertisable.model }}</span>    </h3>
         <h3 v-else-if="ad.advertisable_type === 'equipment'">Brend: <span>{{ ad.advertisable.brand }}</span> | Vrsta : <span>{{ad.advertisable.vrsta}}</span></h3>
         <h3 v-else-if="ad.advertisable_type === 'parts' && ad.advertisable.type === 'tires'">Proizvodjac: <span>{{

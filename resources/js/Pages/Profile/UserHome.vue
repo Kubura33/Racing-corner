@@ -85,7 +85,7 @@
                 </td>
                 <td>
                     <Link v-if="ad.isSold!= '1'" :href="route('advert-has-been-sold', {ad : ad.id})" method="post" as="button" class="btn btn-info">Oznaci kao prodato</Link>
-                    <span v-else style="font-weight: bold; color: red;">Oglas je oznacen kao prodat i bice automatski obrisan nakon 7 dana!</span>
+                    <span v-else style="font-weight: bold; color: red;">Oglas je oznacen kao prodat, molimo vas obrisite ga ako vam vise nije od znacaja</span>
                 </td>
                 <td>
                     <Link :href="route('ads.destroy', {ad : ad.id})" as="button" method="delete" class="btn btn-danger"

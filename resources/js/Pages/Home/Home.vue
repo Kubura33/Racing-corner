@@ -7,7 +7,6 @@ const props = defineProps(
         ads: Object,
     }
 )
-
 </script>
 <template>
     <div class="banner">
@@ -66,9 +65,11 @@ const props = defineProps(
                 <img :src="ad.image_path[0]" alt="">
             </a>
             <div class="data">
+                <span v-if="ad.isSold==1" style="font-weight: bold;color: red; font-size: 8px;">(PRODATO)</span>
                 <h4>
                     {{ ad.title }}
                 </h4>
+
             </div>
             <span class="cena_traka" id="traka_cena">{{ ad.price }} &euro;</span>
         </div>

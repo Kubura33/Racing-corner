@@ -102,7 +102,7 @@
                         </Link>
                         <div class="data">
                             <h4>
-                                {{ ad.title }}
+                                {{ ad.title }} <span v-if="ad.isSold==='1'" style="font-weight: bold;color: red;">(PRODATO)</span>
                             </h4>
                         </div>
                         <span class="cena_traka" id="traka_cena">{{ ad.price }} &euro;</span>
