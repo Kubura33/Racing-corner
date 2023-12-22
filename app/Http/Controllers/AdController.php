@@ -93,6 +93,7 @@ class AdController extends Controller
                     'isNew' => $request->safe()->isNew,
                     'brand' => $request->safe()->brand,
                     'size' => $request->safe()->size,
+                    'vrsta' => $request->safe()->vrsta,
                     'homologacija' => $request->safe()->homologacija,
                     'homologacija_info' => $request->safe()->homologacija_info,
                 ]);
@@ -152,7 +153,7 @@ class AdController extends Controller
     public function edit(Ad $ad)
     {
         $ad->load('advertisable.imageable');
-        foreach ($ad->advertisable->imageable as $imageable){
+        foreach ($ad->advertisable->imageable as $imageable) {
             $imagePaths[] = $imageable->imagePath;
         }
         $ad['image_path'] = $imagePaths;
@@ -174,7 +175,7 @@ class AdController extends Controller
             'price' => $request->price,
             'fixed' => $request->fixed,
         ]);
-        if($ad->advertisable_type==='equipment'){
+        if ($ad->advertisable_type === 'equipment') {
 
             $ad->advertisable->update([
                 'description' => $request->description,
@@ -185,11 +186,10 @@ class AdController extends Controller
                 'homologacija_info' => $request->homologacija_info,
             ]);
             $ad->save();
-        }
-        else if($ad->advertisable_type==='vehicle'){
+        } else if ($ad->advertisable_type === 'vehicle') {
             $ad->advertisable->update([
                 'model' => $request->vehicle_model,
-                'engine_displacement'=> $request->engine_displacement,
+                'engine_displacement' => $request->engine_displacement,
                 'year' => $request->year,
                 'vehicle_class' => $request->vehicle_class,
                 'description' => $request->description,
@@ -197,14 +197,12 @@ class AdController extends Controller
 
             ]);
             $ad->save();
-        }
-        else if($request->type==='parts'){
+        } else if ($request->type === 'parts') {
             $ad->advertisable->update([
                 'description' => $request->description,
                 'isNew' => $request->isNew,
             ]);
-        }
-        else if($request->type==='tires'){
+        } else if ($request->type === 'tires') {
             $ad->advertisable->update([
                 'manufacter' => $request->manufacter,
                 'dot' => $request->dot,
@@ -219,6 +217,11 @@ class AdController extends Controller
      */
     public function destroy(Ad $ad)
     {
+        Storage::disk('adImages')->delete(Image::where('advertisable_type', $ad->advertisable_type)
+            ->where('advertisable_id', $ad->advertisable_id)->get()
+            ->imagePath);
+        Image::delete()->where('advertisable_type', $ad->advertisable_type)
+            ->where('advertisable_id', $ad->advertisable_id);
         $ad->delete();
         return redirect()->back()->with('success', 'Oglas uspesno obrisan');
     }

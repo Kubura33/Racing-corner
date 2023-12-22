@@ -33,8 +33,8 @@
 
     <div class="text_oglasa">
         <h1>{{ ad.title }}</h1>
-        <h3 v-if="ad.advertisable_type == 'vehicle'">Model: <span>{{ ad.advertisable.model }}</span></h3>
-        <h3 v-else-if="ad.advertisable_type === 'equipment'">Brend: <span>{{ ad.advertisable.brand }}</span></h3>
+        <h3 v-if="ad.advertisable_type == 'vehicle'">Model: <span>{{ ad.advertisable.model }}</span>    </h3>
+        <h3 v-else-if="ad.advertisable_type === 'equipment'">Brend: <span>{{ ad.advertisable.brand }}</span> | Vrsta : <span>{{ad.advertisable.vrsta}}</span></h3>
         <h3 v-else-if="ad.advertisable_type === 'parts' && ad.advertisable.type === 'tires'">Proizvodjac: <span>{{
             ad.advertisable.manufacter }}</span></h3>
 
@@ -50,8 +50,8 @@
             v-if="ad.advertisable_type != 'parts' || (ad.advertisable_type == 'parts' ? ad.advertisable.type == 'tires' : 0)">
 
         <h3 v-if="ad.advertisable_type == 'vehicle'">Godište: <span>{{ ad.advertisable.year }}</span></h3>
-        <h3 v-if="ad.advertisable_type == 'equipment' && ad.advertisable.homologacija == 1">Homologacija: <span>{{
-            ad.advertisable.homologacija ? "Da" : "Ne" }}</span></h3>
+        <h3 v-if="ad.advertisable_type == 'equipment'">Homologacija: <span>{{
+            ad.advertisable.homologacija==='1' ? "Da" : "Ne" }}</span></h3>
         <p v-if="ad.advertisable_type == 'equipment' && ad.advertisable.homologacija == 1">
             {{ ad.advertisable.homologacija_info }}
         </p>

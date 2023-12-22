@@ -16,7 +16,7 @@ const form = useForm({
     vehicle_class: props.ad ? props.ad.advertisable.vehicle_class : "",
     engine_displacement: props.ad ? props.ad.advertisable.engine_displacement : "",
     description: props.ad ? props.ad.advertisable.description : "",
-    price: props.ad ? props.ad.price : 0,
+    price: props.ad ? props.ad.price : "",
     discipline: props.ad ? props.ad.advertisable.discipline : 0,
     fixed: props.ad ? props.ad.fixed : 1,
     year: props.ad ? props.ad.advertisable.year : "",
@@ -171,7 +171,7 @@ const ruta = computed(()=> {
                             </div>
                         </div>
                         <div v-if="isEditting">
-                            Slike mozete promeniti ovde
+                            Za menjanje slika, obrisite oglas pa kreirajte opet!
                         </div>
                     </li>
                     <li id="center-btn">

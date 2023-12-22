@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('isNew');
             $table->string('brand');
             $table->string('size')->nullable();
+            $table->string('vrsta');
             $table->string('homologacija')->default('no');
             $table->string('homologacija_info')->nullable();
             $table->timestamps();

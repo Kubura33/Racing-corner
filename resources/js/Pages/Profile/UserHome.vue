@@ -24,7 +24,7 @@
                 <InputError :message="editForma.errors.phone" v-if="editForma.errors.phone"/>
                 <label for="email" class="form-label">Email address</label>
                 <input type="email" name="email" class="form-control" v-model="editForma.email" id="email"
-                       placeholder="name@example.com">
+                       placeholder="name@example.com" disabled>
                 <InputError :message="editForma.errors.email" v-if="editForma.errors.email"/>
                 <label for="oldPass" class="form-label">Stara lozinka</label>
                 <input type="password" v-model="editForma.oldPassword" class="form-control" id="oldPass"
@@ -39,11 +39,11 @@
             <h3 style="margin-top: 80px; text-align: center">Oglasi koje pratite</h3>
             <div style="border: 3px solid black; height: 800px; display: flex; flex-direction: column; overflow: auto;">
                 <div v-for="like in user.likes" style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; padding:15px; border-bottom: 2px solid teal;">
-                    <Link :href="route('ads.show', {ad : like.id})">
+                    <Link :href="route('ads.show', {ad : like.id})" style="text-decoration: none; color: #3498db; transition: color 0.3s ease; font-weight: bold;" >
                         {{like.title}}
                     </Link>
                     <Link :href="route('follow-advert', {ad : like.id})" method="post" as="button" class="btn btn-warning">
-                        Unfollow button
+                        Otprati oglas
                     </Link>
 
                 </div>
@@ -79,10 +79,13 @@
                 <td>{{ ad.title }}</td>
                 <td style="padding-left: 60px;">{{ad.likes.length}}</td>
                 <td>
-                    <Link :href="route('ads.edit', {ad : ad.id})" class="btn btn-success">Edit</Link>
+                    <Link v-if="ad.isSold!= '1'" :href="route('ads.edit', {ad : ad.id})" class="btn btn-success">Edit</Link>
+                    <span v-else style="font-weight: bold; color: red;">Oglas je oznacen kao prodat!</span>
+
                 </td>
                 <td>
-                    <button type="button" class="btn btn-info">Aktivan</button>
+                    <Link v-if="ad.isSold!= '1'" :href="route('advert-has-been-sold', {ad : ad.id})" method="post" as="button" class="btn btn-info">Oznaci kao prodato</Link>
+                    <span v-else style="font-weight: bold; color: red;">Oglas je oznacen kao prodat i bice automatski obrisan nakon 7 dana!</span>
                 </td>
                 <td>
                     <Link :href="route('ads.destroy', {ad : ad.id})" as="button" method="delete" class="btn btn-danger"

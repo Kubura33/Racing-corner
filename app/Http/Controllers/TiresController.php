@@ -10,8 +10,9 @@ use Inertia\Inertia;
 class TiresController extends Controller
 {
     public function __invoke(Request $request){
-        $filters = $request->only(['priceFrom', 'priceTo', 'disciplines']);
+        $filters = $request->only(['priceFrom', 'priceTo', 'disciplines', 'search']);
         $selectedKeys = [];
+
         if(isset($filters['disciplines'])){
         $selectedKeys = array_keys(array_filter($filters['disciplines'], function ($value) {
             return $value === "true";

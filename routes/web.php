@@ -19,48 +19,46 @@ use Inertia\Inertia;
 
 
 
-
-
-/////////////////
-Route::get('/RentCar', function (){
-    return Inertia::render('Home/RentCar');
-})->name('RentCar');
-////////////////
-Route::get('/tires',\App\Http\Controllers\TiresController::class)->name('tires');
-
-
-////
-Route::get('/equipment', \App\Http\Controllers\EquipmentController::class)->name('equipment');
-Route::get('/parts', \App\Http\Controllers\PartsController::class)->name('parts');
-
-Route::get('/cars',\App\Http\Controllers\VehicleController::class)->name('cars');
-
-Route::get('/about', function (){
-    return Inertia::render('Home/About');
-})->name('about');
-
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
+    //User ROUTES
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/profile', [ProfileController::class,'index'])->name('profile.index');
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
     Route::resource('ads', \App\Http\Controllers\AdController::class)->except(['show', 'index']);
+    Route::post('/follow-advert/{ad}', \App\Actions\FollowAdvert::class)->name('follow-advert');
+    Route::post('/advert-has-been-sold/{ad}', \App\Actions\SetAdverToSold::class)->name('advert-has-been-sold');
+///////////////////////////////////////////////////////////////////
 
+
+
+    //Admin routes
+    Route::middleware('role:2')->group(function () {
+        Route::get('/admin/dashboard', [\App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');
+        Route::get('/admin/users', [\App\Http\Controllers\UserController::class, 'index'])->name('admin.users');
+        Route::get('/admin/ads', [\App\Http\Controllers\AdminController::class, 'ads'])->name('admin.ads');
+        Route::prefix('admin')->group(function () {
+            Route::resource('users', \App\Http\Controllers\UserController::class)->only(['edit', 'update', 'destroy']);
+        });
+        Route::post('/set-ad-to-premium/{ad}', \App\Actions\SetAdvertToPremium::class)->name('set-advert-to-premium');
+        Route::put('/set-user-to-premium/{user}', \App\Actions\SetUserPremium::class)->name('set-user-to-premium');
+    });
+////////////////////////////////////////////////////////////////////////////
+///
 });
 //Ads handling
+//ROUTES USED FOR HOME ROUTES
+Route::get('/tires', \App\Http\Controllers\TiresController::class)->name('tires');
+Route::get('/equipment', \App\Http\Controllers\EquipmentController::class)->name('equipment');
+Route::get('/parts', \App\Http\Controllers\PartsController::class)->name('parts');
+Route::get('/cars', \App\Http\Controllers\VehicleController::class)->name('cars');
+Route::get('/about', function () {
+    return Inertia::render('Home/About');
+})->name('about');
 Route::resource('ads', \App\Http\Controllers\AdController::class)->only(['show']);
 Route::get('/', [\App\Http\Controllers\AdController::class, 'index'])->name('home');
-Route::get('/admin/dashboard', [\App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');
-Route::get('/admin/users', [\App\Http\Controllers\UserController::class, 'index'])->name('admin.users');
-Route::get('/admin/ads', [\App\Http\Controllers\AdminController::class, 'ads'])->name('admin.ads');
-Route::prefix('admin')->group(function (){
-    Route::resource('users', \App\Http\Controllers\UserController::class)->only(['edit', 'update', 'destroy']);
-});
-Route::post('/set-ad-to-premium/{ad}', \App\Actions\SetAdvertToPremium::class)->name('set-advert-to-premium');
-Route::put('/set-user-to-premium/{user}', \App\Actions\SetUserPremium::class)->name('set-user-to-premium');
-Route::post('/follow-advert/{ad}', \App\Actions\FollowAdvert::class)->name('follow-advert');
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-require __DIR__.'/auth.php';
+
+
+require __DIR__ . '/auth.php';

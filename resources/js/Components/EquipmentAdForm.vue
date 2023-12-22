@@ -12,12 +12,13 @@ const props = defineProps({
 const form = useForm({
     name: props.ad ? props.ad.title :  "",
     description : props.ad ? props.ad.advertisable.description : "",
-    price: props.ad ? props.ad.price : 0,
+    price: props.ad ? props.ad.price : "",
     isNew : props.ad ? props.ad.advertisable.isNew : 1,
     fixed: props.ad ? props.ad.fixed : 1,
     brand: props.ad ? props.ad.advertisable.brand : "",
     type: "equipment",
     size : props.ad ? props.ad.advertisable.size : 0,
+    vrsta : props.ad ? props.ad.advertisable.vrsta : 0,
     homologacija: props.ad ? props.ad.advertisable.homologacija : 0,
     homologacija_info : props.ad ? props.ad.advertisable.homologacija_info : "",
     images: [],
@@ -27,6 +28,7 @@ const openFileInput = () => {
     fileInput.value.click()
 }
 const handleFileChange = () => {
+    form.images = []
     const files = fileInput.value.files;
     if (files.length>5){
         message.value= "Maksimalan broj slika je 5"
@@ -65,7 +67,7 @@ if(form.errors){
             </div>
             <form  @submit.prevent="ruta" class="signupForm" name="signupform">
                 <h2>Oglas za opremu</h2>
-                <ul class="noBullet">
+                <ul class="noBullet" style="display: flex;flex-direction: column; align-items: center;">
                     <li>
                         <label for="name"></label>
                         <input v-model="form.name" type="text" class="inputFields" id="name" name="name" placeholder="Naslov oglasa"  />
@@ -87,29 +89,63 @@ if(form.errors){
                         <input type="text" v-model="form.price" class="inputFields" id="cena" name="cena" placeholder="Cena(€)"  required/>
                         <InputError v-if="form.errors.price" :message="form.errors.price" />
                     </li>
-                    <select v-model="form.size" name="discipline" id="discipline" class="inputFields"
-                            style="color: rgb(0, 0, 0);">homologacija
-                        <option value="0" selected>-- Izaberite Velicinu --</option>
-                        <option value="S">
-                            S
+                    <li>
+                        <select v-model="form.size" name="discipline" id="discipline" class="inputFields"
+                                style="color: rgb(0, 0, 0);">
+                            <option value="0" selected>-- Izaberite Velicinu --</option>
+                            <option value="S">
+                                S
+                            </option>
+                            <option value="M">
+                                M
+                            </option>
+                            <option value="L">
+                                L
+                            </option>
+                            <option value="XL">
+                                XL
+                            </option>
+                            <option value="XXL">
+                                XXL
+                            </option>
+                            <option value="XXXL">
+                                XXXL
+                            </option>
+                        </select>
+                    </li>
+
+                    <li>
+
+
+                    <select v-model="form.vrsta"  name="vrsta" id="vrsta" class="inputFields"
+                            style="color: rgb(0, 0, 0);">
+                        <option value="0" selected>-- Izaberite vrstu --</option>
+                        <option value="Kombinezon">
+                            Kombinezon
                         </option>
-                        <option value="M">
-                            M
+                        <option value="Kaciga">
+                            Kaciga
                         </option>
-                        <option value="L">
-                            L
+                        <option value="Pojas">
+                            Pojas
                         </option>
-                        <option value="XL">
-                            XL
+                        <option value="Hans">
+                            Hans
                         </option>
-                        <option value="XXL">
-                            XXL
+                        <option value="Rukavice">
+                            Rukavice
                         </option>
-                        <option value="XXXL">
-                            XXXL
+                        <option value="Podkapa">
+                            Podkapa
+                        </option>
+                        <option value="Patike">
+                            Patike
+                        </option>
+                        <option value="Sediste">
+                            Sediste-Kadice
                         </option>
                     </select>
-
+                    </li>
                     <li style="display: flex; flex-direction: row; justify-items: center;align-items: center;justify-content: center; gap:0.4rem; margin-top: 30px;">
                         <label for="">Novo? </label>
                         <label for="da">Da</label>
@@ -165,7 +201,7 @@ if(form.errors){
                             </div>
                         </div>
                         <div v-if="isEditting">
-                            Slike mozete promeniti ovde
+                          Za menjanje slika, obrisite oglas pa kreirajte opet!
                         </div>
                     </li>
 
@@ -176,16 +212,19 @@ if(form.errors){
             </form>
         </div>
     </div>
+
 </template>
 <script>
 
-export default {
 
+export default {
 
     methods: {
         emitAction() {
             this.$emit('arrow-clicked');
-        }
+        },
+
+
     },
 
 };

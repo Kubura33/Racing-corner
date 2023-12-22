@@ -14,8 +14,8 @@ const form = useForm({
     name: props.ad ? props.ad.title :  "",
     description: props.ad ? props.ad.advertisable.description : "",
     manufacter: props.ad ? props.ad.advertisable.manufacter : 0,
-    price: props.ad ? props.ad.price : 0,
-    number_of_tires: props.ad ? props.ad.advertisable.number_of_tires : 0,
+    price: props.ad ? props.ad.price : "",
+    number_of_tires: props.ad ? props.ad.advertisable.number_of_tires : "",
     dot: props.ad ? props.ad.advertisable.dot : "",
     dimensions: props.ad ? props.ad.advertisable.dimensions : "",
     images: [],
@@ -83,7 +83,7 @@ const ruta = computed(()=> {
                     <li>
                         <label for="discipline"></label>
                         <select v-model="form.manufacter" name="discipline" id="discipline" class="inputFields"
-                                style="color: white;">
+                                style="color: rgb(0, 0, 0);">
                             <option value="0" selected>-- Izaberite proizvodjaca --</option>
                             <option value="Yokohama">
                                 Yokohama
@@ -186,7 +186,7 @@ const ruta = computed(()=> {
                             </div>
                         </div>
                         <div v-if="isEditting">
-                            Slike mozete promeniti ovde
+                            Za menjanje slika, obrisite oglas pa kreirajte opet!
                         </div>
                     </li>
                     <li id="center-btn" style="margin-top: 50px;">

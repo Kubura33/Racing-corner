@@ -38,7 +38,7 @@ class RegisteredUserController extends Controller
             'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
             'phone' => ['required','string','max:14'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'username' => ['required', 'string'],
+            'username' => ['required', 'string', 'unique:'.User::class],
             'lastname' => ['required', 'string'],
         ]);
 
@@ -55,6 +55,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('home');
+        return redirect()->route('home')->with('success', 'Dobrodosli, uspesno ste se registrovali! Molimo vas verifikujte svoj e-mail.');
     }
 }

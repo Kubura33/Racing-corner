@@ -110,7 +110,7 @@ const props = defineProps(
                 <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
                     aria-labelledby="panelsStayOpen-headingTwo">
                     <div class="accordion-body">
-                        <strong>racing-corner@gmail.com</strong>
+                        <strong>officialracingcorner@racing-corner.com</strong>
                     </div>
                 </div>
             </div>

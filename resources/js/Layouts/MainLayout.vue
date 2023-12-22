@@ -65,7 +65,7 @@
     <div @click="messages.success=null" v-if="messages.success" class="alert alert-success" role="alert">
         {{ messages.success}}
     </div>
-    <div onclick="messages.error=null" v-if="messages.error" class="alert alert-danger" role="alert">
+    <div @click="messages.error=null" v-if="messages.error" class="alert alert-danger" role="alert">
         {{ messages.error}}
     </div>
     <!--    //Start of main content of the page-->
@@ -99,7 +99,7 @@
             <div class="col-md-5 offset-md-1 mb-3">
                 <form>
                     <h5>Pisite nam na nasu email adresu</h5>
-                    <p>nsadn@nasda.com</p>
+                    <p>officialracingcorner@racing-corner.com</p>
                 </form>
             </div>
         </div>

@@ -48,7 +48,6 @@ class ProfileController extends Controller
                 'lastname' => ['required'],
                 'username' => ['required', Rule::unique('users')->ignore(auth()->id())],
                 'phone' => ['required', new PhoneRule(), Rule::unique('users')->ignore(auth()->id())],
-                'email'=> ['required',  Rule::unique('users')->ignore($user->id)]
             ]
         );
         $user->update(
@@ -57,7 +56,6 @@ class ProfileController extends Controller
                 'lastname' => $request->lastname,
                 'username' => $request->username,
                 'phone' => $request->phone,
-                'email' => $request->email
             ]
         );
         if($request->oldPassword && $request->newPassword){

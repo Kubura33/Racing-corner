@@ -38,7 +38,8 @@ class CreateAdRequest extends FormRequest
             'dot' => ['required_if:type, tires'],
             'dimensions' => ['required_if:type, tires'],
             'model' => ['required_if:type, tires'],
-            'number_of_tires' => ['required_if:type, tires']
+            'number_of_tires' => ['required_if:type, tires'],
+            'vrsta' => ['required_if:type,equipment'],
 
         ];
     }
@@ -69,6 +70,7 @@ class CreateAdRequest extends FormRequest
             'model.required_if' => "Ovo polje je obavezno",
             'year.required_if' => "Godiste je obavezno",
             'number_of_tires.required_if' => "Broj guma je obavezan",
+            'vrsta.required_if' => "Izaberite vrstu!",
         ];
     }
 }

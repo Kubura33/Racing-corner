@@ -8,10 +8,24 @@ use Inertia\Inertia;
 
 class EquipmentController extends Controller
 {
-    public function __invoke(){
+    public function __invoke(Request $request){
+        $filters = $request->only(['priceFrom', 'priceTo', 'vrsta', 'size', 'search']);
+        $selectedVrsta = [];
+        $selectedSize = [];
+        if(isset($filters['vrsta'])){
+            $selectedVrsta = array_keys(array_filter($filters['vrsta'], function ($value) {
+                return $value === "true";
+            }));
+        }
+        if(isset($filters['size'])){
+            $selectedSize = array_keys(array_filter($filters['size'], function ($value) {
+                return $value === "true";
+            }));
+        }
         $adsWithImages = Ad::with( 'user')
-            ->where('advertisable_type', 'equipment')
-            ->get()
+            ->where('advertisable_type', 'equipment')->filter($filters)->vrsta($selectedVrsta)
+            ->equipmentSize($selectedSize)
+            ->paginate(10)->withQueryString()
             ->map(function ($ad) {
                 $ad->load('advertisable.imageable');
                 $ad->image_path = $ad->advertisable->imageable->map(function ($imageable) {
@@ -23,7 +37,8 @@ class EquipmentController extends Controller
 
         return Inertia::render('Home/EquipmentPage',
         [
-            'ads' => $adsWithImages
+            'ads' => $adsWithImages,
+            'filters' => $filters,
         ]);
     }
 }

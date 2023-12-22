@@ -10,7 +10,13 @@ use App\Enums\RoleEnums;
 class AdminController extends Controller
 {
     public function index(){
-        return Inertia::render('Admin/Dashboard');
+        return Inertia::render('Admin/Dashboard',
+        [
+            'numberOfUsers' => count(User::all()),
+            'numberOfAds' => count(Ad::all()),
+            'numberOfPremiumUsers' => count(User::where('role', RoleEnums::Premium->value)->get()),
+
+        ]);
     }
 
     public function ads(){

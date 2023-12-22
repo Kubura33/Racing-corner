@@ -8,8 +8,9 @@ use Inertia\Inertia;
 
 class PartsController extends Controller
 {
-    public function __invoke(){
-        $ads = Ad::with('user')->where('advertisable_type', 'parts')->get();
+    public function __invoke(Request $request){
+        $filters = $request->only(['priceFrom', 'priceTo', 'search']);
+        $ads = Ad::with('user')->where('advertisable_type', 'parts')->filter($filters)->paginate(10)->withQueryString();
         $adsWithImages = $ads->map(function ($ad) {
             // Eager load only the necessary relationships
             $ad->load('advertisable.imageable');
@@ -29,7 +30,8 @@ class PartsController extends Controller
         return Inertia::render(
             'Home/PartsPage',
             [
-                'ads' => $adsWithImages
+                'ads' => $adsWithImages,
+                'filter' => $filters,
             ]
         );
     }

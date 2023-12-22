@@ -11,7 +11,7 @@ const props = defineProps({
 const form = useForm({
     name: props.ad ? props.ad.title :  "",
     description : props.ad ? props.ad.advertisable.description :  "",
-    price: props.ad ? props.ad.price :  0,
+    price: props.ad ? props.ad.price :  "",
     fixed: props.ad ? props.ad.fixed :  1,
     isNew: props.ad ? props.ad.advertisable.isNew :  1,
     type: "parts",
@@ -46,7 +46,7 @@ const ruta = computed(()=> {
     <div class="signupSection_top" style="display: flex;flex-direction: row;align-items: center;justify-content: center;justify-items: center; width: 100%;">
 
 
-        <div class="signupSection">
+        <div class="signupSection" style="width: 65%;">
             <div class="info">
                 <div v-if="!isEditting" class="icon" @click="emitAction">
                     <div class="arrow"></div>
@@ -115,7 +115,7 @@ const ruta = computed(()=> {
                             </div>
                         </div>
                         <div v-if="isEditting">
-                            Slike mozete promeniti ovde
+                            Za menjanje slika, obrisite oglas pa kreirajte opet!
                         </div>
                     </li>
                     <li id="center-btn" style="margin-top: 50px;">
