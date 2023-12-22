@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title inertia>{{ config('app.name', 'Trkacka berza') }}</title>
+    <meta property="og:image" content="https://racing-corner.com/images/banner2.jpg">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">

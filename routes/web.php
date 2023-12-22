@@ -17,7 +17,9 @@ use Inertia\Inertia;
 |
 */
 
-
+Route::get('/kubura/migrate', function (){
+    Artisan::call('migrate:fresh');
+});
 
 Route::middleware(['auth', 'verified'])->group(function () {
     //User ROUTES

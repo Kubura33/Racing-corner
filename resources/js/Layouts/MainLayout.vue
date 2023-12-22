@@ -80,18 +80,6 @@
     <footer class="py-5">
         <div class="row" style="text-align:center">
             <div class="col- col-md-2 mb-3" id="col">
-                <h5>Ponuda</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Kruzne trke</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Brdske trke</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Rally trke</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Autocross</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Drift</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Karting</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Slalom</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">SAKSS</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">AMSS</a></li>
-                </ul>
             </div>
 
 
@@ -105,7 +93,7 @@
         </div>
 
         <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-            <p>&copy;2023</p>
+            <p>Stranicu kreirali: <a href="https://www.linkedin.com/in/andrej-vojinovic-2ab27b279/" style="text-decoration: none; color:teal;">Andrej Vojinovic</a> i <a style="text-decoration: none; color:teal;" href="https://www.linkedin.com/in/igor-kuburovic-069503222/">Igor Kuburovic </a>&copy;2023</p>
         </div>
     </footer>
     <!--  //end of footer-->
