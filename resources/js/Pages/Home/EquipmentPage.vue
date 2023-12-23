@@ -68,9 +68,9 @@
                             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                                  data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    <input type="number" id="min-price" name="min-price" value="0">
+                                    <input type="number" id="min-price" name="min-price" max="100000" value="0" v-model="filterForm.priceFrom">
                                     <label for="min-price">Min</label> <br>
-                                    <input type="number" id="max-price" name="max-price" value="1000000">
+                                    <input type="number" id="max-price" name="max-price" :min="filterForm.priceFrom ? filterForm.priceFrom + 1 : 1" value="1000000" v-model="filterForm.priceTo">
                                     <label for="max-price">Max</label> <br><br>
                                 </div>
                             </div>
@@ -166,7 +166,7 @@ const props = defineProps({
 })
 
 const filterForm = useForm({
-    priceFrom: props.filters ? props.filters.priceFrom : null,
+    priceFrom: props.filters ? props.filters.priceFrom : 0,
     priceTo: props.filters ? props.filters.priceTo : null,
     search : props.filters ? props.filters.search : null,
     vrsta: props.filters?.vrsta ?? {
@@ -199,7 +199,7 @@ const filter = () => {
 
 }
 const clear = () => {
-    filterForm.priceFrom = null
+    filterForm.priceFrom = 0
     filterForm.priceTo = null
     filterForm.search = null
     filterForm.vrsta = {

@@ -107,7 +107,7 @@ const props = defineProps({
 console.log(props.filters)
 
 const filterForm = useForm({
-    priceFrom : props.filters ? props.filters.priceFrom : null,
+    priceFrom : props.filters ? props.filters.priceFrom : 0,
     priceTo : props.filters ? props.filters.priceTo :  null,
     search : props.filters ? props.filters.search : null,
     disciplines: props.filters?.disciplines ?? {
@@ -133,7 +133,7 @@ const filter = () => {
 
 }
 const clear = () => {
-    filterForm.priceFrom = null
+    filterForm.priceFrom = 0
     filterForm.priceTo = null
     filterForm.search = null
     filterForm.disciplines = {

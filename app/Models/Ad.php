@@ -29,7 +29,7 @@ class Ad extends Model
         return $query
             ->when(
             $filters['priceFrom'] ?? false,
-            fn ($query, $value) => $query->where('price', '=>', $value)
+            fn ($query, $value) => $query->where('price', '>=', $value)
         )
             ->when(
             $filters['priceTo'] ?? false,
