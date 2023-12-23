@@ -217,9 +217,13 @@ class AdController extends Controller
      */
     public function destroy(Ad $ad)
     {
-        Storage::disk('adImages')->delete(Image::where('advertisable_type', $ad->advertisable_type)
-            ->where('advertisable_id', $ad->advertisable_id)->get()
-            ->imagePath);
+        $images = Image::where('imageable_type', $ad->advertisable_type)
+            ->where('imageable_id', $ad->advertisable_id)->get();
+        foreach ($images as $image){
+        Storage::disk('adImages')->delete(
+            $image->imagePath);
+        }
+
         Image::delete()->where('advertisable_type', $ad->advertisable_type)
             ->where('advertisable_id', $ad->advertisable_id);
         $ad->delete();

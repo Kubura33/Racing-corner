@@ -64,7 +64,7 @@
                                 <div class="accordion-body">
                                     <input type="number" id="min-price" name="min-price" value="0" v-model.number="filterForm.priceFrom">
                                     <label for="min-price">Min</label> <br>
-                                    <input type="number" id="max-price" name="max-price" :min="filterForm.priceFrom+1" :value="filterForm.priceFrom+1" v-model.number="filterForm.priceTo">
+                                    <input type="number" id="max-price" name="max-price" v-model.number="filterForm.priceTo">
                                     <label for="max-price">Max</label> <br><br>
                                 </div>
                             </div>
@@ -107,7 +107,7 @@ const props = defineProps({
 console.log(props.filters)
 
 const filterForm = useForm({
-    priceFrom : props.filters ? props.filters.priceFrom : 0,
+    priceFrom : props.filters ? props.filters.priceFrom : null,
     priceTo : props.filters ? props.filters.priceTo :  null,
     search : props.filters ? props.filters.search : null,
     disciplines: props.filters?.disciplines ?? {
@@ -133,7 +133,7 @@ const filter = () => {
 
 }
 const clear = () => {
-    filterForm.priceFrom = 0
+    filterForm.priceFrom = null
     filterForm.priceTo = null
     filterForm.search = null
     filterForm.disciplines = {
