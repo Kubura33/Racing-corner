@@ -91,7 +91,7 @@ if(form.errors){
                     </li>
                     <li>
                         <select v-model="form.size" name="discipline" id="discipline" class="inputFields"
-                                style="color: rgb(0, 0, 0);">
+                                style="color: rgb(0, 0, 0); background-color: white; opacity: 0.5;" >
                             <option value="0" selected>-- Izaberite Velicinu --</option>
                             <option value="S">
                                 S
@@ -118,7 +118,7 @@ if(form.errors){
 
 
                     <select v-model="form.vrsta"  name="vrsta" id="vrsta" class="inputFields"
-                            style="color: rgb(0, 0, 0);">
+                            style="color: rgb(0, 0, 0); background-color: white; opacity: 0.5;">
                         <option value="0" selected>-- Izaberite vrstu --</option>
                         <option value="Kombinezon">
                             Kombinezon

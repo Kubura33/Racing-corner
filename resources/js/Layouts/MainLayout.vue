@@ -86,14 +86,14 @@
 
             <div class="col-md-5 offset-md-1 mb-3">
                 <form>
-                    <h5>Pisite nam na nasu email adresu</h5>
-                    <p>officialracingcorner@racing-corner.com</p>
+                    <h5>Pišite nam na našu email adresu</h5>
+                    <p>official@racing-corner.com</p>
                 </form>
             </div>
         </div>
 
-        <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-            <p>Stranicu kreirali: <a href="https://www.linkedin.com/in/andrej-vojinovic-2ab27b279/" style="text-decoration: none; color:teal;">Andrej Vojinovic</a> i <a style="text-decoration: none; color:teal;" href="https://www.linkedin.com/in/igor-kuburovic-069503222/">Igor Kuburovic </a>&copy;2023</p>
+        <div class=" border-top" style="text-align: center; padding-top: 5%;">
+            <p> <a href="https://www.linkedin.com/in/andrej-vojinovic-2ab27b279/" style="text-decoration: none; color:teal;">Andrej Vojinovic</a> - <a style="text-decoration: none; color:teal;" href="https://www.linkedin.com/in/igor-kuburovic-069503222/">Igor Kuburovic </a>&copy;2023</p>
         </div>
     </footer>
     <!--  //end of footer-->
@@ -107,3 +107,36 @@ const page = usePage();
 const user = computed(() => page.props.auth.user)
 const messages = computed( () => page.props.messages)
 </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+        navbarCollapse.addEventListener('click', function(event) {
+            const target = event.target;
+            const isNavLink = target.closest('.nav-link');
+
+            if (isNavLink) {
+                const isDropdownItem = target.closest('.dropdown-item');
+                const isOstalo = target.closest('.nav-item.dropdown');
+
+                if (!isDropdownItem && !isOstalo && navbarCollapse.classList.contains('show')) {
+                    navbarCollapse.classList.remove('show');
+                }
+            }
+        });
+
+        document.addEventListener('click', function(event) {
+            const target = event.target;
+            const isNavbarToggler = target.closest('.navbar-toggler');
+            const isNavbarCollapse = target.closest('.navbar-collapse');
+            const isOstalo = target.closest('.nav-item.dropdown');
+
+            if ((!isNavbarToggler && !isNavbarCollapse && navbarCollapse.classList.contains('show')) || (!isOstalo && navbarCollapse.classList.contains('show'))) {
+                navbarCollapse.classList.remove('show');
+            }
+        });
+    });
+</script>
+
+
+

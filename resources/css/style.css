@@ -431,7 +431,7 @@ span {
         transform: translate(-50%, -40%);
         margin: 0;
         color: transparent;
-        -webkit-text-stroke: 0.1px rgb(255, 255, 255);
+        -webkit-text-stroke: 0.2px rgb(255, 255, 255);
         z-index: 1;
     }
     .banner:active h2{
@@ -946,7 +946,8 @@ span {
 }
 
 .login-html .tab {
-    font-size: 22px;
+    color: #bfc7c9;
+    font-size: 18px;
     margin-right: 15px;
     padding-bottom: 5px;
     margin: 0 15px 10px 0;
@@ -1054,7 +1055,7 @@ span {
 }
 
 .sign-in-htm {
-    margin-top: 170px;
+    margin-top: 10%;
 }
 
 .sign-up-htm {
@@ -1492,11 +1493,11 @@ span {
         background: linear-gradient(100deg, #A3C6C4 0%, #8ca7a5 100%);
         color: rgb(0, 0, 0);
         padding: 7px;
-        padding-left: 25px;
         text-align: center;
         width: 40%;
         height: 39px;
         text-align: center;
+        font-size: small;
     }
 
     .cena_traka::before {
@@ -1593,6 +1594,9 @@ span {
     #max-price {
         width: 95px;
     }
+    .btn-outline-danger{
+        margin-left: 10px;
+    }
 }
 
 /* Stil za Mobilni telefon (širina 100% širine ekrana)*/
@@ -1628,6 +1632,10 @@ span {
     #max-price {
         width: 100%;
     }
+    .btn-outline-danger{
+        margin-top: 2%;
+        width: 78px;
+    }
 }
 
 /*--/filteri--*/
@@ -1635,9 +1643,9 @@ span {
 /* Stil za Racunar (širina 100% širine ekrana) */
 @media only screen and (min-width: 768px) {
     .profil-info {
-        width: 50%;
+        width: 94%;
         margin-top: 3%;
-        margin-left: 2%;
+        margin-left: 3%;
         padding: 5%;
         border: 0.5px solid gray;
         border-radius: 10px;
@@ -1908,8 +1916,12 @@ span {
     #accordionPanelsStayOpenExample{
         padding: 0;
     }
+    #accordionPanelsStayOpenExample .accordion-item{
+        margin-bottom: 2%;
+    }
 }
 /*--/How to--*/
+
 /*--footer--*/
 footer {
     background-color: #354649;

@@ -11,7 +11,7 @@ const props = defineProps(
 <template>
     <div class="banner">
         <div class="banner_slika">
-            <img src="/images/banner2.jpg" alt="">
+            <img src="/images/banner2.jpg" alt="Race Car">
             <h2>
                 “The only way to define your limits is by going beyond them.”
             </h2>
@@ -61,13 +61,13 @@ const props = defineProps(
     <div class="oglasi_home">
         <Link :href="route('ads.show', { ad: ad.id })" class="wrap" v-for="ad in ads" :key="ad.id">
         <div class="slika">
-            <a href="">
-                <img :src="ad.image_path[0]" alt="">
+            <a href="" >
+                <img :src="ad.image_path[0]" alt="Oglas">
             </a>
             <div class="data">
-                <span v-if="ad.isSold==1" style="font-weight: bold;color: red; font-size: 8px;">(PRODATO)</span>
+                
                 <h4>
-                    {{ ad.title }}
+                    {{ ad.title }} <span v-if="ad.isSold==1" style="font-weight: bold;color: red; font-size: 8px; display: inline;">(PRODATO)</span>
                 </h4>
 
             </div>
@@ -80,7 +80,7 @@ const props = defineProps(
         <div class="accordion" id="accordionPanelsStayOpenExample">
             <div class="accordion-item" id="accordion-item1">
                 <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
                         aria-controls="panelsStayOpen-collapseOne">
                         Kako okačiti oglas
@@ -111,7 +111,7 @@ const props = defineProps(
                 <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
                     aria-labelledby="panelsStayOpen-headingTwo">
                     <div class="accordion-body">
-                        <strong>officialracingcorner@racing-corner.com</strong>
+                        <strong>official@racing-corner.com</strong>
                     </div>
                 </div>
             </div>

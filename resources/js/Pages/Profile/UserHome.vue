@@ -1,5 +1,5 @@
 <template>
-    <div style="display: flex;flex-direction: row; gap: 5em;">
+    <div style="flex-direction: row; gap: 5em;">
         <div class="profil-info">
             <h3>Vaši podaci</h3>
             <div class="mb-3">
@@ -37,7 +37,7 @@
         </div>
         <div style="height: 100%; width: 100%;margin-right: 40px;">
             <h3 style="margin-top: 80px; text-align: center">Oglasi koje pratite</h3>
-            <div style="border: 3px solid black; height: 800px; display: flex; flex-direction: column; overflow: auto;">
+            <div style="border: 3px solid black; height: auto; display: flex; flex-direction: column; overflow: auto;">
                 <div v-for="like in user.likes" style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; padding:15px; border-bottom: 2px solid teal;">
                     <Link :href="route('ads.show', {ad : like.id})" style="text-decoration: none; color: #3498db; transition: color 0.3s ease; font-weight: bold;" >
                         {{like.title}}

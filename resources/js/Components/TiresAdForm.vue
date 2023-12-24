@@ -83,7 +83,7 @@ const ruta = computed(()=> {
                     <li>
                         <label for="discipline"></label>
                         <select v-model="form.manufacter" name="discipline" id="discipline" class="inputFields"
-                                style="color: rgb(0, 0, 0);">
+                                style="color: rgb(0, 0, 0); background-color: white; opacity: 0.5;">
                             <option value="0" selected>-- Izaberite proizvodjaca --</option>
                             <option value="Yokohama">
                                 Yokohama

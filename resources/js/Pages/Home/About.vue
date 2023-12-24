@@ -1,8 +1,6 @@
 <template>
-    <div class="banner">
-    </div>
     <div class="conteiner">
-        <div class="o_nama" style="display: flex;flex-direction: column; gap: 1em; padding: 3%; font-size: 27px;">
+        <div class="o_nama" style="display: flex;flex-direction: column; gap: 1em; padding: 5%; font-size: large;">
             <span>
                 Naša platforma je specijalno dizajnirana kako bismo trkačima na Balkanu pružili jednostavan i efikasan
                 način za kupovinu i prodaju delova, opreme, guma i automobila. Odlučili smo stvoriti

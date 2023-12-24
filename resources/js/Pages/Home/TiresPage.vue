@@ -20,7 +20,7 @@
                                    placeholder="Search">
                         </div>
                     </div>
-                    <div class="accordion" id="accordionExample" style="min-height: 500px;">
+                    <div class="accordion" id="accordionExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
@@ -71,18 +71,18 @@
                         </div>
                     </div>
                     <input type="submit" class="btn btn-outline-secondary" value="Pretraži">
-                    <input type="submit" class="btn btn-outline-secondary" value="Ponisti" @click.prevent="clear" style="margin-left: 10px;">
+                    <input type="submit" class="btn btn-outline-danger" value="Poništi" @click.prevent="clear">
                 </form>
             </div>
             <div class="oglasi">
                 <div class="wrap" v-for="ad in ads" :key="ad.id">
                     <div class="slika">
                         <Link :href="route('ads.show', {ad:ad.id})">
-                            <img :src="ad.image_path[0]" alt="">
+                            <img :src="ad.image_path[0]" alt="Auto gume">
                         </Link>
                         <div class="data">
                             <h4>
-                                {{ ad.title }} <span v-if="ad.isSold==1" style="font-weight: bold;color: red; font-size: 8px;">(PRODATO)</span>
+                                {{ ad.title }} <span v-if="ad.isSold==1" style="font-weight: bold;color: red; font-size: 8px; display: inline;">(PRODATO)</span>
                             </h4>
                         </div>
                         <span class="cena_traka" id="traka_cena">{{ ad.price }} &euro;</span>

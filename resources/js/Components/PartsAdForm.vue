@@ -46,7 +46,7 @@ const ruta = computed(()=> {
     <div class="signupSection_top" style="display: flex;flex-direction: row;align-items: center;justify-content: center;justify-items: center; width: 100%;">
 
 
-        <div class="signupSection" style="width: 65%;">
+        <div class="signupSection">
             <div class="info">
                 <div v-if="!isEditting" class="icon" @click="emitAction">
                     <div class="arrow"></div>

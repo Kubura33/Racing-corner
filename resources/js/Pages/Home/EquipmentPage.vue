@@ -134,18 +134,18 @@
                         </div>
                     </div>
                     <input type="submit" class="btn btn-outline-secondary" value="Pretraži">
-                    <input type="submit" class="btn btn-outline-secondary" value="Ponisti" @click.prevent="clear"
-                           style="margin-left: 10px;"></form>
+                    <input type="submit" class="btn btn-outline-danger" value="Poništi" @click.prevent="clear"
+                           ></form>
             </div>
             <div class="oglasi" v-for="ad in ads" :key="ad.id">
                 <div class="wrap">
                     <div class="slika">
                         <Link :href="route('ads.show', { ad: ad.id })">
-                            <img :src="ad.image_path[0]" alt="">
+                            <img :src="ad.image_path[0]" alt="Trkačka oprema">
                         </Link>
                         <div class="data">
                             <h4>
-                                {{ ad.title }}<span v-if="ad.isSold==1" style="font-weight: bold;color: red; font-size: 8px;">(PRODATO)</span>
+                                {{ ad.title }}<span v-if="ad.isSold==1" style="font-weight: bold;color: red; font-size: 8px; display: inline;">(PRODATO)</span>
                             </h4>
                         </div>
                         <span class="cena_traka" id="traka_cena">{{ ad.price }} &euro;</span>
