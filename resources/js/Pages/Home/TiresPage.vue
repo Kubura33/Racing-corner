@@ -104,7 +104,6 @@ const props = defineProps({
     ads : Array,
     filters : Object
 })
-console.log(props.filters)
 
 const filterForm = useForm({
     priceFrom : props.filters ? props.filters.priceFrom : null,

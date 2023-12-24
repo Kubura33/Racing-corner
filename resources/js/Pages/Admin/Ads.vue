@@ -7,7 +7,7 @@ const props = defineProps(
         ads : Array,
     }
 )
-console.log(props.ads)
+
 </script>
 <template>
     <div style="padding: 2%;">

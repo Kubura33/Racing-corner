@@ -6,7 +6,6 @@ const props = defineProps({
     ad : Object,
 })
 const adType = props.ad.advertisable_type
-console.log(props.ad)
 
 </script>
 <template>

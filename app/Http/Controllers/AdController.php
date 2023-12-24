@@ -15,6 +15,7 @@ use App\Models\VehicleImages;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Illuminate\Foundation\Application;
@@ -217,16 +218,23 @@ class AdController extends Controller
      */
     public function destroy(Ad $ad)
     {
-        $images = Image::where('imageable_type', $ad->advertisable_type)
-            ->where('imageable_id', $ad->advertisable_id)->get();
-        foreach ($images as $image){
-        Storage::disk('adImages')->delete(
-            $image->imagePath);
+        $images = $ad->advertisable->imageable;
+        foreach ($images as $image) {
+            try {
+                if (Storage::disk('adImages')->exists($image->image)) {
+                    Storage::disk('adImages')->delete($image->image);
+                    //unlink($image->image);
+                }
+
+                $image->delete();
+            } catch (\Exception $e) {
+                Log::error('Error deleting image: ' . $e->getMessage());
+            }
         }
 
-        Image::delete()->where('advertisable_type', $ad->advertisable_type)
-            ->where('advertisable_id', $ad->advertisable_id);
+
+
         $ad->delete();
-        return redirect()->back()->with('success', 'Oglas uspesno obrisan');
+        return redirect()->route('home')->with('success', 'Oglas uspesno obrisan');
     }
 }

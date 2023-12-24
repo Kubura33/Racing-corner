@@ -50,9 +50,7 @@ const ruta = computed(() => {
     else
         return store()
 })
-if(form.errors){
-    console.log(form.errors)
-}
+
 </script>
 <template>
     <div class="signupSection_top" style="display: flex;flex-direction: row;align-items: center;justify-content: center;justify-items: center; width: 100%;">

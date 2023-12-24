@@ -88,9 +88,9 @@
                     <span v-else style="font-weight: bold; color: red;">Oglas je oznacen kao prodat, molimo vas obrisite ga ako vam vise nije od znacaja</span>
                 </td>
                 <td>
-                    <Link :href="route('ads.destroy', {ad : ad.id})" as="button" method="delete" class="btn btn-danger"
-                          @click="confirmDelete(index)">Obriši
-                    </Link>
+                    <button  class="btn btn-danger"
+                          @click.prevent="confirmDelete(ad)">Obriši
+                    </button>
                 </td>
             </tr>
 
@@ -116,18 +116,25 @@
     </div>
 </template>
 <script setup>
-import {ref} from 'vue';
 import {Link, useForm} from "@inertiajs/vue3";
 import InputError from "@/Components/InputError.vue";
-
+const deleteForm = useForm(
+    {
+        ad:Object
+    }
+)
 const props = defineProps({
     ads: Array,
     user: Object
 })
-console.log(props.user)
-const confirmDelete = (index) => {
+
+const confirmDelete = (ad) => {
     if (window.confirm('Da li ste sigurni da želite obrisati ovaj oglas?')) {
-        items.value.splice(index, 1);
+        deleteForm.ad = ad
+        deleteForm.delete(route('ads.destroy', {ad : ad.id}))
+    }
+    else{
+        console.log("Do I work?")
     }
 };
 const serbian = (val) => {

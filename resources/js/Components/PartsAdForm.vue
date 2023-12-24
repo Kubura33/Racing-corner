@@ -29,7 +29,6 @@ const handleFileChange = () => {
     else{
     for(let i=0;i<files.length;i++){
         form.images.push(files[i])
-        console.log(files[i])
     }
     }
 }

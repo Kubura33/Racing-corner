@@ -125,15 +125,23 @@ const messages = computed( () => page.props.messages)
             }
         });
 
-        document.addEventListener('click', function(event) {
-            const target = event.target;
-            const isNavbarToggler = target.closest('.navbar-toggler');
-            const isNavbarCollapse = target.closest('.navbar-collapse');
-            const isOstalo = target.closest('.nav-item.dropdown');
+        // document.addEventListener('click', function(event) {
+        //     const target = event.target;
+        //     const isNavbarToggler = target.closest('.navbar-toggler');
+        //     const isNavbarCollapse = target.closest('.navbar-collapse');
+        //     const isOstalo = target.closest('.nav-item.dropdown');
+        //
+        //     if ((!isNavbarToggler && !isNavbarCollapse && navbarCollapse.classList.contains('show')) || (!isOstalo && navbarCollapse.classList.contains('show'))) {
+        //         navbarCollapse.classList.remove('show');
+        //     }
+        // });
+        const dropdownItems = document.querySelectorAll('.dropdown-item');
 
-            if ((!isNavbarToggler && !isNavbarCollapse && navbarCollapse.classList.contains('show')) || (!isOstalo && navbarCollapse.classList.contains('show'))) {
-                navbarCollapse.classList.remove('show');
-            }
+        dropdownItems.forEach(function(item) {
+            item.addEventListener('click', function() {
+                // Hide the navbar
+                document.querySelector('.navbar-collapse').classList.remove('show');
+            });
         });
     });
 </script>
