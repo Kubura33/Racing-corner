@@ -4,6 +4,11 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+main {
+    flex: 1;
+}
+
+
 /* Stilovi za prikazivanje jedne slike na mobilnom ekranu */
 
 @media screen and (max-width: 767px) {
@@ -229,7 +234,8 @@ span {
         color: white;
         z-index: 0;
     }
-    .savezi{
+
+    .savezi {
         width: 100%;
         height: 500px;
         background-color: rgb(221, 221, 221);
@@ -239,10 +245,12 @@ span {
         justify-self: normal;
         padding: 3%;
     }
-    .savezi a{
+
+    .savezi a {
         text-decoration: none;
     }
-    .savezi h2{
+
+    .savezi h2 {
         text-align: center;
         flex-wrap: nowrap;
         height: 20px;
@@ -251,7 +259,8 @@ span {
         font-weight: bold;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     }
-    .zastave{
+
+    .zastave {
         flex-wrap: wrap;
         width: 30%;
         height: 130px;
@@ -261,16 +270,19 @@ span {
         margin-top: 35px;
         transition: transform 0.8s ease;
     }
-    .zastave:hover{
+
+    .zastave:hover {
         transform: scale(1.1);
     }
-    #srbija{
+
+    #srbija {
         background-image: url('../../public/images/srbija.jpg');
         background-size: cover;
         background-position: center;
         text-align: center;
     }
-    #srbija h4{
+
+    #srbija h4 {
         margin-top: 0;
         font-size: 40px;
         margin-top: 14%;
@@ -278,7 +290,8 @@ span {
         -webkit-text-stroke: 2px rgb(0, 0, 0);
         z-index: 1;
     }
-    #srbija:hover h4{
+
+    #srbija:hover h4 {
         margin-top: 0;
         font-size: 40px;
         margin-top: 14%;
@@ -286,13 +299,15 @@ span {
         -webkit-text-stroke: 1px rgb(0, 0, 0);
         z-index: 0;
     }
-    #hrvatska{
+
+    #hrvatska {
         background-image: url('../../public/images/hrvatska.jpg');
         background-size: cover;
         background-position: center;
         text-align: center;
     }
-    #hrvatska h4{
+
+    #hrvatska h4 {
         margin-top: 0;
         font-size: 40px;
         margin-top: 14%;
@@ -300,7 +315,8 @@ span {
         -webkit-text-stroke: 2px rgb(0, 0, 0);
         z-index: 1;
     }
-    #hrvatska:hover h4{
+
+    #hrvatska:hover h4 {
         margin-top: 0;
         font-size: 40px;
         margin-top: 14%;
@@ -309,13 +325,14 @@ span {
         z-index: 0;
     }
 
-    #makedonija{
+    #makedonija {
         background-image: url('../../public/images/makedonija.jpg');
         background-size: cover;
         background-position: center;
         text-align: center;
     }
-    #makedonija h4{
+
+    #makedonija h4 {
         margin-top: 0;
         font-size: 40px;
         margin-top: 14%;
@@ -323,7 +340,8 @@ span {
         -webkit-text-stroke: 2px rgb(0, 0, 0);
         z-index: 1;
     }
-    #makedonija:hover h4{
+
+    #makedonija:hover h4 {
         margin-top: 0;
         font-size: 40px;
         margin-top: 14%;
@@ -332,13 +350,14 @@ span {
         z-index: 0;
     }
 
-    #crna_gora{
+    #crna_gora {
         background-image: url('../../public/images/crna_gora.jpg');
         background-size: cover;
         background-position: center;
         text-align: center;
     }
-    #crna_gora h4{
+
+    #crna_gora h4 {
         margin-top: 0;
         font-size: 40px;
         margin-top: 14%;
@@ -346,7 +365,8 @@ span {
         -webkit-text-stroke: 2px rgb(0, 0, 0);
         z-index: 1;
     }
-    #crna_gora:hover h4{
+
+    #crna_gora:hover h4 {
         margin-top: 0;
         font-size: 40px;
         margin-top: 14%;
@@ -355,13 +375,14 @@ span {
         z-index: 0;
     }
 
-    #bugarska{
+    #bugarska {
         background-image: url('../../public/images/bugarska.jpg');
         background-size: cover;
         background-position: center;
         text-align: center;
     }
-    #bugarska h4{
+
+    #bugarska h4 {
         margin-top: 0;
         font-size: 40px;
         margin-top: 14%;
@@ -369,7 +390,8 @@ span {
         -webkit-text-stroke: 2px rgb(0, 0, 0);
         z-index: 1;
     }
-    #bugarska:hover h4{
+
+    #bugarska:hover h4 {
         margin-top: 0;
         font-size: 40px;
         margin-top: 14%;
@@ -378,13 +400,14 @@ span {
         z-index: 0;
     }
 
-    #fia{
+    #fia {
         background-image: url('../../public/images/fia.jpg');
         background-size: cover;
         background-position: center;
         text-align: center;
     }
-    #fia h4{
+
+    #fia h4 {
         margin-top: 0;
         font-size: 40px;
         margin-top: 14%;
@@ -392,7 +415,8 @@ span {
         -webkit-text-stroke: 2px rgb(0, 0, 0);
         z-index: 1;
     }
-    #fia:hover h4{
+
+    #fia:hover h4 {
         margin-top: 0;
         font-size: 40px;
         margin-top: 14%;
@@ -401,6 +425,7 @@ span {
         z-index: 0;
     }
 }
+
 /* Stil za mobilni telefon (širina 100% širine ekrana) */
 @media only screen and (max-width: 767px) {
     .banner {
@@ -434,7 +459,8 @@ span {
         -webkit-text-stroke: 0.2px rgb(255, 255, 255);
         z-index: 1;
     }
-    .banner:active h2{
+
+    .banner:active h2 {
         margin-top: 0;
         font-size: 16px;
         position: absolute;
@@ -446,7 +472,8 @@ span {
         -webkit-text-stroke: 0.1px rgb(255, 255, 255);
         z-index: 1;
     }
-    .savezi{
+
+    .savezi {
         width: 100%;
         height: 550px;
         background-color: rgb(221, 221, 221);
@@ -456,10 +483,12 @@ span {
         justify-self: normal;
         padding: 1%;
     }
-    .savezi a{
+
+    .savezi a {
         text-decoration: none;
     }
-    .savezi h2{
+
+    .savezi h2 {
         text-align: center;
         flex-wrap: nowrap;
         height: 20px;
@@ -468,21 +497,24 @@ span {
         font-weight: bold;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     }
-    .zastave{
+
+    .zastave {
         width: 40%;
         height: 90px;
         border-radius: 10px;
         background-color: #000000;
         margin-left: 25px;
     }
-    #srbija{
+
+    #srbija {
         background-image: url('../../public/images/srbija.jpg');
         background-size: cover;
         background-position: center;
         text-align: center;
         margin-top: 5%;
     }
-    #srbija h4{
+
+    #srbija h4 {
         margin-top: 0;
         font-size: 40px;
         margin-top: 14%;
@@ -490,7 +522,8 @@ span {
         -webkit-text-stroke: 1.5px rgb(0, 0, 0);
         z-index: 1;
     }
-    #srbija:active h4{
+
+    #srbija:active h4 {
         margin-top: 0;
         font-size: 40px;
         margin-top: 14%;
@@ -499,14 +532,15 @@ span {
         z-index: 0;
     }
 
-    #hrvatska{
+    #hrvatska {
         background-image: url('../../public/images/hrvatska.jpg');
         background-size: cover;
         background-position: center;
         text-align: center;
         margin-top: -10%;
     }
-    #hrvatska h4{
+
+    #hrvatska h4 {
         margin-top: 0;
         font-size: 40px;
         margin-top: 14%;
@@ -514,7 +548,8 @@ span {
         -webkit-text-stroke: 1.5px rgb(0, 0, 0);
         z-index: 1;
     }
-    #hrvatska:active h4{
+
+    #hrvatska:active h4 {
         margin-top: 0;
         font-size: 40px;
         margin-top: 14%;
@@ -523,14 +558,15 @@ span {
         z-index: 0;
     }
 
-    #makedonija{
+    #makedonija {
         background-image: url('../../public/images/makedonija.jpg');
         background-size: cover;
         background-position: center;
         text-align: center;
         margin-top: -10%;
     }
-    #makedonija h4{
+
+    #makedonija h4 {
         margin-top: 0;
         font-size: 40px;
         margin-top: 14%;
@@ -538,7 +574,8 @@ span {
         -webkit-text-stroke: 1.5px rgb(0, 0, 0);
         z-index: 1;
     }
-    #makedonija:active h4{
+
+    #makedonija:active h4 {
         margin-top: 0;
         font-size: 40px;
         margin-top: 14%;
@@ -546,14 +583,16 @@ span {
         -webkit-text-stroke: 1px rgb(0, 0, 0);
         z-index: 0;
     }
-    #crna_gora{
+
+    #crna_gora {
         background-image: url('../../public/images/crna_gora.jpg');
         background-size: cover;
         background-position: center;
         text-align: center;
         margin-top: -10%;
     }
-    #crna_gora h4{
+
+    #crna_gora h4 {
         margin-top: 0;
         font-size: 40px;
         margin-top: 14%;
@@ -561,7 +600,8 @@ span {
         -webkit-text-stroke: 1.5px rgb(0, 0, 0);
         z-index: 1;
     }
-    #crna_gora:active h4{
+
+    #crna_gora:active h4 {
         margin-top: 0;
         font-size: 40px;
         margin-top: 14%;
@@ -570,14 +610,15 @@ span {
         z-index: 0;
     }
 
-    #bugarska{
+    #bugarska {
         background-image: url('../../public/images/bugarska.jpg');
         background-size: cover;
         background-position: center;
         text-align: center;
         margin-top: -10%;
     }
-    #bugarska h4{
+
+    #bugarska h4 {
         margin-top: 0;
         font-size: 40px;
         margin-top: 14%;
@@ -585,7 +626,8 @@ span {
         -webkit-text-stroke: 1.5px rgb(0, 0, 0);
         z-index: 1;
     }
-    #bugarska:active h4{
+
+    #bugarska:active h4 {
         margin-top: 0;
         font-size: 40px;
         margin-top: 14%;
@@ -594,14 +636,15 @@ span {
         z-index: 0;
     }
 
-    #fia{
+    #fia {
         background-image: url('../../public/images/fia.jpg');
         background-size: cover;
         background-position: center;
         text-align: center;
         margin-top: 5%;
     }
-    #fia h4{
+
+    #fia h4 {
         margin-top: 0;
         font-size: 40px;
         margin-top: 14%;
@@ -609,7 +652,8 @@ span {
         -webkit-text-stroke: 1.5px rgb(0, 0, 0);
         z-index: 1;
     }
-    #fia:active h4{
+
+    #fia:active h4 {
         margin-top: 0;
         font-size: 40px;
         margin-top: 14%;
@@ -803,6 +847,7 @@ span {
         align-items: center;
         justify-content: center;
     }
+
     .traka::before {
         content: 'Premium';
         position: absolute;
@@ -1362,6 +1407,7 @@ span {
         font-size: 20px;
         color: #354649;
     }
+
     .box svg {
         position: absolute;
         left: 170px;
@@ -1594,7 +1640,8 @@ span {
     #max-price {
         width: 95px;
     }
-    .btn-outline-danger{
+
+    .btn-outline-danger {
         margin-left: 10px;
     }
 }
@@ -1632,7 +1679,8 @@ span {
     #max-price {
         width: 100%;
     }
-    .btn-outline-danger{
+
+    .btn-outline-danger {
         margin-top: 2%;
         width: 78px;
     }
@@ -1890,36 +1938,43 @@ span {
 /*--/Stranica detalji--*/
 /*--How to--*/
 
-    /* Stil za Racunar (širina 100% širine ekrana)*/
+/* Stil za Racunar (širina 100% širine ekrana)*/
 @media only screen and (min-width: 768px) {
-    .how_to{
+    .how_to {
         margin: 20px;
         padding: 10px;
     }
-    #accordionPanelsStayOpenExample{
+
+    #accordionPanelsStayOpenExample {
         padding: 5px;
         margin-top: 0;
     }
 
-    #accordion-item1, #accordion-item2, #accordion-item3{
+    #accordion-item1,
+    #accordion-item2,
+    #accordion-item3 {
         margin: 5px;
     }
-    #accordionPanelsStayOpenExample button{
+
+    #accordionPanelsStayOpenExample button {
         width: 100%;
         height: 50px;
         font-weight: bolder;
         font-size: large;
     }
 }
-    /* Stil za Mobilni telefon (širina 100% širine ekrana)*/
+
+/* Stil za Mobilni telefon (širina 100% širine ekrana)*/
 @media only screen and (max-width: 767px) {
-    #accordionPanelsStayOpenExample{
+    #accordionPanelsStayOpenExample {
         padding: 0;
     }
-    #accordionPanelsStayOpenExample .accordion-item{
+
+    #accordionPanelsStayOpenExample .accordion-item {
         margin-bottom: 2%;
     }
 }
+
 /*--/How to--*/
 
 /*--footer--*/
@@ -1936,5 +1991,18 @@ footer .nav-link {
     color: #6C7A89;
 }
 
+.list-unstyled a {
+    color: #E0E7E9;
+    font-style: italic;
+}
+footer .row{
+    margin-top: 10%;
+}
+/* Stil za Mobilni telefon (širina 100% širine ekrana)*/
+@media only screen and (max-width: 767px) {
+    footer .row {
+        margin-top: 28%;
+    }
+}
 
 /*-- /footer --*/
