@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ad;
 use App\Models\Part;
+use App\Services\CustomPaginator;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -22,7 +23,7 @@ class TiresController extends Controller
 
         $adsWithImages = Ad::with('user', 'advertisable')
             ->where('advertisable_type', 'parts')->filter($filters)->manufacter($selectedKeys)
-            ->paginate(10)->withQueryString()
+            ->get()
             ->map(function ($ad) {
                 // Eager load only the necessary relationships
                 if($ad->advertisable->type ==='tires'){
@@ -39,11 +40,11 @@ class TiresController extends Controller
                 return $ad;}
                 return null;
             })->filter();
-           // dd($adsWithImages);
+
         return Inertia::render(
             'Home/TiresPage',
             [
-                'ads' => $adsWithImages,
+                'ads' => CustomPaginator::paginate($adsWithImages, 10)->withQueryString(),
                 'filters' => $filters,
             ]
         );

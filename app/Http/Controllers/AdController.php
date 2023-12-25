@@ -233,7 +233,7 @@ class AdController extends Controller
         }
 
 
-
+        $ad->advertisable->delete();
         $ad->delete();
         return redirect()->route('home')->with('success', 'Oglas uspesno obrisan');
     }

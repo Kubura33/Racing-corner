@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ad;
+use App\Services\CustomPaginator;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -24,8 +25,7 @@ class EquipmentController extends Controller
         }
         $adsWithImages = Ad::with( 'user')
             ->where('advertisable_type', 'equipment')->filter($filters)->vrsta($selectedVrsta)
-            ->equipmentSize($selectedSize)
-            ->paginate(10)->withQueryString()
+            ->equipmentSize($selectedSize)->get()
             ->map(function ($ad) {
                 $ad->load('advertisable.imageable');
                 $ad->image_path = $ad->advertisable->imageable->map(function ($imageable) {
@@ -37,7 +37,7 @@ class EquipmentController extends Controller
 
         return Inertia::render('Home/EquipmentPage',
         [
-            'ads' => $adsWithImages,
+            'ads' => CustomPaginator::paginate($adsWithImages, 10)->withQueryString(),
             'filters' => $filters,
         ]);
     }

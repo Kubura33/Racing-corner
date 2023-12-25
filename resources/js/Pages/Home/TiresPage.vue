@@ -75,7 +75,7 @@
                 </form>
             </div>
             <div class="oglasi">
-                <div class="wrap" v-for="ad in ads" :key="ad.id">
+                <div class="wrap" v-for="ad in ads.data" :key="ad.id" v-if="ads.data.length">
                     <div class="slika">
                         <Link :href="route('ads.show', {ad:ad.id})">
                             <img :src="ad.image_path[0]" alt="Auto gume">
@@ -88,7 +88,13 @@
                         <span class="cena_traka" id="traka_cena">{{ ad.price }} &euro;</span>
                     </div>
                 </div>
+                <div v-else style="text-align: center; font-size: 50px; width: 100%; height: 500px; margin-top: 30%;">
+                    <h1 style="text-align: center;">Trenutno nema oglasa</h1>
+                </div>
+                <div v-if="ads.data.length" style="width: 100%; display: flex;  justify-items: center; justify-content: center; align-content: center; align-items: center; margin-top: 10px;" >
+                    <Pagination :links="ads.links"/>
 
+                </div>
 
 
             </div>
@@ -99,9 +105,10 @@
 
 <script setup>
 import {Link, useForm} from "@inertiajs/vue3";
+import Pagination from "@/Components/Pagination.vue";
 
 const props = defineProps({
-    ads : Array,
+    ads : Object,
     filters : Object
 })
 

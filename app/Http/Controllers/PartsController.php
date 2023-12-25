@@ -3,14 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ad;
+use App\Services\CustomPaginator;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
 use Inertia\Inertia;
 
 class PartsController extends Controller
 {
     public function __invoke(Request $request){
         $filters = $request->only(['priceFrom', 'priceTo', 'search']);
-        $ads = Ad::with('user')->where('advertisable_type', 'parts')->filter($filters)->paginate(10)->withQueryString();
+        $ads = Ad::with('user')->where('advertisable_type', 'parts')->filter($filters)->get();
         $adsWithImages = $ads->map(function ($ad) {
             // Eager load only the necessary relationships
             $ad->load('advertisable.imageable');
@@ -30,7 +33,7 @@ class PartsController extends Controller
         return Inertia::render(
             'Home/PartsPage',
             [
-                'ads' => $adsWithImages,
+                'ads' => CustomPaginator::paginate($adsWithImages, 10)->withQueryString(),
                 'filter' => $filters,
             ]
         );

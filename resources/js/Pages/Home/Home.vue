@@ -56,7 +56,7 @@ const props = defineProps(
             </button>
         </div>
     </div>
-    <h2 id="poslednje_dodato" v-if="ads">Poslednje dodato</h2>
+    <h2 id="poslednje_dodato" v-if="ads.length">Poslednje dodato</h2>
     <h2 id="poslednje_dodato" v-else>Trenutno nema oglasa</h2>
     <div class="oglasi_home">
         <Link :href="route('ads.show', { ad: ad.id })" class="wrap" v-for="ad in ads" :key="ad.id">
@@ -65,7 +65,7 @@ const props = defineProps(
                 <img :src="ad.image_path[0]" alt="Oglas">
             </a>
             <div class="data">
-                
+
                 <h4>
                     {{ ad.title }} <span v-if="ad.isSold==1" style="font-weight: bold;color: red; font-size: 8px; display: inline;">(PRODATO)</span>
                 </h4>

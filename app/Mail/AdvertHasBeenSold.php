@@ -29,7 +29,7 @@ class AdvertHasBeenSold extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('officialracingcorner@racing-corner.com', 'Racing-corner'),
+            from: new Address(env('MAIL_FROM_ADDRESS'), 'Racing-corner'),
             subject: 'Oglas koji ste pratili nije vise aktivan',
         );
     }

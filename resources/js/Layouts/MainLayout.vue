@@ -87,7 +87,7 @@
             <section class="">
                 <!--Grid row-->
                 <div class="row">
-                    <!--Grid <column--> 
+                    <!--Grid <column-->
                     <div class="col-lg-7 col-md-6 mb-2 mb-md-0" style="text-align: center;">
                         <form>
                             <h5>Pišite nam na našu email adresu</h5>
@@ -107,16 +107,16 @@
 
                         <ul class="list-unstyled mb-0">
                             <li>
-                                <a href="#!" class="text-white">Auto prodaja</a>
+                                <Link :href="route('cars')" class="text-white">Auto prodaja</Link>
                             </li>
                             <li>
-                                <a href="#!" class="text-white">Delovi prodaja</a>
+                                <Link :href="route('parts')" class="text-white">Delovi prodaja</Link>
                             </li>
                             <li>
-                                <a href="#!" class="text-white">Gume prodaja</a>
+                                <Link :href="route('tires')" class="text-white">Gume prodaja</Link>
                             </li>
                             <li>
-                                <a href="#!" class="text-white">Oprema prodaja</a>
+                                <Link :href="route('equipment')" class="text-white">Oprema prodaja</Link>
                             </li>
                         </ul>
                     </div>

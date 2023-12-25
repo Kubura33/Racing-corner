@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ad;
+use App\Services\CustomPaginator;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -20,8 +21,7 @@ class VehicleController extends Controller
         $adsWithImages = Ad::with('user')
             ->where('advertisable_type', 'vehicle')
             ->filter($filters)
-            ->discipline($selectedKeys)
-            ->get()
+            ->discipline($selectedKeys)->get()
             ->map(function ($ad) {
                 $ad->load('advertisable.imageable');
                 $ad->image_path = $ad->advertisable->imageable->map(function ($imageable) {
@@ -30,10 +30,11 @@ class VehicleController extends Controller
                 unset($ad->advertisable->imageable);
                 return $ad;
             });
+
         return Inertia::render('Home/Cars',
         [
             'premiumAds' => $adsWithImages->where('home_page', 'da'),
-            'ads' => $adsWithImages->where('home_page', 'ne'),
+            'ads' => CustomPaginator::paginate($adsWithImages, 10)->withQueryString()
 
         ]);
     }
