@@ -11,9 +11,9 @@ const props = defineProps(
 <template>
     <div class="banner">
         <div class="banner_slika">
-            <img src="/images/banner2.jpg" alt="Race Car">
+            <img src="/images/banner5.jpg" alt="Race Car">
             <h2>
-                “The only way to define your limits is by going beyond them.”
+                “The only way to define your <br> limits is by going <br> beyond them.”
             </h2>
         </div>
     </div>
