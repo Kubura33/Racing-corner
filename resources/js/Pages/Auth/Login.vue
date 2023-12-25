@@ -22,7 +22,7 @@ const radioType = ref(login);
 </script>
 
 <template>
-    <div>
+    <div style="">
         <form @submit.prevent="radioType" class="login"  style="margin: 20px;">
             <div class="login-wrap">
 	<div class="login-html">
@@ -87,7 +87,7 @@ const radioType = ref(login);
 				<div class="group">
 					<input type="submit" class="button" value="Sign Up" >
 				</div>
-                
+
 				<div class="hr"></div>
 
 			</div>

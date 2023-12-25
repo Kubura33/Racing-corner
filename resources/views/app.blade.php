@@ -31,7 +31,7 @@
     <meta name="twitter:title" content="Racing Corner | Kupovina i Prodaja Trkačkih Automobila, Opreme, Delova i Guma" />
     <meta name="twitter:description" content="Racing Corner je ultimativna platforma za kupovinu i prodaju trkačkih automobila, opreme, delova i guma. Istražite širok spektar oglasa od ljubitelja trka iz celog sveta." />
     <meta name="twitter:image" content="https://racing-corner.com/images/banner2.jpg" />
-
+    <link rel="canonical" href="https://racing-corner.com/">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet"/>
