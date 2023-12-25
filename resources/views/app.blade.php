@@ -38,7 +38,7 @@
 
     <!-- Scripts -->
     @routes
-    @vite(['resources/js/app.js', "resources/js/Pages/{$page['component']}.vue"])
+    @vite(['resources/js/app.js'])
     @vite(['resources/css/ads.css'])
     @vite(['resources/css/style.css', 'resources/css/bootstrap/bootstrap.css'])
     @vite(['resources/css/flash.css'])

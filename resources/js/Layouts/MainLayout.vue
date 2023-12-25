@@ -1,9 +1,14 @@
 <template>
     <!---Start of header-->
+    <div class="fixed-header">
+
+
     <div class="top_header">
+        <Link :href="route('home')">
         <h4>
             Trkačka berza
         </h4>
+        </Link>
         <span v-if="!user">
             <b>
                 <Link class="nalog" :href="route('login')"> Sign In</Link>
@@ -63,6 +68,7 @@
             </div>
         </div>
     </nav>
+    </div>
     <!--    //End of header-->
     <div @click="messages.success = null" v-if="messages.success" class="alert alert-success" role="alert">
         {{ messages.success }}
