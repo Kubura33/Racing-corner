@@ -1,6 +1,6 @@
 <script setup>
 import InputError from "@/Components/InputError.vue";
-import {useForm} from "@inertiajs/vue3";
+import {useForm, Link} from "@inertiajs/vue3";
 import {ref} from "vue";
 const form = useForm({
     email : "",
@@ -42,12 +42,12 @@ const radioType = ref(login);
                 </div>
 
 				<div class="group">
-					<input type="submit" class="button" value="Sign In">
+					<input :disabled="form.processing" type="submit" class="button" value="Sign In">
 				</div>
 				<div class="hr"></div>
-<!--				<div class="foot-lnk">-->
-<!--					<a href="#forgot">Forgot Password?</a>-->
-<!--				</div>-->
+				<div class="foot-lnk">
+					<Link :href="route('password.request')">Forgot Password?</Link>
+				</div>
 			</div>
 			<div class="sign-up-htm">
                 <div class="group">
@@ -85,7 +85,7 @@ const radioType = ref(login);
                     <InputError v-if="registerForm.errors.email" :message="registerForm.errors.email"/>
                 </div>
 				<div class="group">
-					<input type="submit" class="button" value="Sign Up" >
+					<input :disabled="registerForm.processing" type="submit" class="button" value="Sign Up" >
 				</div>
 
 				<div class="hr"></div>

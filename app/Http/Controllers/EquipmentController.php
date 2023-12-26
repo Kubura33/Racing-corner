@@ -37,7 +37,7 @@ class EquipmentController extends Controller
 
         return Inertia::render('Home/EquipmentPage',
         [
-            'ads' => CustomPaginator::paginate($adsWithImages, 10)->withQueryString(),
+            'ads' => CustomPaginator::paginate($adsWithImages, 9)->withQueryString(),
             'filters' => $filters,
         ]);
     }

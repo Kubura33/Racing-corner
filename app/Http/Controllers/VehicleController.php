@@ -34,7 +34,7 @@ class VehicleController extends Controller
         return Inertia::render('Home/Cars',
         [
             'premiumAds' => $adsWithImages->where('home_page', 'da'),
-            'ads' => CustomPaginator::paginate($adsWithImages, 10)->withQueryString()
+            'ads' => CustomPaginator::paginate($adsWithImages, 9)->withQueryString()
 
         ]);
     }

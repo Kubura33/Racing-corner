@@ -9,6 +9,9 @@
         color: white;
         box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, 0.5);
     }
+    #deloviForma{
+        width: 750px;
+    }
     .signupSection_top{
         padding: 100px;
     }

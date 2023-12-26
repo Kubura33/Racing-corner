@@ -72,14 +72,14 @@
     </nav>
     </div>
     <!--    //End of header-->
-    <div @click="messages.success = null" v-if="messages.success" class="alert alert-success" role="alert" style="margin-top: 96px;">
+    <div @click="messages.success = null" v-if="messages.success" class="alert alert-success" role="alert" style="margin-top: 6.75%;">
         {{ messages.success }}
     </div>
-    <div @click="messages.error = null" v-if="messages.error" class="alert alert-danger" role="alert" style="margin-top: 96px;">
+    <div @click="messages.error = null" v-if="messages.error" class="alert alert-danger" role="alert" style="margin-top: 6.75%;">
         {{ messages.error }}
     </div>
     <!--    //Start of main content of the page-->
-    <main>
+    <main :class="{ 'ifFlash': messages.success || messages.error, 'ifNotFlash': !messages.success && !messages.error }">
         <slot>
 
         </slot>
@@ -139,9 +139,9 @@
             <section class="">
                 <p class="d-flex justify-content-center align-items-center">
                     <span class="me-3">Register for free</span>
-                    <button type="button" class="btn btn-outline-light btn-rounded">
+                    <Link :href="route('login')" type="button" class="btn btn-outline-light btn-rounded">
                         Sign up!
-                    </button>
+                    </Link>
                 </p>
             </section>
             <hr class="mb-4" />

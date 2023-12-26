@@ -188,9 +188,10 @@ const ruta = computed(()=> {
                         <div v-if="isEditting">
                             Za menjanje slika, obrisite oglas pa kreirajte opet!
                         </div>
+                        <InputError v-if="form.errors.images" :message="form.errors.images"/>
                     </li>
                     <li id="center-btn" style="margin-top: 50px;">
-                        <input type="submit" id="join-btn" name="join" alt="Join" :value="isEditting ? 'Edituj oglas' : 'Kreiraj oglas'">
+                        <input :disabled="form.processing" type="submit" id="join-btn" name="join" alt="Join" :value="isEditting ? 'Edituj oglas' : 'Kreiraj oglas'">
                     </li>
                 </ul>
             </form>

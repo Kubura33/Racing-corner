@@ -39,9 +39,9 @@ class PasswordResetLinkController extends Controller
         $status = Password::sendResetLink(
             $request->only('email')
         );
-
         if ($status == Password::RESET_LINK_SENT) {
-            return back()->with('status', __($status));
+            $status = "Link za resetovanje lozinke je poslat na vas e-mail";
+            return back()->with('status', ($status));
         }
 
         throw ValidationException::withMessages([

@@ -33,7 +33,7 @@ class PartsController extends Controller
         return Inertia::render(
             'Home/PartsPage',
             [
-                'ads' => CustomPaginator::paginate($adsWithImages, 10)->withQueryString(),
+                'ads' => CustomPaginator::paginate($adsWithImages, 9)->withQueryString(),
                 'filter' => $filters,
             ]
         );

@@ -56,8 +56,8 @@ const props = defineProps(
             </button>
         </div>
     </div>
-    <h2 id="poslednje_dodato" v-if="ads.length">Poslednje dodato</h2>
-    <h2 id="poslednje_dodato" v-else>Trenutno nema oglasa</h2>
+    <h2 id="poslednje_dodato" v-if="Object.keys(ads).length!=0">Poslednje dodato</h2>
+    <h2 id="poslednje_dodato" v-else>Trenutno nema oglasa </h2>
     <div class="oglasi_home">
         <Link :href="route('ads.show', { ad: ad.id })" class="wrap" v-for="ad in ads" :key="ad.id">
         <div class="slika">
