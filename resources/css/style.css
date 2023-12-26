@@ -1402,11 +1402,10 @@ span {
         background: linear-gradient(100deg, #0099ff 0%, #003f8b 100%);
         color: rgb(255, 255, 255);
         font-weight: bold;
-        font-size: larger;
         padding: 5px;
         padding-left: 20px;
         text-align: center;
-        width: 40%;
+        width: 50%;
         height: 40px;
         text-align: center;
     }
@@ -1497,14 +1496,14 @@ span {
     }
 
     .slika {
-        width: 70%;
+        width: 85%;
         height: 240px;
         overflow: hidden;
         position: relative;
         display: block;
         object-fit: fill;
         border-radius: 10px;
-        margin-left: 15%;
+        margin-left: 7.5%;
     }
 
     .slika img {
@@ -1570,15 +1569,13 @@ span {
         background: linear-gradient(100deg, #0099ff 0%, #003f8b 100%);
         color: rgb(255, 255, 255);
         font-weight: bold;
-        padding-top: 3px;
+        padding-top: 5px;
         padding-right: 0;
-        padding-left: 15px;
+        padding-left: 10px;
         text-align: center;
-        width: 40%;
+        width: 50%;
         height: 39px;
         text-align: center;
-        font-size: larger;
-        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif ;
     }
 
     .cena_traka::before {
