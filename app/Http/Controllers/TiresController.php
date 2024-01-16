@@ -23,6 +23,7 @@ class TiresController extends Controller
 
         $adsWithImages = Ad::with('user', 'advertisable')
             ->where('advertisable_type', 'parts')->filter($filters)->manufacter($selectedKeys)
+            ->orderByDesc('created_at')
             ->get()
             ->map(function ($ad) {
                 // Eager load only the necessary relationships

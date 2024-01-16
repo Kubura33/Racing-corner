@@ -25,7 +25,9 @@ class EquipmentController extends Controller
         }
         $adsWithImages = Ad::with( 'user')
             ->where('advertisable_type', 'equipment')->filter($filters)->vrsta($selectedVrsta)
-            ->equipmentSize($selectedSize)->get()
+            ->equipmentSize($selectedSize)
+            ->orderByDesc('created_at')
+            ->get()
             ->map(function ($ad) {
                 $ad->load('advertisable.imageable');
                 $ad->image_path = $ad->advertisable->imageable->map(function ($imageable) {

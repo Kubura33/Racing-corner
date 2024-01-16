@@ -28,9 +28,10 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): Response
     {
-        return Inertia::render('Profile/Edit', [
+        return Inertia::render('Profile/UserSettings', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'status' => session('status'),
+            'user' => $request->user()->load('userSetting'),
         ]);
     }
 
@@ -48,6 +49,9 @@ class ProfileController extends Controller
                 'lastname' => ['required'],
                 'username' => ['required', Rule::unique('users')->ignore(auth()->id())],
                 'phone' => ['required', new PhoneRule(), Rule::unique('users')->ignore(auth()->id())],
+                'followNotifications' => ['required'],
+                'emailNotifications' => ['required'],
+                'websiteNotifications' => ['required'],
             ]
         );
         $user->update(
@@ -58,32 +62,14 @@ class ProfileController extends Controller
                 'phone' => $request->phone,
             ]
         );
-        if($request->oldPassword && $request->newPassword){
-            $s = \Hash::check($request->oldPassword, $user->password);
-            $request->validate(
-                [
-                    'newPassword' => ['required', 'min:8']
-                ]
-            );
-            if($s){
-                $user->update(['password' => $request->newPassword]);
-            }
-            else{
-                return \redirect()->back()->with('error', 'Stara lozinka je netacna!');
-            }
-        }
-        else if($request->oldPassword){
-            return \redirect()->back()->with('error', 'Unesite novu lozinku!');
-
-        }
+        $user->userSetting->update(
+            [
+                'receive_follow_notifications' => $request->followNotifications ? 1 : 0,
+                'receive_notifications_via_email' => $request->emailNotifications ? 1 : 0,
+                'receive_notifications_via_website' => $request->websiteNotifications ? 1 : 0
+            ]
+        );
         $user->save();
-//        $request->user()->fill($request->validated());
-//
-//        if ($request->user()->isDirty('email')) {
-//            $request->user()->email_verified_at = null;
-//        }
-//
-//        $request->user()->save();
 
         return redirect()->route('home')->with('success', 'Profil uspesno izmenjen');
     }

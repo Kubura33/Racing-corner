@@ -21,7 +21,9 @@ class VehicleController extends Controller
         $adsWithImages = Ad::with('user')
             ->where('advertisable_type', 'vehicle')
             ->filter($filters)
-            ->discipline($selectedKeys)->get()
+            ->discipline($selectedKeys)
+            ->orderByDesc('created_at')
+            ->get()
             ->map(function ($ad) {
                 $ad->load('advertisable.imageable');
                 $ad->image_path = $ad->advertisable->imageable->map(function ($imageable) {

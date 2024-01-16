@@ -232,7 +232,7 @@ class AdController extends Controller
             }
         }
 
-
+        $ad->likes()->detach();
         $ad->advertisable->delete();
         $ad->delete();
         return redirect()->route('home')->with('success', 'Oglas uspesno obrisan');

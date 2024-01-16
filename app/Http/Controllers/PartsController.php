@@ -13,7 +13,9 @@ class PartsController extends Controller
 {
     public function __invoke(Request $request){
         $filters = $request->only(['priceFrom', 'priceTo', 'search']);
-        $ads = Ad::with('user')->where('advertisable_type', 'parts')->filter($filters)->get();
+        $ads = Ad::with('user')->where('advertisable_type', 'parts')->filter($filters)
+            ->orderByDesc('created_at')
+            ->get();
         $adsWithImages = $ads->map(function ($ad) {
             // Eager load only the necessary relationships
             $ad->load('advertisable.imageable');

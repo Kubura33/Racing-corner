@@ -151,7 +151,63 @@ span {
     color: #E0E7E9;
 
 }
-
+.sub-menu-wrap{
+    position: absolute;
+    top: 40%;
+    right: 5%;
+    width: 320px;
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.5s;
+    z-index: 1000;
+}
+.sub-menu-wrap.open-menu{
+    max-height: 400px;
+}
+.sub-menu{
+    background: #fff;
+    padding: 20px;
+    margin: 10px;
+}
+.user-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.user-info h3{
+    font-weight: 500;
+}
+.sub-menu hr {
+    border: 0;
+    height: 1px;
+    width: 100%;
+    background: #ccc;
+    margin: 15px 0 10px;
+}
+.sub-menu-link{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    text-decoration: none;
+    color: rgb(82, 82, 82);
+    margin: 12px 0;
+}
+.sub-menu-link p {
+    margin-top: 15px;
+    width: 100%;
+}
+.sub-menu-link img {
+    width: 40px;
+    background: #e5e5e5;
+    border-radius: 50% ;
+    padding: 8px;
+    margin-right: 15px;
+}
+.sub-menu-link:hover p{
+    font-weight: 600;
+}
 /*-- /header --*/
 /*-- navbar --*/
 
@@ -249,8 +305,8 @@ span {
         color: rgb(255, 255, 255);
         font-style: italic;
         font-weight: bold;
-        
-       
+
+
     }
 
 
