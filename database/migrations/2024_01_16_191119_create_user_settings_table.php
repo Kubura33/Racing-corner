@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(\App\Models\User::class, 'user_id');
             $table->integer('receive_follow_notifications')->default(1);
-            $table->integer('receive_notifications_via_email')->default(1);
+            $table->integer('receive_notifications_via_email')->default(0);
             $table->integer('receive_notifications_via_website')->default(1) ;
             $table->timestamps();
         });

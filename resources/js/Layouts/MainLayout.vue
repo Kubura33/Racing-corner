@@ -14,8 +14,9 @@
                 <Link class="nalog" :href="route('login')"> Sign In</Link>
             </b>
         </span>
-            <span v-else >
-            <b style="border: 2px solid white; border-radius: 10px; padding: 2px; padding-right: 10px; width: 90px; display: flex; flex-direction: row; align-items: center; justify-content: center; align-content: center;">
+            <span v-else>
+            <b class="border-around-username" :class="{'radiate' : !isMenuOpen && notificationCount>0 }"
+               >
                 <span @click="toggleMenu" class="nalog" style="cursor: pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                          class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -27,13 +28,19 @@
 
                 </span>
             </b>
-            <div :class="{ 'open-menu': isMenuOpen }" class="sub-menu-wrap">
+            <div :class="{ 'open-menu': isMenuOpen}" class="sub-menu-wrap">
                 <div class="sub-menu">
                     <div class="user-info">
                         <h3>{{ user.name }} {{ user.lastname }}</h3>
                         <h5>{{ user.username }}</h5>
                     </div>
                     <hr>
+                    <Link :href="route('notification.index')" style="background: none; border: none; padding:0;"
+                          :class="{'blink' : isMenuOpen && notificationCount}"
+                          class="sub-menu-link">
+                        <img src="/images/notificationBell.png" alt="">
+                        <p>Obavestenja {{notificationCount ? '(' + notificationCount + ')' : ''}}</p>
+                    </Link>
                     <Link :href="route('created-ads')" style="background: none; border: none; padding:0;"
                           class="sub-menu-link">
                         <img src="/images/brOglasa.png" alt="">
@@ -209,11 +216,12 @@
 </template>
 <script setup>
 import {Link, router, usePage} from "@inertiajs/vue3";
-import {computed, ref, onMounted, onUnmounted} from "vue";
+import {computed, ref, onMounted, onUnmounted, watch} from "vue";
 
 const isMenuOpen = ref(false);
 const page = usePage();
 const user = computed(() => page.props.auth.user)
+const notificationCount = computed( () => page.props.auth.notificationCount.length)
 const messages = computed(() => page.props.messages)
 const toggleMenu = () => {
     isMenuOpen.value = !isMenuOpen.value
@@ -227,13 +235,14 @@ const closeSubMenu = (event) => {
 onMounted(() => {
     document.addEventListener('click', closeSubMenu)
     document.querySelectorAll('.sub-menu-link').forEach((item) => {
-        item.addEventListener('click', function (){
-            isMenuOpen.value= false;
+        item.addEventListener('click', function () {
+            isMenuOpen.value = false;
         })
     })
 })
 onUnmounted(() => {
     document.removeEventListener('click', closeSubMenu)
+
 })
 
 </script>
@@ -289,8 +298,57 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 <style scoped>
-.ifFlash{
+.ifFlash {
     margin-top: -15px;
+}
+
+.border-around-username {
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 4px;
+    padding-right: 10px;
+    width: 90px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+
+}
+.radiate{
+    animation: radiate 1s infinite;
+}
+@keyframes radiate {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+@keyframes blink {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.blink {
+    animation: blink 1s infinite;
 }
 </style>
 

@@ -24,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
             'vehicle' => 'App\Models\Vehicle',
             'equipment' => 'App\Models\Equipment',
             'parts' => 'App\Models\Part',
+            'user' => 'App\Models\User',
         ]);
     }
 }

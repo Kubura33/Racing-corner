@@ -162,7 +162,7 @@ span {
     z-index: 1000;
 }
 .sub-menu-wrap.open-menu{
-    max-height: 400px;
+    max-height: 500px;
 }
 .sub-menu{
     background: #fff;

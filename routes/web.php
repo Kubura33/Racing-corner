@@ -22,6 +22,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     //User ROUTES
     Route::get('/profile/created-ads', \App\Http\Controllers\CreatedAdvertisementsController::class)->name('created-ads');
     Route::get('/profile/followed-ads', \App\Http\Controllers\FollowedAdvertisementsController::class)->name('followed-ads');
+    Route::get('/profile/notifications', [\App\Http\Controllers\NotificationController::class, 'index'])->name('notification.index');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::get('/settings', [ProfileController::class, 'edit'])->name('settings');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
