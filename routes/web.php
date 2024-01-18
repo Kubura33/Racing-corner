@@ -18,7 +18,7 @@ use Inertia\Inertia;
 */
 
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', /*'verified'*/])->group(function () {
     //User ROUTES
     Route::get('/profile/created-ads', \App\Http\Controllers\CreatedAdvertisementsController::class)->name('created-ads');
     Route::get('/profile/followed-ads', \App\Http\Controllers\FollowedAdvertisementsController::class)->name('followed-ads');

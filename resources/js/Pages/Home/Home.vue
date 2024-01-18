@@ -11,13 +11,17 @@ const props = defineProps(
 <template>
     <div class="banner">
         <div class="banner_slika">
-            <img src="/images/banner5.jpg" alt="Race Car">
-            <h2>
-                “The only way to define your <br> limits is by going <br> beyond them.”
-            </h2>
+            <img src="/images/banner1.jpg" alt="Race Car">
+            <div class="gradient"></div>
+            <div class="bottom_border"></div>
+            <div class="search_glavni">
+                <form class="search_home">
+                    <input type="search" placeholder="Search...">
+                </form>
+                <button type="button" class="btn btn-outline-success">SEARCH</button>
+            </div>
         </div>
     </div>
-
 
     <div>
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" v-if="premiumAds.length > 0">
@@ -56,26 +60,36 @@ const props = defineProps(
             </button>
         </div>
     </div>
-    <h2 id="poslednje_dodato" v-if="Object.keys(ads).length!=0">Poslednje dodato</h2>
+    <h2 id="poslednje_dodato" v-if="Object.keys(ads).length != 0">Poslednje dodato</h2>
     <h2 id="poslednje_dodato" v-else>Trenutno nema oglasa </h2>
     <div class="oglasi_home">
         <Link :href="route('ads.show', { ad: ad.id })" class="wrap" v-for="ad in ads" :key="ad.id">
         <div class="slika">
-            <a href="" >
+            <a href="">
                 <img :src="ad.image_path[0]" alt="Oglas">
+                <!-- Add the following SVG icon for saving -->
+                <div class="save-icon" style="position: absolute; top: 10px; right: 10px; cursor: pointer;"
+                    onclick="toggleBookmark(this)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="green" class="bi bi-bookmark"
+                        viewBox="0 0 17 17">
+                        <path
+                            d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"
+                            stroke="green" stroke-width="1.5" />
+                    </svg>
+                </div>
             </a>
             <div class="data">
-
                 <h4>
-                    {{ ad.title }} <span v-if="ad.isSold==1" style="font-weight: bold;color: red; font-size: 8px; display: inline;">(PRODATO)</span>
+                    {{ ad.title }}
+                    <span v-if="ad.isSold == 1"
+                        style="font-weight: bold;color: red; font-size: 8px; display: inline;">(PRODATO)</span>
                 </h4>
-
             </div>
             <span class="cena_traka" id="traka_cena">{{ ad.price }} &euro;</span>
         </div>
         </Link>
-
     </div>
+
     <div class="how_to">
         <div class="accordion" id="accordionPanelsStayOpenExample">
             <div class="accordion-item" id="accordion-item1">
@@ -95,7 +109,8 @@ const props = defineProps(
                             <li>Nakon uspešne registracije, idi na karticu kreiraj oglas</li>
                             <li>Odaberite vrstu oglasa koju želite da okačite</li>
                             <li>Popuni pravilno formu i kreiraj oglas</li>
-                            <li>Sav pregled Vaših podataka se nalazi na stranici Profil, koja se otvara klikom na Vaše ime(gore desno).</li>
+                            <li>Sav pregled Vaših podataka se nalazi na stranici Profil, koja se otvara klikom na Vaše
+                                ime(gore desno).</li>
                         </ul>
                     </div>
                 </div>
@@ -127,7 +142,8 @@ const props = defineProps(
                     aria-labelledby="panelsStayOpen-headingThree">
                     <div class="accordion-body">
                         <strong>Racing-corner berza</strong>
-                        <p>Ova platforma je osmišljena da olakša potražnju i kupovinu trkačke opreme, guma, delova i samih vozila.
+                        <p>Ova platforma je osmišljena da olakša potražnju i kupovinu trkačke opreme, guma, delova i samih
+                            vozila.
 
                         </p>
                     </div>
@@ -156,7 +172,6 @@ const props = defineProps(
             <h4>БФАС</h4>
         </a>
     </div>
-
 </template>
 
 <script>
@@ -205,6 +220,18 @@ export default {
 
     }
 };
+function toggleBookmark(element) {
+    const svg = element.querySelector('svg');
+    const isBookmarked = svg.classList.contains('bi-bookmark-fill');
+
+    if (isBookmarked) {
+        svg.classList.remove('bi-bookmark-fill');
+        svg.classList.add('bi-bookmark');
+    } else {
+        svg.classList.remove('bi-bookmark');
+        svg.classList.add('bi-bookmark-fill');
+    }
+}
 </script>
  <!--   <div class="div-oglas">
         <div class="row">

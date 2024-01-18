@@ -14,11 +14,11 @@
                 <Link class="nalog" :href="route('login')"> Sign In</Link>
             </b>
         </span>
-            <span v-else>
+            <span pan v-else>
             <b class="border-around-username" :class="{'radiate' : !isMenuOpen && notificationCount>0 }"
                >
                 <span @click="toggleMenu" class="nalog" style="cursor: pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="27" fill="currentColor"
                          class="bi bi-person-circle" viewBox="0 0 16 16">
   <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
   <path fill-rule="evenodd"
@@ -302,19 +302,7 @@ document.addEventListener('DOMContentLoaded', function () {
     margin-top: -15px;
 }
 
-.border-around-username {
-    border: 2px solid white;
-    border-radius: 10px;
-    padding: 4px;
-    padding-right: 10px;
-    width: 90px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
 
-}
 .radiate{
     animation: radiate 1s infinite;
 }
