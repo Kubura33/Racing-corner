@@ -1,21 +1,51 @@
 <script setup>
 import {useForm} from "@inertiajs/vue3";
+import {ref, computed, onMounted} from "vue";
+
+
 const props = defineProps({
-    user : {
+    user: {
         type: Object,
         required: true,
     }
 })
-console.log(props.user)
 const editForm = useForm({
-    name : props.user.name ?? "",
+    name: props.user.name ?? "",
     lastname: props.user.lastname ?? "",
     username: props.user.username ?? "",
-    phone : props.user.phone ?? "",
-    followNotifications : props.user.user_setting.receive_follow_notifications === 1 ?? false,
-    emailNotifications : props.user.user_setting.receive_notifications_via_email ===1 ?? false,
+    phone: props.user.phone ?? "",
+    followNotifications: props.user.user_setting.receive_follow_notifications === 1 ?? false,
+    emailNotifications: props.user.user_setting.receive_notifications_via_email === 1 ?? false,
     websiteNotifications: props.user.user_setting.receive_notifications_via_website === 1 ?? false,
 })
+const isDisabled = ref(false);
+onMounted( () => {
+    isDisabled.value = !(props.user.user_setting.receive_follow_notifications === 1)
+    if(!isDisabled.value){
+        editForm.emailNotifications = true
+        editForm.websiteNotifications = true
+    }
+})
+const disableNotif = () => {
+    isDisabled.value = !isDisabled.value
+    if (isDisabled.value) {
+        editForm.emailNotifications = false
+        editForm.websiteNotifications = false
+    }
+    else {
+        editForm.emailNotifications = true
+        editForm.websiteNotifications = true
+    }
+}
+const checkIfDisabled = computed(() => {
+    return isDisabled.value
+})
+const checkIfNotificationsAreDisabled = () => {
+    if(!editForm.emailNotifications && !editForm.websiteNotifications){
+        editForm.followNotifications = false
+        isDisabled.value=true
+    }
+}
 const update = () => editForm.patch(route('profile.update'))
 </script>
 
@@ -42,27 +72,29 @@ const update = () => editForm.patch(route('profile.update'))
                 </div>
                 <div>
                     <label class="user-settings-label" for="username">Email:</label>
-                    <input class="user-settings-input" type="email" id="username" v-model="user.email" disabled style="cursor: not-allowed">
+                    <input class="user-settings-input" type="email" id="username" v-model="user.email" disabled
+                           style="cursor: not-allowed">
                 </div>
                 <div class="notifications">
-                    <label class="user-settings-label" for="">Primanje obavestenja kada neko zaprati vas oglas i kada oglas koji pratite je
+                    <label class="user-settings-label" for="">Primanje obavestenja kada neko zaprati vas oglas i kada
+                        oglas koji pratite je
                         prodan</label>
                     <label class="toggle-container">
                         <input type="checkbox" hidden v-model="editForm.followNotifications">
-                        <span class="toggle-slider"></span>
+                        <span @click="disableNotif" class="toggle-slider"></span>
                     </label>
                 </div>
-                <div class="notifications">
+                <div class="notifications" :class="{'is-disabled' : isDisabled}">
                     <label class="user-settings-label" for="">Primanje obavestenja putem e-maila</label>
-                    <label class="toggle-container" >
-                        <input type="checkbox" hidden v-model="editForm.emailNotifications">
+                    <label class="toggle-container">
+                        <input @change="checkIfNotificationsAreDisabled" type="checkbox" hidden v-model="editForm.emailNotifications" :disabled="isDisabled">
                         <span class="toggle-slider"></span>
                     </label>
                 </div>
-                <div class="notifications">
+                <div class="notifications" :class="{'is-disabled' : isDisabled}">
                     <label class="user-settings-label" for="">Primanje obavestenja putem sajta</label>
-                    <label class="toggle-container" >
-                        <input type="checkbox" hidden v-model="editForm.websiteNotifications">
+                    <label class="toggle-container">
+                        <input @change="checkIfNotificationsAreDisabled" type="checkbox" hidden v-model="editForm.websiteNotifications" :disabled="isDisabled">
                         <span class="toggle-slider"></span>
                     </label>
                 </div>
@@ -86,7 +118,8 @@ const update = () => editForm.patch(route('profile.update'))
     justify-content: center;
     background-color: #f9f9f9;
 }
-.user-settings-container{
+
+.user-settings-container {
     width: 1150px;
     height: auto;
     display: flex;
@@ -98,13 +131,15 @@ const update = () => editForm.patch(route('profile.update'))
 
 
 }
+
 /* BEGGINING OF FORM STYLING */
-.user-settings-edit-form{
+.user-settings-edit-form {
     display: flex;
     flex-direction: column;
     gap: 10px;
     width: 35%;
 }
+
 .user-settings-label {
     display: block;
     margin-bottom: 8px;
@@ -143,15 +178,17 @@ const update = () => editForm.patch(route('profile.update'))
 .user-settings-submit-input:hover {
     background-color: #2980b9;
 }
+
 /* END OF FORM STYLING */
 
 /* NOTIFIKACIJE    */
-.notifications{
+.notifications {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-content: center;
 }
+
 .toggle-container {
     position: relative;
     display: inline-block;
@@ -194,18 +231,25 @@ input:focus + .toggle-slider {
 input:checked + .toggle-slider:before {
     transform: translateX(26px);
 }
-@media screen and (max-width: 767px){
-    .user-settings-edit-form{
+
+.is-disabled {
+    opacity: 0.5;
+}
+
+@media screen and (max-width: 767px) {
+    .user-settings-edit-form {
         width: 70%;
     }
 }
+
 @media screen and (min-width: 768px) and (max-width: 1023px) {
-    .user-settings-edit-form{
+    .user-settings-edit-form {
         width: 60%;
     }
 }
+
 @media screen and (min-width: 1024px) and (max-width: 1439px) {
-    .user-settings-edit-form{
+    .user-settings-edit-form {
         width: 45%;
     }
 }

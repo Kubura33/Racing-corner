@@ -15,8 +15,8 @@
             </b>
         </span>
             <span pan v-else>
-            <b class="border-around-username" :class="{'radiate' : !isMenuOpen && notificationCount>0 }"
-               >
+            <b class="border-around-username" :class="{'radiate' : !isMenuOpen && notificationCount>0 && !isNotifPage }"
+            >
                 <span @click="toggleMenu" class="nalog" style="cursor: pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" width="17" height="27" fill="currentColor"
                          class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -36,10 +36,10 @@
                     </div>
                     <hr>
                     <Link :href="route('notification.index')" style="background: none; border: none; padding:0;"
-                          :class="{'blink' : isMenuOpen && notificationCount}"
+                          :class="{'blink' : isMenuOpen && notificationCount && !isNotifPage}"
                           class="sub-menu-link">
                         <img src="/images/notificationBell.png" alt="">
-                        <p>Obavestenja {{notificationCount ? '(' + notificationCount + ')' : ''}}</p>
+                        <p>Obavestenja {{ notificationCount ? '(' + notificationCount + ')' : '' }}</p>
                     </Link>
                     <Link :href="route('created-ads')" style="background: none; border: none; padding:0;"
                           class="sub-menu-link">
@@ -67,7 +67,7 @@
         </span>
         </div>
         <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
+            <div class="container-fluid" >
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -107,19 +107,22 @@
                     </ul>
                 </div>
             </div>
+
         </nav>
+
     </div>
     <!--    //End of header-->
-    <div @click="messages.success = null" v-if="messages.success" class="alert alert-success" role="alert"
-         style="margin-top: 6.75%;">
+    <div id="alert-success" :style="{top: flashTop +'px'}" @click="messages.success = null" v-if="messages.success" class="alert alert-success" role="alert"
+    >
         {{ messages.success }}
     </div>
-    <div @click="messages.error = null" v-if="messages.error" class="alert alert-danger" role="alert"
-         style="margin-top: 6.85%;">
+    <div id="alet-error" :style="{top: flashTop +'px'}" @click="messages.error = null" v-if="messages.error" class="alert alert-danger" role="alert"
+    >
         {{ messages.error }}
     </div>
     <!--    //Start of main content of the page-->
     <main
+        :style="{marginTop : mainMarginTop + 'px'}"
         :class="{ 'ifFlash': messages.success || messages.error, 'ifNotFlash': !messages.success && !messages.error }">
         <slot>
 
@@ -215,40 +218,78 @@
     <!--  //end of footer-->
 </template>
 <script setup>
-import {Link, router, usePage} from "@inertiajs/vue3";
-import {computed, ref, onMounted, onUnmounted, watch} from "vue";
+import {Link, usePage} from "@inertiajs/vue3";
+import {computed, ref, onMounted, onBeforeUnmount, onUnmounted} from "vue";
+import {router} from "@inertiajs/vue3";
 
-const isMenuOpen = ref(false);
+
+const isMenuOpen = ref(false); //Value that checks if menu is open
 const page = usePage();
 const user = computed(() => page.props.auth.user)
-const notificationCount = computed( () => page.props.auth.notificationCount.length)
+const notificationCount = computed(() => page.props.auth.notificationCount.length)
 const messages = computed(() => page.props.messages)
+const isOnNotificationPage = ref(false); //Value thats based on if user is on notif page or not
+
+//FUNCTIONS THAT ARE USED TO WORK WITH PROFILE SUB MENU AND DEALING WITH ANIMATION WHEN THERES NOTIFICATIONS
 const toggleMenu = () => {
     isMenuOpen.value = !isMenuOpen.value
 }
 const closeSubMenu = (event) => {
     if (isMenuOpen.value && !event.target.closest('.sub-menu-wrap') && !event.target.classList.contains('nalog')) {
         isMenuOpen.value = false;
-        console.log('Im in')
     }
 }
+
+router.on('start', (event) => {
+    isOnNotificationPage.value = event.detail.visit.url.toString().includes('/profile/notifications')
+
+})
+const isNotifPage = computed(()=> {
+    return isOnNotificationPage.value
+})
+//END OF FUNCTIONS THAT ARE USED TO WORK WITH PROFILE SUB MENU AND DEALING WITH ANIMATION WHEN THERES NOTIFICATIONS
+
+//SCALING THE MAIN BASED ON THE SIZE OF SCREEN
+const topOfFlashMessage = ref(0)
+const marginTop = ref(0)
+const updateMainMarginTop = () => {
+    const header = document.querySelector('.fixed-header');
+    const  upperHeader = document.querySelector('.top_header')
+    if(header){
+        const headerHeight = header.offsetHeight
+        marginTop.value = headerHeight
+    }
+    if(upperHeader){
+        const upperHeaderHeight = upperHeader.offsetHeight
+        topOfFlashMessage.value = upperHeaderHeight
+    }
+}
+window.addEventListener('resize', updateMainMarginTop )
+const mainMarginTop = computed(() => {return marginTop.value})
+const flashTop = computed(() => {return topOfFlashMessage.value})
+//END OF SCALING THE MAIN BASED ON THE SIZE OF SCREEN
+
 onMounted(() => {
+    //Function that closes the menu when its clicked on one of its items
     document.addEventListener('click', closeSubMenu)
     document.querySelectorAll('.sub-menu-link').forEach((item) => {
         item.addEventListener('click', function () {
             isMenuOpen.value = false;
         })
     })
+    //END OF function that closes the menu when its clicked on one of its items
+    updateMainMarginTop()
 })
 onUnmounted(() => {
     document.removeEventListener('click', closeSubMenu)
 
 })
 
+
 </script>
 
 <script>
-
+ //Functions that are used to work with drop menus, closing when clicking out of the element and when passing to a different page
 document.addEventListener('DOMContentLoaded', function () {
     const navbarCollapse = document.querySelector('.navbar-collapse');
     navbarCollapse.addEventListener('click', function (event) {
@@ -276,17 +317,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // document.addEventListener('click', function(event) {
-    //     const target = event.target;
-    //     const isNavbarToggler = target.closest('.navbar-toggler');
-    //     const isNavbarCollapse = target.closest('.navbar-collapse');
-    //     const isOstalo = target.closest('.nav-item.dropdown');
-    //
-    //     if ((!isNavbarToggler && !isNavbarCollapse && navbarCollapse.classList.contains('show')) || (!isOstalo && navbarCollapse.classList.contains('show'))) {
-    //         navbarCollapse.classList.remove('show');
-    //     }
-    // });
-
     const dropdownItems = document.querySelectorAll('.dropdown-item');
 
     dropdownItems.forEach(function (item) {
@@ -296,16 +326,24 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+ //END OF functions that are used to work with drop menus
 </script>
 <style scoped>
-.ifFlash {
-    margin-top: -15px;
+
+
+#alet-error, #alert-success{
+    height: 55px;
+    width: 400px;
+    position: absolute;
+    right: 0px;
+    top: 54px;
+    z-index: 111111;
 }
 
-
-.radiate{
+.radiate {
     animation: radiate 1s infinite;
 }
+
 @keyframes radiate {
     0% {
         transform: scale(1);
@@ -320,6 +358,7 @@ document.addEventListener('DOMContentLoaded', function () {
         opacity: 1;
     }
 }
+
 @keyframes blink {
     0% {
         transform: scale(1);
@@ -337,6 +376,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 .blink {
     animation: blink 1s infinite;
+}
+
+@media screen and (max-width: 992px) {
+
 }
 </style>
 

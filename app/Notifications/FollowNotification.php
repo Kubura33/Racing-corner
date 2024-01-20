@@ -5,7 +5,6 @@ namespace App\Notifications;
 use App\Models\Ad;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
@@ -16,12 +15,11 @@ class FollowNotification extends Notification
     /**
      * Create a new notification instance.
      */
-    private $mail = '';
-    private $website = '';
+    private $via;
     public function __construct(private Ad $ad, private User $followed_by, private $send_via_email = 0, private $send_via_website=0)
     {
-        $this->mail = $this->send_via_email ? 'mail' : '';
-        $this->website = $this->send_via_website ? 'database' : '';
+
+
     }
 
     /**
@@ -31,7 +29,17 @@ class FollowNotification extends Notification
      */
     public function via(object $notifiable): array
     {
-        return [$this->mail, $this->website];
+
+        if($this->send_via_email && $this->send_via_website){
+            $this->via = ['database', 'mail'];
+        }
+        else if($this->send_via_email){
+            $this->via = ['mail'];
+        }
+        else if($this->send_via_website){
+            $this->via=['database'];
+        }
+        return $this->via;
     }
 
     /**
@@ -40,7 +48,7 @@ class FollowNotification extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-
+                    ->subject('Novo pracenje na oglasu!')
                     ->line('Korisnik ' . $this->followed_by->name . ' ' . $this->followed_by->lastname . ' je zapratio vas oglas'
                     . $this->ad->title . '.'
                     )
