@@ -4,6 +4,7 @@
     font-weight: 400;
     font-style: normal
 }
+
 html,
 
 body {
@@ -50,13 +51,16 @@ main {
         font-size: medium;
     }
 
-    p, span, a {
+    p,
+    span,
+    a {
         margin: 0;
         font-size: 400;
         font-family: EuclidCircularB, sans-serif;
     }
 
-    ul, li {
+    ul,
+    li {
         margin: 0;
         padding: 0;
         font-size: 400;
@@ -90,13 +94,16 @@ main {
 
     }
 
-    p, span, a {
+    p,
+    span,
+    a {
         margin: 0;
         font-size: 500;
         font-family: EuclidCircularB, sans-serif;
     }
 
-    ul, li {
+    ul,
+    li {
         margin: 0;
         padding: 0;
         font-size: 500;
@@ -317,10 +324,10 @@ span {
     width: 100%;
 }
 
-.banner_slika  img {
+.banner_slika img {
     width: 100%;
     height: 200px;
-    animation: 20s linear infinite alternate slika;
+    animation: 10s linear infinite alternate slika;
 }
 
 @keyframes slika {
@@ -329,7 +336,7 @@ span {
     }
 
     100% {
-        transform: scale(1.1);
+        transform: scale(1.2);
     }
 }
 
@@ -347,26 +354,30 @@ span {
 
 
 }
-.search_glavni{
+
+.search_glavni {
     width: 100%;
     text-align: center;
     display: grid;
-    position:absolute;
-    top:20%;
+    position: absolute;
+    top: 20%;
     height: 50px;
     grid-template-columns: auto auto auto auto auto auto;
 }
-.search_glavni button{
-   border: 5px solid #3a795a;
-   font-weight: bold;
+
+.search_glavni button {
+    border: 5px solid #3a795a;
+    font-weight: bold;
 }
+
 .search_home {
     grid-column: 1/5;
 
     height: 50px;
     border-radius: 10px;
 }
-.search_home input{
+
+.search_home input {
     height: 100%;
     padding: 2%;
     width: 80%;
@@ -603,6 +614,7 @@ span {
         color: #E0E7E9;
         width: 100%;
     }
+
     .banner {
         width: 100%;
         height: 100px;
@@ -644,33 +656,38 @@ span {
         -webkit-clip-path: polygon(100% 0, 0% 100%, 100% 100%);
         clip-path: polygon(100% 0, 0% 100%, 100% 100%);
     }
-    .search_glavni{
+
+    .search_glavni {
         width: 100%;
         text-align: center;
         display: grid;
-        position:absolute;
-        top:20%;
+        position: absolute;
+        top: 20%;
         height: 530px;
         grid-template-columns: auto auto auto auto auto auto;
     }
-    .search_glavni button{
-       border: 5px solid #3a795a;
-       font-weight: bold;
-       margin-left: -13%;
-       height: 40px;
-       padding-top: 0.200rem;
+
+    .search_glavni button {
+        border: 5px solid #3a795a;
+        font-weight: bold;
+        margin-left: -13%;
+        height: 40px;
+        padding-top: 0.200rem;
     }
+
     .search_home {
         grid-column: 1/5;
         height: 40px;
         border-radius: 10px;
     }
-    .search_home input{
+
+    .search_home input {
         height: 100%;
         padding: 2%;
         width: 80%;
         margin-left: 10%;
     }
+
     /*  .banner h2 {
         margin-top: 0;
         font-size: 16px;
@@ -1132,9 +1149,9 @@ span {
     margin-bottom: 2%;
     margin-top: 2%;
 }
-.save-icon svg:hover{
 
-}
+.save-icon svg:hover {}
+
 /* Stil za računar (širina 500 piksela) */
 @media only screen and (min-width: 768px) {
     .oglasi_home {
@@ -1709,6 +1726,8 @@ span {
         height: 80%;
         display: block;
         object-fit: fill;
+        transition: transform 0.9s ease;
+
     }
 
     .slika img:active {
@@ -2001,6 +2020,27 @@ span {
         background-color: #000000
     }
 
+    .kontakt {
+        display: none;
+    }
+
+    #dugme1 {
+        display: none;
+    }
+
+    #dugme2 {
+        display: none;
+    }
+
+    .kontakt button {
+        display: none;
+
+    }
+
+    .kontakt button svg {
+        display: none;
+    }
+
     .oglasavac_info_telefon {
         display: none;
     }
@@ -2008,50 +2048,74 @@ span {
     .oglasavac_info {
         float: right;
         width: 25%;
-        height: 350px;
+        height: 150px;
         margin-top: 5%;
-        background-color: #E0E7E9;
+        background-color: #ffffff;
         margin-right: 2%;
-        color: black;
-
     }
-
-    .oglasavac_info h4 {
-        background-color: #354649;
-        padding: 10%;
-        ;
-        margin-top: 2%;
-        margin-bottom: 2%;
-        width: 70%;
-        height: 30%;
-        color: #ffffff;
+    .oglasavac_info .button{
+        color: white;
         text-align: center;
-        display: block;
-        margin-left: 15%;
+        text-decoration: none;
+        display: inline-block;
+        padding: 0.7rem;
+        border-radius: 50px;
+        width: 43%;
+        margin-left: 1rem;
+    }
+    #dugme3 {
+        background-color: #aa0417;
+
     }
 
-    .oglasavac_info h4:hover {
-        background-color: #fff;
-        color: #354649;
+    #dugme4 {
+        background-color: #004394;
+    }
+
+    .oglasavac_info button {
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        padding: 0.5rem;
+        font-size: 18px;
+        border-radius: 50px;
+        width: 70%;
+        margin-left: 1rem;
+        margin-top: 20%;
+    }
+
+    .oglasavac_info button svg {
+        margin-right: 7px;
+        margin-bottom: 3px;
     }
 
     .text_oglasa {
         height: auto;
         margin: 1%;
+        margin-bottom: 1%;
         width: 98%;
         padding: 4%;
-        background-color: #ededed;
+        background-color: #ffffff;
         border-radius: 10px;
     }
 
     .text_oglasa h1 {
-        text-align: center;
         font-weight: bold;
+        margin-bottom: 10%;
+        color: #047b67;
     }
-
+    .text_oglasa h1 span{
+        font-size: 2.5rem;
+        display: inline;
+        float: left;
+    }
     .text_oglasa span {
         display: inline;
         font-weight: bold;
+        width: 50%;
+        float: right;
     }
 
     #celokupni_opis {
@@ -2061,7 +2125,9 @@ span {
     .text_oglasa p {
         font-size: 17px;
     }
-
+    #mali{
+        display: none;
+    }
 
 }
 
@@ -2098,44 +2164,61 @@ span {
         height: 33px;
         background-color: #000000
     }
+    .kontakt {
+        width: 100%;
+        height: 4rem;
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 1rem;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        justify-content: space-between;
+    }
+
+    #dugme1 {
+        background-color: #aa0417;
+
+    }
+
+    #dugme2 {
+        background-color: #004394;
+    }
+
+    .kontakt button {
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        padding: 0.7rem;
+        font-size: 16px;
+        border-radius: 50px;
+        width: 43%;
+        margin-left: 1rem;
+    }
+
+    .kontakt button svg {
+        margin-right: 2px;
+        margin-bottom: 3px;
+    }
 
     .oglasavac_info {
-        width: 100%;
-        height: 120px;
-        padding-top: 1%;
-        padding-bottom: 2%;
-        background-color: #ffffff;
-        color: black;
-        margin: 0;
-        display: flex;
-        flex-wrap: wrap;
-        margin-bottom: -35px;
+        display: none;
+
     }
 
     .oglasavac_info h4 {
-        background-color: #354649;
-        padding: 1%;
-        margin-top: 1%;
-        border-radius: 10px;
-        display: grid;
-        width: 50%;
-        height: 30%;
-        color: #ffffff;
-        text-align: center;
-        border: 1px solid white;
-        font-size: 20px;
+        display: none;
+
     }
 
     #email_info {
-        display: block;
-        width: 100%;
-        margin-top: -35px;
-        border-radius: 10px;
+        display: none;
     }
 
     .oglasavac_info h4:active {
-        background-color: #fff;
-        color: #354649;
+        display: none;
     }
 
     .text_oglasa {
@@ -2148,17 +2231,35 @@ span {
     }
 
     .text_oglasa h1 {
-        text-align: center;
         font-weight: bold;
+        margin-bottom: 15%;
+        color: #047b67;
     }
-
-    .text_oglasa span {
-        font-weight: bold;
-    }
-
-    .text_oglasa span {
+    .text_oglasa h1 span{
+        font-size: 2.5rem;
         display: inline;
     }
+    .text_oglasa svg{
+        margin-right: 5px;
+    }
+    .text_oglasa h3 span {
+        font-weight: bold;
+        font-size: 1.2rem;
+        display: inline;
+        float: right;
+        width: 50%;
+    }
+    #mali{
+        font-weight: bold;
+        font-size: 1.2rem;
+        display: inline;
+        color: #000000;
+        margin-left: 3%;
+    }
+    .text_oglasa h3{
+        font-size: 1.5rem;
+    }
+    
 
     #celokupni_opis {
         font-weight: bolder;
@@ -2167,6 +2268,7 @@ span {
     .text_oglasa p {
         font-size: 17px;
     }
+    
 }
 
 /*--/Stranica detalji--*/
