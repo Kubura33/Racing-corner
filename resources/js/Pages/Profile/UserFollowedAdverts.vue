@@ -31,12 +31,12 @@ defineProps(
 
         </div>
     </div>
-{{ads}}
+
 </template>
 <style scoped>
 .user-followed-adverts-main-container{
-    height: 100vh; /* 100% of the viewport height */
-    width: 100vw; /* 100% of the viewport width */
+    height: auto; /* 100% of the viewport height */
+    width: 100%; /* 100% of the viewport width */
     margin: 0;
     padding: 0;
     box-sizing: content-box;
@@ -44,9 +44,10 @@ defineProps(
     flex-direction: row;
     justify-content: center;
     background-color: #f9f9f9;
+    margin-bottom: 50px;
 }
 .user-followed-adverts-container{
-    width: 1150px;
+    width: 75%;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -60,6 +61,7 @@ defineProps(
     width: 100%;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     padding: 1%;
     background-color: #fff; /* Match the container's background color */
     border-radius: 10px;
@@ -134,4 +136,40 @@ defineProps(
     font-weight: bold;
     color: #333;
 }
+@media screen and (max-width: 767px) {
+    .user-followed-adverts-container{
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+    .user-followed-ads{
+        width: 90%;
+        flex-direction: column;
+    }
+    .user-followed-ads-action-buttons{
+        flex-direction: row;
+        gap: 10px;
+    }
+}
+
+/* Medium screens (tablets) */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .followed-ads-info{
+        min-width: 60%;
+    }
+    .followed-ads-info > p {
+        font-size: 16px;
+    }
+    .user-followed-adverts-container{
+        width: 95%;
+    }
+
+}
+
+/* Large screens (desktops) */
+@media screen and (min-width: 1024px) and (max-width: 1439px) {
+    .followed-ads-info{
+        min-width: 75%;
+    }}
+
 </style>

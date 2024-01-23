@@ -32,7 +32,6 @@ const type = (item) => {
                 <div class="ad-image">
                     <img :src="ad.image_path" alt="">
                 </div>
-                <div>
                     <div class="created-ads-basic-info">
                         <Link as="h3" :href="route('ads.show', {ad:ad.id})" class="followed-ad-title">{{ad.title}}</Link>
                         <div class="info-about-ad"><b><span>Broj pracenja: {{ad.likes.length}}</span></b> <b class="created-ad-price">$4500</b>
@@ -41,11 +40,11 @@ const type = (item) => {
                         <p>{{ad.advertisable.description.length>300 ? ad.advertisable.description.slice(0,300) `...` : ad.advertisable.description}}</p>
                         <p v-if="ad.isSold == 1" style="font-size: 25px; color: red; font-style: italic;">Oglas je oznacen kao prodat i bice obrisan za 7 dana</p>
                     </div>
-                </div>
+
                 <div class="actions" v-if="ad.isSold !=1">
-                    <Link :href="route('advert-has-been-sold', {ad: ad.id})" class="action-1" method="POST" as="button">Prodaj</Link>
-                    <Link :href="route('ads.edit', {ad: ad.id})" class="btn btn-warning">Izmeni</Link>
-                    <Link :href="route('ads.destroy', {ad : ad.id})" method="delete" as="button" class="btn btn-danger">Obrisi</Link>
+                    <Link :href="route('advert-has-been-sold', {ad: ad.id})" class="action-1" id="sell" method="POST" as="button">Prodaj</Link>
+                    <Link :href="route('ads.edit', {ad: ad.id})" id="edit" class="btn btn-warning">Izmeni</Link>
+                    <Link :href="route('ads.destroy', {ad : ad.id})" id="delete" method="delete" as="button" class="btn btn-danger">Obrisi</Link>
                 </div>
                 <div v-else class="ad-has-been-sold">
 
@@ -59,8 +58,8 @@ const type = (item) => {
 </template>
 <style scoped>
 .main-container {
-    height: 100vh; /* 100% of the viewport height */
-    width: 100vw; /* 100% of the viewport width */
+    height: auto; /* 100% of the viewport height */
+    width: 100%; /* 100% of the viewport width */
     margin: 0;
     padding: 0;
     box-sizing: content-box;
@@ -71,7 +70,7 @@ const type = (item) => {
 }
 
 #container {
-    width: 1150px;
+    width: 75%;
     height: auto;
     background-color: #f9f9f9;
     padding: 10px;
@@ -86,7 +85,7 @@ const type = (item) => {
 .created-ads-basic-info {
     display: flex;
     flex-direction: column;
-    min-width: 606px;
+    width: 80%;
 }
 .created-ads-basic-info > p {
     margin-left: 7px;
@@ -110,17 +109,22 @@ const type = (item) => {
 }
 
 .ad-image {
+
+    position: relative;
+    overflow: hidden;
     min-width: 290px;
     max-width: 300px;
-    height: 200px;
+    height: auto;
 
     border-right: 1px solid black;
-    padding-left: 5px;
 }
 
 .ad-image img {
     width: 100%;
     height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
     object-fit: cover;
 }
 
@@ -141,7 +145,12 @@ const type = (item) => {
     align-self: flex-end;
     margin-bottom: 30px;
     margin-right: 10px;
-    padding: 5px;
+    justify-content: center;
+    padding-top: 2%;
+    height: 100%;
+}
+.actions > button {
+    width: 100%;
 }
 .ad-has-been-sold{
     display: flex;
@@ -177,4 +186,95 @@ const type = (item) => {
     color: #00c8b4;
     font-weight: 700;
 }
+@media screen and (max-width: 767px) {
+    #container
+    {
+        width: 100%;
+    }
+    .created-ads{
+        flex-direction: column;
+        gap: 5px;
+    }
+    .ad-image{
+        min-width: 100%;
+        height: 300px;
+    }
+    .ad-image > img {
+        max-width: 100%;
+        min-width: 100%;
+        height: 100%;
+    }
+    .created-ads-basic-info{
+        width: 100%;
+    }
+    .created-ads-basic-info > p {
+        text-align: center;
+    }
+    .followed-ad-title{
+        text-align: center;
+    }
+    .actions{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-self: normal;
+        justify-content: center;
+        width: 100%;
+    }
+    #edit, #sell, #delete{
+        width: 40%;
+    }
+    .info-about-ad{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+   }
+
+/* Medium screens (tablets) */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+#container
+{
+    width: 100%;
+}
+    .created-ads{
+        flex-direction: column;
+    }
+    .ad-image{
+        min-width: 100%;
+        height: 300px;
+    }
+    .ad-image > img {
+        max-width: 100%;
+        min-width: 100%;
+        height: 100%;
+    }
+    .created-ads-basic-info{
+        width: 100%;
+    }
+    .created-ads-basic-info > p {
+        text-align: center;
+    }
+    .followed-ad-title{
+        text-align: center;
+    }
+    .actions{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-self: normal;
+        justify-content: center;
+        width: 100%;
+    }
+    .actions > button{
+        width: 200px;
+    }
+}
+@media screen and (min-width: 1024px) and (max-width: 1439px) {
+    #container
+    {
+        width: 100%;
+    }}
+
+
 </style>

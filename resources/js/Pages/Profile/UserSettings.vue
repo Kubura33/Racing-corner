@@ -1,5 +1,5 @@
 <script setup>
-import {useForm} from "@inertiajs/vue3";
+import {useForm, Link} from "@inertiajs/vue3";
 import {ref, computed, onMounted} from "vue";
 
 
@@ -74,6 +74,9 @@ const update = () => editForm.patch(route('profile.update'))
                     <label class="user-settings-label" for="username">Email:</label>
                     <input class="user-settings-input" type="email" id="username" v-model="user.email" disabled
                            style="cursor: not-allowed">
+                </div>
+                <div>
+                    <label class="user-settings-label">Ukoliko zelite da promenite lozinku kliknite <Link :href="route('change-password')">ovde</Link> </label>
                 </div>
                 <div class="notifications">
                     <label class="user-settings-label" for="">Primanje obavestenja kada neko zaprati vas oglas i kada

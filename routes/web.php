@@ -29,6 +29,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/settings', [ProfileController::class, 'edit'])->name('settings');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/profile/change-password', [\App\Http\Controllers\Auth\PasswordController::class, 'index'])->name('change-password');
+    Route::put('profile/change-password', [\App\Http\Controllers\Auth\PasswordController::class, 'update'])->name('password.update');
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
     Route::resource('ads', \App\Http\Controllers\AdController::class)->except(['show', 'index']);
     Route::post('/follow-advert/{ad}', \App\Actions\FollowAdvert::class)->name('follow-advert');
@@ -60,6 +62,7 @@ Route::get('/cars', \App\Http\Controllers\VehicleController::class)->name('cars'
 Route::get('/about', function () {
     return Inertia::render('Home/About');
 })->name('about');
+Route::get('/search', \App\Http\Controllers\SearchController::class)->name('search');
 Route::resource('ads', \App\Http\Controllers\AdController::class)->only(['show']);
 Route::get('/', [\App\Http\Controllers\AdController::class, 'index'])->name('home');
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

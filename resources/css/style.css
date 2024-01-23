@@ -368,11 +368,14 @@ span {
 .search_glavni button {
     border: 5px solid #3a795a;
     font-weight: bold;
+    width: 30%;
+
 }
 
 .search_home {
     grid-column: 1/5;
-
+    display: flex;
+    flex-direction:row ;
     height: 50px;
     border-radius: 10px;
 }
@@ -2259,7 +2262,7 @@ span {
     .text_oglasa h3{
         font-size: 1.5rem;
     }
-    
+
 
     #celokupni_opis {
         font-weight: bolder;
@@ -2268,7 +2271,7 @@ span {
     .text_oglasa p {
         font-size: 17px;
     }
-    
+
 }
 
 /*--/Stranica detalji--*/

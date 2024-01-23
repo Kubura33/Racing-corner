@@ -1,5 +1,5 @@
 <script setup>
-import { Link } from "@inertiajs/vue3";
+import {Link, useForm} from "@inertiajs/vue3";
 
 const props = defineProps(
     {
@@ -7,6 +7,13 @@ const props = defineProps(
         ads: Object,
     }
 )
+const filterForm = useForm({
+    search: '',
+})
+const filter = () => filterForm.get(route('search'), {
+    preserveState: true,
+    preserveScroll: true,
+})
 </script>
 <template>
     <div class="banner">
@@ -15,10 +22,11 @@ const props = defineProps(
             <div class="gradient"></div>
             <div class="bottom_border"></div>
             <div class="search_glavni">
-                <form class="search_home">
-                    <input type="search" placeholder="Search...">
+                <form @submit.prevent="filter" class="search_home">
+                    <input type="search" v-model="filterForm.search" placeholder="Search...">
+                    <button type="submit" class="btn btn-outline-success"  >SEARCH</button>
                 </form>
-                <button type="button" class="btn btn-outline-success">SEARCH</button>
+
             </div>
         </div>
     </div>
@@ -27,7 +35,7 @@ const props = defineProps(
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" v-if="premiumAds.length > 0">
             <div class="carousel-inner">
                 <div v-for="(group, index) in groups" :key="index"
-                    :class="['carousel-item', { active: index === activeIndex }]">
+                     :class="['carousel-item', { active: index === activeIndex }]">
                     <div class="premium-kartice">
                         <span class="traka" id="traka_div_comp"></span>
                         <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -38,7 +46,8 @@ const props = defineProps(
                                     <div class="card-body">
                                         <h5 class="card-title">{{ card.brand }}</h5>
                                         <h5>CENA: <span class="podatak">{{ card.price }}<span class="podatak">{{
-                                            card.currency }}</span></span></h5>
+                                                card.currency
+                                            }}</span></span></h5>
                                     </div>
                                     <Link :href="route('ads.show', { ad: card.id })" class="btn btn-primary">Detaljnije
                                     </Link>
@@ -49,12 +58,12 @@ const props = defineProps(
                 </div>
             </div>
             <button @click="prev" class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                data-bs-slide="prev">
+                    data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Prethodno</span>
             </button>
             <button @click="next" class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                data-bs-slide="next">
+                    data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Sledeće</span>
             </button>
@@ -64,29 +73,30 @@ const props = defineProps(
     <h2 id="poslednje_dodato" v-else>Trenutno nema oglasa </h2>
     <div class="oglasi_home">
         <Link :href="route('ads.show', { ad: ad.id })" class="wrap" v-for="ad in ads" :key="ad.id">
-        <div class="slika">
-            <a href="">
-                <img :src="ad.image_path[0]" alt="Oglas">
-                <!-- Add the following SVG icon for saving -->
-                <div class="save-icon" style="position: absolute; top: 10px; right: 10px; cursor: pointer;"
-                    onclick="toggleBookmark(this)">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="green" class="bi bi-bookmark"
-                        viewBox="0 0 17 17">
-                        <path
-                            d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"
-                            stroke="green" stroke-width="1.5" />
-                    </svg>
+            <div class="slika">
+                <a href="">
+                    <img :src="ad.image_path[0]" alt="Oglas">
+                    <!-- Add the following SVG icon for saving -->
+                    <div class="save-icon" style="position: absolute; top: 10px; right: 10px; cursor: pointer;"
+                         onclick="toggleBookmark(this)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="green"
+                             class="bi bi-bookmark"
+                             viewBox="0 0 17 17">
+                            <path
+                                d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"
+                                stroke="green" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                </a>
+                <div class="data">
+                    <h4>
+                        {{ ad.title }}
+                        <span v-if="ad.isSold == 1"
+                              style="font-weight: bold;color: red; font-size: 8px; display: inline;">(PRODATO)</span>
+                    </h4>
                 </div>
-            </a>
-            <div class="data">
-                <h4>
-                    {{ ad.title }}
-                    <span v-if="ad.isSold == 1"
-                        style="font-weight: bold;color: red; font-size: 8px; display: inline;">(PRODATO)</span>
-                </h4>
+                <span class="cena_traka" id="traka_cena">{{ ad.price }} &euro;</span>
             </div>
-            <span class="cena_traka" id="traka_cena">{{ ad.price }} &euro;</span>
-        </div>
         </Link>
     </div>
 
@@ -95,13 +105,13 @@ const props = defineProps(
             <div class="accordion-item" id="accordion-item1">
                 <h2 class="accordion-header" id="panelsStayOpen-headingOne">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-                        aria-controls="panelsStayOpen-collapseOne">
+                            data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                            aria-controls="panelsStayOpen-collapseOne">
                         Kako okačiti oglas
                     </button>
                 </h2>
                 <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse"
-                    aria-labelledby="panelsStayOpen-headingOne">
+                     aria-labelledby="panelsStayOpen-headingOne">
                     <div class="accordion-body">
                         <strong>Koraci za kačenje oglasa</strong>
                         <ul>
@@ -110,7 +120,8 @@ const props = defineProps(
                             <li>Odaberite vrstu oglasa koju želite da okačite</li>
                             <li>Popuni pravilno formu i kreiraj oglas</li>
                             <li>Sav pregled Vaših podataka se nalazi na stranici Profil, koja se otvara klikom na Vaše
-                                ime(gore desno).</li>
+                                ime(gore desno).
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -118,13 +129,13 @@ const props = defineProps(
             <div class="accordion-item" id="accordion-item2">
                 <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
-                        aria-controls="panelsStayOpen-collapseTwo">
+                            data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                            aria-controls="panelsStayOpen-collapseTwo">
                         Naš email kontakt
                     </button>
                 </h2>
                 <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
-                    aria-labelledby="panelsStayOpen-headingTwo">
+                     aria-labelledby="panelsStayOpen-headingTwo">
                     <div class="accordion-body">
                         <strong>official@racing-corner.com</strong>
                     </div>
@@ -133,16 +144,17 @@ const props = defineProps(
             <div class="accordion-item" id="accordion-item3">
                 <h2 class="accordion-header" id="panelsStayOpen-headingThree">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
-                        aria-controls="panelsStayOpen-collapseThree">
+                            data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                            aria-controls="panelsStayOpen-collapseThree">
                         Kako funkcioniše racing-corner
                     </button>
                 </h2>
                 <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
-                    aria-labelledby="panelsStayOpen-headingThree">
+                     aria-labelledby="panelsStayOpen-headingThree">
                     <div class="accordion-body">
                         <strong>Racing-corner berza</strong>
-                        <p>Ova platforma je osmišljena da olakša potražnju i kupovinu trkačke opreme, guma, delova i samih
+                        <p>Ova platforma je osmišljena da olakša potražnju i kupovinu trkačke opreme, guma, delova i
+                            samih
                             vozila.
 
                         </p>
@@ -203,7 +215,13 @@ export default {
         addItemToGroup(items) {
             let groupIndex = 0
             for (let i = 0; i < items.length; i++) {
-                const item = { id: items[i].id, brand: items[i].title, price: items[i].price, currency: ' €', image: items[i].image_path[0] }
+                const item = {
+                    id: items[i].id,
+                    brand: items[i].title,
+                    price: items[i].price,
+                    currency: ' €',
+                    image: items[i].image_path[0]
+                }
                 if ((i + 1) % 3 == 0)
                     groupIndex = groupIndex + 1
                 if (!this.groups[groupIndex]) {
@@ -220,6 +238,7 @@ export default {
 
     }
 };
+
 function toggleBookmark(element) {
     const svg = element.querySelector('svg');
     const isBookmarked = svg.classList.contains('bi-bookmark-fill');
@@ -233,55 +252,55 @@ function toggleBookmark(element) {
     }
 }
 </script>
- <!--   <div class="div-oglas">
-        <div class="row">
-            <div class="col col-md-4 mb-3">
-                <div class="card">
-                    <img src="/images/borkovic.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">MARKA</h5>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">KUBIKAZA: <span class="podatak">1150ccm</span></li>
-                        <li class="list-group-item">KLASA: <span class="podatak">Sport</span> </li>
-                        <li class="list-group-item">CENA: <span class="podatak">230<span class="podatak">valuta</span></span></li>
-                    </ul>
-                    <div class="card-body">
-                        <Link :href="route('details')" class="btn btn-primary">Detaljnije</Link>
-                    </div>
-                </div>
-            </div>
-            <div class="col col-12 col-md-4 mb-3">
-                <div class="card">
-                    <img src="/images/borkovic.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">MARKA</h5>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">KUBIKAZA: <span class="podatak">1150ccm</span></li>
-                        <li class="list-group-item">KLASA: <span class="podatak">Sport</span> </li>
-                        <li class="list-group-item">CENA: <span class="podatak">230<span class="podatak">valuta</span></span></li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="btn btn-primary">Detaljnije</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col col-12 col-md-4 mb-3">
-                <div class="card">
-                    <img src="/images/borkovic.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">MARKA</h5>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">KUBIKAZA: <span class="podatak">1150ccm</span></li>
-                        <li class="list-group-item">KLASA: <span class="podatak">Sport</span> </li>
-                        <li class="list-group-item">CENA: <span class="podatak">230<span class="podatak">valuta</span></span></li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="btn btn-primary">Detaljnije</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
+<!--   <div class="div-oglas">
+       <div class="row">
+           <div class="col col-md-4 mb-3">
+               <div class="card">
+                   <img src="/images/borkovic.jpg" class="card-img-top" alt="...">
+                   <div class="card-body">
+                       <h5 class="card-title">MARKA</h5>
+                   </div>
+                   <ul class="list-group list-group-flush">
+                       <li class="list-group-item">KUBIKAZA: <span class="podatak">1150ccm</span></li>
+                       <li class="list-group-item">KLASA: <span class="podatak">Sport</span> </li>
+                       <li class="list-group-item">CENA: <span class="podatak">230<span class="podatak">valuta</span></span></li>
+                   </ul>
+                   <div class="card-body">
+                       <Link :href="route('details')" class="btn btn-primary">Detaljnije</Link>
+                   </div>
+               </div>
+           </div>
+           <div class="col col-12 col-md-4 mb-3">
+               <div class="card">
+                   <img src="/images/borkovic.jpg" class="card-img-top" alt="...">
+                   <div class="card-body">
+                       <h5 class="card-title">MARKA</h5>
+                   </div>
+                   <ul class="list-group list-group-flush">
+                       <li class="list-group-item">KUBIKAZA: <span class="podatak">1150ccm</span></li>
+                       <li class="list-group-item">KLASA: <span class="podatak">Sport</span> </li>
+                       <li class="list-group-item">CENA: <span class="podatak">230<span class="podatak">valuta</span></span></li>
+                   </ul>
+                   <div class="card-body">
+                       <a href="#" class="btn btn-primary">Detaljnije</a>
+                   </div>
+               </div>
+           </div>
+           <div class="col col-12 col-md-4 mb-3">
+               <div class="card">
+                   <img src="/images/borkovic.jpg" class="card-img-top" alt="...">
+                   <div class="card-body">
+                       <h5 class="card-title">MARKA</h5>
+                   </div>
+                   <ul class="list-group list-group-flush">
+                       <li class="list-group-item">KUBIKAZA: <span class="podatak">1150ccm</span></li>
+                       <li class="list-group-item">KLASA: <span class="podatak">Sport</span> </li>
+                       <li class="list-group-item">CENA: <span class="podatak">230<span class="podatak">valuta</span></span></li>
+                   </ul>
+                   <div class="card-body">
+                       <a href="#" class="btn btn-primary">Detaljnije</a>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div> -->
