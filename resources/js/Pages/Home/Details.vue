@@ -8,6 +8,22 @@
     <!--</div>-->
     <div class="oglasavac_info">
         <div class="information-container">
+            <div class="save-icon"
+            >{{ bookmarkText }}
+                <svg v-if="!isFollowed" @click="follow" xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="green"
+                     class="bi bi-bookmark"
+                     viewBox="0 0 17 17">
+                    <path
+                        d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"
+                        stroke="green" stroke-width="1.5"/>
+                </svg>
+                <svg @click="follow" v-if="isFollowed" xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
+                     class="bi bi-bookmark-fill" viewBox="0 0 16 16" id="IconChangeColor">
+                    <path
+                        d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"
+                        id="mainIconPathAttribute" fill="green"></path>
+                </svg>
+            </div>
             <button id="dugme3" @click="showPhone">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                      class="bi bi-telephone" viewBox="0 0 16 16">
@@ -68,9 +84,30 @@
 
 
     <div class="text_oglasa">
-        <h1><span class="model">{{ ad.title }}</span><span v-if="ad.isSold == 1"
-                                                           style="font-weight: bold;color: red; font-size: 28px;">(PRODATO)</span><span
-            id="mali">{{ ad.advertisable.model }}</span></h1>
+        <div style="display: flex;flex-direction: row; justify-content: space-between; align-items: center; ">
+            <div>
+                <h1 ><span class="model">{{ ad.title }}</span> <span v-if="ad.isSold == 1"
+                                                                                                                                                                   style="font-weight: bold;color: red; font-size: 28px;">(PRODATO)</span><span
+                    id="mali">{{ ad.advertisable.model }}</span></h1>
+            </div>
+            <div class="mobile-save-icon"
+            >
+                <svg style="margin-bottom: 15px;" v-if="!isFollowed" @click="follow" xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="green"
+                     class="bi bi-bookmark"
+                     viewBox="0 0 17 17">
+                    <path
+                        d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"
+                        stroke="green" stroke-width="1.5"/>
+                </svg>
+                <svg style="margin-bottom: 15px;" @click="follow" v-if="isFollowed" xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
+                     class="bi bi-bookmark-fill" viewBox="0 0 16 16" id="IconChangeColor">
+                    <path
+                        d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"
+                        id="mainIconPathAttribute" fill="green"></path>
+                </svg>
+            </div>
+        </div>
+
         <h3 v-if="ad.advertisable_type == 'vehicle'">Model <span>{{ ad.advertisable.model }}</span></h3>
         <h3 v-else-if="ad.advertisable_type === 'equipment'">Brend <span>{{ ad.advertisable.brand }}</span> | Vrsta
             <span>{{ ad.advertisable.vrsta }}</span>
@@ -126,9 +163,7 @@
         </p>
         <div
             style="display: flex;flex-direction: row;align-items: center;justify-items: center;justify-content: center; margin-top: 33px;">
-            <Link method="post" as="button" :href="route('follow-advert', { ad: ad.id })" class="btn btn-primary">
-                {{ checkIfUserLiked() }}
-            </Link>
+
         </div>
     </div>
     <div class="kontakt">
@@ -165,8 +200,8 @@
     </div>
 </template>
 <script setup>
-import {usePage, Link} from "@inertiajs/vue3";
-import {ref} from "vue";
+import {usePage, Link, useForm} from "@inertiajs/vue3";
+import {onMounted, ref} from "vue";
 
 const page = usePage();
 const user = page.props.auth.user;
@@ -174,15 +209,19 @@ const props = defineProps({
     ad: Object,
 });
 const naslovna = props.ad.image_path[0];
+const isFollowed = ref(false);
+const bookmarkText = ref("Zaprati oglas")
 props.ad.image_path.splice(0, 1);
-console.log(props.ad.user)
+const followForm = useForm({
+    ad: props.ad.id
+})
 const checkIfUserLiked = () => {
     for (let i = 0; i < props.ad.likes.length; i++) {
         if (props.ad.likes[i].id === user.id) {
-            return "Otprati oglas";
+            isFollowed.value = true
+            bookmarkText.value = "Otprati oglas"
         }
     }
-    return "Prati oglas";
 };
 const isPopupVisible = ref(false)
 const isPhoneVisible = ref(false)
@@ -202,6 +241,14 @@ const showEmailOnMobile = () => {
     isEmailVisibleOnMobile.value = !isEmailVisibleOnMobile.value
     isPhoneVisibleOnMobile.value = false
 }
+const follow =  () => {
+    isFollowed.value = !isFollowed.value
+    followForm.post(route('follow-advert'))
+
+}
+onMounted(()=> {
+    checkIfUserLiked()
+})
 </script>
 <style scoped>
 .email-container {
@@ -228,12 +275,16 @@ const showEmailOnMobile = () => {
 .email-container:hover {
     transform: scale(1.05); /* Scale up on hover */
 }
-.information-container{
+
+.information-container {
     display: flex;
     flex-direction: column;
     justify-items: center;
     align-items: center;
     justify-content: center;
+}
+.information-container > .save-icon > svg {
+    cursor: pointer;
 }
 .phone-container {
     padding: 10px;
@@ -255,13 +306,13 @@ const showEmailOnMobile = () => {
 .phone-container:hover {
     transform: scale(1.05);
 }
+
 .mobile-phone-container {
     position: absolute;
     bottom: 100%;
     padding: 10px;
     text-align: center;
     width: 90%;
-    margin-left: 20px;
     border: 2px solid #e74c3c; /* Different border color */
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(231, 76, 60, 0.7); /* Different shadow color */
@@ -272,13 +323,13 @@ const showEmailOnMobile = () => {
     transition: transform 0.3s ease-in-out;
     cursor: pointer;
 }
+
 .mobile-email-container {
     position: absolute;
     bottom: 100%;
     padding: 10px;
     text-align: center;
     width: 90%;
-    margin-left: 20px;
     border: 2px solid #3498db; /* Cool border color */
     border-radius: 10px; /* Rounded corners */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Subtle box shadow */
@@ -293,5 +344,15 @@ const showEmailOnMobile = () => {
     /* Add hover effect */
     cursor: pointer;
 }
-
+@media only screen and (max-width: 767px){
+    .information-container{
+        display: none;
+    }
+    .mobile-save-icon{
+        display: inline-block !important;
+    }
+}
+.mobile-save-icon{
+    display: none;
+}
 </style>

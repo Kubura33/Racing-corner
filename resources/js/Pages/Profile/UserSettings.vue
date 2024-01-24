@@ -22,8 +22,8 @@ const isDisabled = ref(false);
 onMounted( () => {
     isDisabled.value = !(props.user.user_setting.receive_follow_notifications === 1)
     if(!isDisabled.value){
-        editForm.emailNotifications = true
-        editForm.websiteNotifications = true
+        editForm.emailNotifications = props.user.user_setting.receive_notifications_via_email === 1 ?? false
+        editForm.websiteNotifications = props.user.user_setting.receive_notifications_via_website === 1 ?? false
     }
 })
 const disableNotif = () => {

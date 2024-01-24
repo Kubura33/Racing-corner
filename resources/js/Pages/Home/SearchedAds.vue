@@ -67,7 +67,7 @@ h3{
         gap: 15px;
     }
     .wrap{
-        width: 80%;
+        width: 95%;
     }
 }
 

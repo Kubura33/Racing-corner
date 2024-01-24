@@ -76,17 +76,6 @@ const filter = () => filterForm.get(route('search'), {
             <div class="slika">
                 <a href="">
                     <img :src="ad.image_path[0]" alt="Oglas">
-                    <!-- Add the following SVG icon for saving -->
-                    <div class="save-icon" style="position: absolute; top: 10px; right: 10px; cursor: pointer;"
-                         onclick="toggleBookmark(this)">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="green"
-                             class="bi bi-bookmark"
-                             viewBox="0 0 17 17">
-                            <path
-                                d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"
-                                stroke="green" stroke-width="1.5"/>
-                        </svg>
-                    </div>
                 </a>
                 <div class="data">
                     <h4>

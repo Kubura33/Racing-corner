@@ -33,7 +33,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::put('profile/change-password', [\App\Http\Controllers\Auth\PasswordController::class, 'update'])->name('password.update');
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
     Route::resource('ads', \App\Http\Controllers\AdController::class)->except(['show', 'index']);
-    Route::post('/follow-advert/{ad}', \App\Actions\FollowAdvert::class)->name('follow-advert');
+    Route::post('/follow-advert', \App\Actions\FollowAdvert::class)->name('follow-advert');
     Route::post('/advert-has-been-sold/{ad}', \App\Actions\SetAdverToSold::class)->name('advert-has-been-sold');
 ///////////////////////////////////////////////////////////////////
 

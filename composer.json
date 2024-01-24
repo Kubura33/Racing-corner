@@ -14,7 +14,7 @@
         "laravel/tinker": "^2.8",
         "lorisleiva/laravel-actions": "^2.7",
         "spatie/image-optimizer": "^1.7",
-        "tightenco/ziggy": "^1.0"
+        "tightenco/ziggy": "^1.8"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.9",
