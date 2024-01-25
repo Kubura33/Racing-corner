@@ -152,27 +152,27 @@ const filter = () => filterForm.get(route('search'), {
             </div>
         </div>
     </div>
-    <div class="savezi">
-        <h2>Linkovi ka zvaničnim sportskim savezima</h2>
-        <a href="https://www.fia.com/" class="zastave" id="fia">
-            <h4>FIA</h4>
-        </a>
-        <a href="http://www.sakss.org.rs/" class="zastave" id="srbija">
-            <h4>SAKSS</h4>
-        </a>
-        <a href="https://haks.hr/" class="zastave" id="hrvatska">
-            <h4>HAKS</h4>
-        </a>
-        <a href="https://amsm.mk/" class="zastave" id="makedonija">
-            <h4>AMSM</h4>
-        </a>
-        <a href="http://akscg.me/" class="zastave" id="crna_gora">
-            <h4>AKSCG</h4>
-        </a>
-        <a href="https://bfas.bg/" class="zastave" id="bugarska">
-            <h4>БФАС</h4>
-        </a>
-    </div>
+<!--    <div class="savezi">-->
+<!--        <h2>Linkovi ka zvaničnim sportskim savezima</h2>-->
+<!--        <a href="https://www.fia.com/" class="zastave" id="fia">-->
+<!--            <h4>FIA</h4>-->
+<!--        </a>-->
+<!--        <a href="http://www.sakss.org.rs/" class="zastave" id="srbija">-->
+<!--            <h4>SAKSS</h4>-->
+<!--        </a>-->
+<!--        <a href="https://haks.hr/" class="zastave" id="hrvatska">-->
+<!--            <h4>HAKS</h4>-->
+<!--        </a>-->
+<!--        <a href="https://amsm.mk/" class="zastave" id="makedonija">-->
+<!--            <h4>AMSM</h4>-->
+<!--        </a>-->
+<!--        <a href="http://akscg.me/" class="zastave" id="crna_gora">-->
+<!--            <h4>AKSCG</h4>-->
+<!--        </a>-->
+<!--        <a href="https://bfas.bg/" class="zastave" id="bugarska">-->
+<!--            <h4>БФАС</h4>-->
+<!--        </a>-->
+<!--    </div>-->
 </template>
 
 <script>

@@ -211,7 +211,7 @@ const props = defineProps({
 const naslovna = props.ad.image_path[0];
 const isFollowed = ref(false);
 const bookmarkText = ref("Zaprati oglas")
-const isAdOwner = ref(user.id===props.ad.user.id)
+const isAdOwner = ref(user ? user.id===props.ad.user.id : false)
 
 props.ad.image_path.splice(0, 1);
 const followForm = useForm({
@@ -249,7 +249,8 @@ const follow =  () => {
 
 }
 onMounted(()=> {
-    checkIfUserLiked()
+    if(user){
+    checkIfUserLiked()}
 
 })
 </script>
