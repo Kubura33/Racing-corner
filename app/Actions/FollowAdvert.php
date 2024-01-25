@@ -16,7 +16,10 @@ class FollowAdvert
     {
 
         $ad = Ad::find($request->ad);
-
+        if($request->user()->id === $ad->user->id){
+            return redirect()->back()->with('error', 'Ne mozete zapratiti svoj oglas!');
+        }
+        else{
         if ($request->user()) {
             $rateLimiterKey = 'follow-ad:' . $request->user()->id . ':' . $ad->id;
             $decayMinutes = 60;
@@ -42,7 +45,7 @@ class FollowAdvert
             }
         }
         return redirect()->route('login');
-
+        }
 
     }
 

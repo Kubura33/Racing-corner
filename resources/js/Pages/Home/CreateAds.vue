@@ -47,6 +47,7 @@ import TiresAdForm from "@/Components/TiresAdForm.vue";
 
 export default {
     components: {TiresAdForm, EquipmentAdForm, PartsAdForm, CarAdForm},
+    silent : true,
     data() {
         return {
             showImages: true,

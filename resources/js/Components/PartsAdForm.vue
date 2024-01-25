@@ -40,6 +40,9 @@ const ruta = computed(()=> {
     else
         return store()
 })
+const useMessage = computed(() => {
+    message ? message.value : null
+})
 </script>
 <template>
     <div class="signupSection_top" style="display: flex;flex-direction: row;align-items: center;justify-content: center;justify-items: center; width: 100%;">

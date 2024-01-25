@@ -182,7 +182,7 @@
             <hr class="mb-4"/>
             <section class="">
                 <p class="d-flex justify-content-center align-items-center">
-                    <span class="me-3">Register for free</span>
+                    <span class="me-3">Registrujte se besplatno i okacite Vaš prvi oglas!</span>
                     <Link :href="route('login')" type="button" class="btn btn-outline-light btn-rounded">
                         Sign up!
                     </Link>

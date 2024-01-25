@@ -1,5 +1,6 @@
 <script setup>
-import {Link} from '@inertiajs/vue3'
+import {Link, useForm} from '@inertiajs/vue3'
+
 defineProps(
     {
         ads : {
@@ -8,6 +9,13 @@ defineProps(
         }
     }
 )
+const form = useForm({
+    ad : 0
+})
+const unfollowAd = ( id) => {
+    form.ad = id
+    form.post(route('follow-advert'))
+}
 </script>
 <template>
 
@@ -22,7 +30,7 @@ defineProps(
                     <p>{{ad.advertisable.description}}</p>
                 </div>
                 <div class="user-followed-ads-action-buttons">
-                    <Link :href="route('follow-advert', {ad : ad})" method="POST" as="button" class="user-followed-buttons">Otprati</Link>
+                    <button @click="unfollowAd(ad.id)" class="user-followed-buttons">Otprati</button>
                     <Link :href="route('ads.show', {ad : ad.id})" class="user-followed-buttons" style="background-color: #bdc3c7 !important; border: 2px solid #bdc3c7; ">Poseti</Link>
 
                 </div>
@@ -35,7 +43,7 @@ defineProps(
 </template>
 <style scoped>
 .user-followed-adverts-main-container{
-    height: auto; /* 100% of the viewport height */
+    height: 100vh; /* 100% of the viewport height */
     width: 100%; /* 100% of the viewport width */
     margin: 0;
     padding: 0;
@@ -140,7 +148,6 @@ defineProps(
     .user-followed-adverts-container{
         width: 100%;
         align-items: center;
-        justify-content: center;
     }
     .user-followed-ads{
         width: 90%;

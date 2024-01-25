@@ -456,7 +456,7 @@ span {
     }
 
     #srbija {
-        background-image: url('../../public/images/srbija.jpg');
+        background-image: url('/public/images/srbija.jpg');
         background-size: cover;
         background-position: center;
         text-align: center;
@@ -481,7 +481,7 @@ span {
     }
 
     #hrvatska {
-        background-image: url('../../public/images/hrvatska.jpg');
+        background-image: url('/public/images/hrvatska.jpg');
         background-size: cover;
         background-position: center;
         text-align: center;
@@ -506,7 +506,7 @@ span {
     }
 
     #makedonija {
-        background-image: url('../../public/images/makedonija.jpg');
+        background-image: url('/public/images/makedonija.jpg');
         background-size: cover;
         background-position: center;
         text-align: center;
@@ -531,7 +531,7 @@ span {
     }
 
     #crna_gora {
-        background-image: url('../../public/images/crna_gora.jpg');
+        background-image: url('/public/images/crna_gora.jpg');
         background-size: cover;
         background-position: center;
         text-align: center;
@@ -556,7 +556,7 @@ span {
     }
 
     #bugarska {
-        background-image: url('../../public/images/bugarska.jpg');
+        background-image: url('/public/images/bugarska.jpg');
         background-size: cover;
         background-position: center;
         text-align: center;
@@ -581,7 +581,7 @@ span {
     }
 
     #fia {
-        background-image: url('../../public/images/fia.jpg');
+        background-image: url('/public/images/fia.jpg');
         background-size: cover;
         background-position: center;
         text-align: center;
@@ -751,7 +751,7 @@ span {
     }
 
     #srbija {
-        background-image: url('../../public/images/srbija.jpg');
+        background-image: url('/public/images/srbija.jpg');
         background-size: cover;
         background-position: center;
         text-align: center;
@@ -777,7 +777,7 @@ span {
     }
 
     #hrvatska {
-        background-image: url('../../public/images/hrvatska.jpg');
+        background-image: url('/public/images/hrvatska.jpg');
         background-size: cover;
         background-position: center;
         text-align: center;
@@ -803,7 +803,7 @@ span {
     }
 
     #makedonija {
-        background-image: url('../../public/images/makedonija.jpg');
+        background-image: url('/public/images/makedonija.jpg');
         background-size: cover;
         background-position: center;
         text-align: center;
@@ -829,7 +829,7 @@ span {
     }
 
     #crna_gora {
-        background-image: url('../../public/images/crna_gora.jpg');
+        background-image: url('/public/images/crna_gora.jpg');
         background-size: cover;
         background-position: center;
         text-align: center;
@@ -855,7 +855,7 @@ span {
     }
 
     #bugarska {
-        background-image: url('../../public/images/bugarska.jpg');
+        background-image: url('/public/images/bugarska.jpg');
         background-size: cover;
         background-position: center;
         text-align: center;
@@ -881,7 +881,7 @@ span {
     }
 
     #fia {
-        background-image: url('../../public/images/fia.jpg');
+        background-image: url('/public/images/fia.jpg');
         background-size: cover;
         background-position: center;
         text-align: center;

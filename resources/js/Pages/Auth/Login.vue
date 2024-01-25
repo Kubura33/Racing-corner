@@ -31,13 +31,13 @@ const radioType = ref(login);
 		<div class="login-form">
 			<div class="sign-in-htm">
 				<div class="group">
-					<label for="user" class="label">E-mail</label>
-					<input id="user" type="text" class="input" v-model="form.email" placeholder="Email">
+					<label for="login_email" class="label">E-mail</label>
+					<input id="login_email" type="text" class="input" v-model="form.email" placeholder="Email">
                     <InputError v-if="form.errors.email" :message="form.errors.email"/>
                 </div>
 				<div class="group">
-					<label for="pass" class="label">Password</label>
-					<input id="pass" type="password" class="input" data-type="password" v-model="form.password" placeholder="Password">
+					<label for="login_pass" class="label">Password</label>
+					<input id="login_pass" type="password" class="input" data-type="password" v-model="form.password" placeholder="Password">
 
                 </div>
 
@@ -66,8 +66,8 @@ const radioType = ref(login);
                     <InputError v-if="registerForm.errors.username" :message="registerForm.errors.username"/>
                 </div>
                 <div class="group">
-                    <label for="user" class="label">Phone</label>
-                    <input id="user" type="text" class="input" v-model="registerForm.phone" placeholder="format(+38...)">
+                    <label for="phone" class="label">Phone</label>
+                    <input id="phone" type="text" class="input" v-model="registerForm.phone" placeholder="format(+38...)">
                     <InputError v-if="registerForm.errors.phone" :message="registerForm.errors.phone"/>
                 </div>
 				<div class="group">
@@ -75,13 +75,13 @@ const radioType = ref(login);
 					<input id="pass" type="password" class="input" data-type="password" v-model="registerForm.password" placeholder="Lozinka">
                 </div>
 				<div class="group">
-					<label for="pass" class="label">Repeat Password</label>
-					<input id="pass" type="password" class="input" data-type="password" v-model="registerForm.password_confirmation" placeholder="Lozinka">
+					<label for="repeat_password" class="label">Repeat Password</label>
+					<input id="repeat_password" type="password" class="input" data-type="password" v-model="registerForm.password_confirmation" placeholder="Lozinka">
 
 				</div>
 				<div class="group">
-					<label for="pass" class="label">Email Address</label>
-					<input id="pass" type="text" class="input" v-model="registerForm.email" placeholder="Email">
+					<label for="email" class="label">Email Address</label>
+					<input id="email" type="text" class="input" v-model="registerForm.email" placeholder="Email">
                     <InputError v-if="registerForm.errors.email" :message="registerForm.errors.email"/>
                 </div>
 				<div class="group">

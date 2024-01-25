@@ -8,7 +8,7 @@
     <!--</div>-->
     <div class="oglasavac_info">
         <div class="information-container">
-            <div class="save-icon"
+            <div v-if="!isAdOwner" class="save-icon"
             >{{ bookmarkText }}
                 <svg v-if="!isFollowed" @click="follow" xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="green"
                      class="bi bi-bookmark"
@@ -90,7 +90,7 @@
                                                                                                                                                                    style="font-weight: bold;color: red; font-size: 28px;">(PRODATO)</span><span
                     id="mali">{{ ad.advertisable.model }}</span></h1>
             </div>
-            <div class="mobile-save-icon"
+            <div v-if="!isAdOwner" class="mobile-save-icon"
             >
                 <svg style="margin-bottom: 15px;" v-if="!isFollowed" @click="follow" xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="green"
                      class="bi bi-bookmark"
@@ -211,6 +211,8 @@ const props = defineProps({
 const naslovna = props.ad.image_path[0];
 const isFollowed = ref(false);
 const bookmarkText = ref("Zaprati oglas")
+const isAdOwner = ref(user.id===props.ad.user.id)
+
 props.ad.image_path.splice(0, 1);
 const followForm = useForm({
     ad: props.ad.id
@@ -248,6 +250,7 @@ const follow =  () => {
 }
 onMounted(()=> {
     checkIfUserLiked()
+
 })
 </script>
 <style scoped>
