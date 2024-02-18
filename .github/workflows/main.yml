@@ -39,16 +39,6 @@ jobs:
       - name: Generate Application Key
         run: php artisan key:generate
 
-      - name: Create Storage Link
-        run: php artisan storage:link
-
-      - name: Optimize Laravel Application
-        run: |
-          php artisan config:cache
-          php artisan route:cache
-          php artisan view:cache
-          # Optional: php artisan migrate --force
-
       - name: Set Directory Permissions
         run: chmod -R 755 storage bootstrap/cache
 
