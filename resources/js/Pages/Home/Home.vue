@@ -29,7 +29,7 @@ const filter = () => filterForm.get(route('search'), {
             <div class="search_glavni">
                 <form @submit.prevent="filter" class="search_home">
                     <input type="search" v-model="filterForm.search" placeholder="Search...">
-                    <button type="submit" class="btn btn-outline-success"  >SEARCH</button>
+                    <button type="submit" class="btn btn-outline-success">SEARCH</button>
                 </form>
 
             </div>
