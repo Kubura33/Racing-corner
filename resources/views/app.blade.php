@@ -32,7 +32,6 @@
     <meta name="twitter:image" content="https://racing-corner.com/images/banner5.jpg" />
     <meta name="robots" content="index, follow">
 
-    <link rel="canonical" href="https://racing-corner.com/">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet"/>

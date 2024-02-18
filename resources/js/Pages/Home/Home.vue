@@ -1,5 +1,5 @@
 <script setup>
-import {Link, useForm} from "@inertiajs/vue3";
+import {Head, Link, useForm} from "@inertiajs/vue3";
 
 const props = defineProps(
     {
@@ -16,6 +16,11 @@ const filter = () => filterForm.get(route('search'), {
 })
 </script>
 <template>
+    <Head>
+        <title>Trkacka berza</title>
+        <link rel="canonical" href="https://racing-corner.com/">
+
+    </Head>
     <div class="banner">
         <div class="banner_slika">
             <img src="/images/banner1.jpg" alt="Race Car">

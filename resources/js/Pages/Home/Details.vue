@@ -1,4 +1,13 @@
 <template>
+    <Head>
+        <title>
+            {{ad.title}}
+        </title>
+
+        <meta property="og:title" :content="ad.title" />
+        <meta property="og:description" :content="ad.description" />
+
+    </Head>
     <!--<div class="oglasavac_info">
         <h4>{{ ad.user.name }} {{ ad.user.lastname }}</h4>-->
     <!-- <span class="span_oglas">{{user.name}} {{user.lastname}}</span> -->
@@ -200,7 +209,7 @@
     </div>
 </template>
 <script setup>
-import {usePage, Link, useForm} from "@inertiajs/vue3";
+import {usePage, Link, useForm, Head} from "@inertiajs/vue3";
 import {onMounted, ref} from "vue";
 
 const page = usePage();

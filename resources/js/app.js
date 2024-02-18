@@ -3,6 +3,7 @@ import MainLayout from "@/Layouts/MainLayout.vue";
 import {createApp, h} from 'vue';
 import {createInertiaApp} from '@inertiajs/vue3';
 import {ZiggyVue} from '../../vendor/tightenco/ziggy/dist/vue.m';
+import {Ziggy} from "@/ziggy.js";
 import ResizeTextarea from 'resize-textarea-vue3';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';

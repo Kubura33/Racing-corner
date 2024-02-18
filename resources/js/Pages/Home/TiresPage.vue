@@ -1,5 +1,9 @@
 <template>
+    <Head>
+        <title>Trkacke gume</title>
+        <link rel="canonical" href="https://racing-corner.com/tires">
 
+    </Head>
     <div class="auto-div">
         <button id="filtriraj" class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample"
             aria-expanded="false" aria-controls="collapseWidthExample">
@@ -104,7 +108,7 @@
 
 
 <script setup>
-import {Link, useForm} from "@inertiajs/vue3";
+import {Head, Link, useForm} from "@inertiajs/vue3";
 import Pagination from "@/Components/Pagination.vue";
 
 const props = defineProps({
