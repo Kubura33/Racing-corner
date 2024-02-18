@@ -1,6 +1,6 @@
 <template>
     <Head>
-        <title>Trkacka auta</title>
+        <title>automobili</title>
         <link rel="canonical" href="https://racing-corner.com/cars">
 
     </Head>

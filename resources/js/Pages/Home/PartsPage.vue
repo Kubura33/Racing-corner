@@ -1,6 +1,6 @@
 <template>
     <Head>
-        <title>Trkacki delovi</title>
+        <title>delovi</title>
         <link rel="canonical" href="https://racing-corner.com/parts">
 
     </Head>

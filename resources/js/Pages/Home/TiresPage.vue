@@ -1,6 +1,6 @@
 <template>
     <Head>
-        <title>Trkacke gume</title>
+        <title>gume</title>
         <link rel="canonical" href="https://racing-corner.com/tires">
 
     </Head>

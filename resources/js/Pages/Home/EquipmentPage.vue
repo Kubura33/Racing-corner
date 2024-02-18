@@ -1,6 +1,6 @@
 <template>
     <Head>
-        <title>Trkacka oprema</title>
+        <title>oprema</title>
         <link rel="canonical" href="https://racing-corner.com/equipment">
 
     </Head>
