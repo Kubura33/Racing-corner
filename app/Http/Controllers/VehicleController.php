@@ -13,31 +13,45 @@ class VehicleController extends Controller
     {
         $filters = $request->only(['priceFrom', 'priceTo', 'disciplines', 'search']);
         $selectedKeys = [];
-        if(isset($filters['disciplines'])){
+        if (isset($filters['disciplines'])) {
             $selectedKeys = array_keys(array_filter($filters['disciplines'], function ($value) {
                 return $value === "true";
             }));
         }
-        $adsWithImages = Ad::with('user')
+
+        // Apply filters, scopes, and pagination directly on the query builder
+        $adsQuery = Ad::with('user')
             ->where('advertisable_type', 'vehicle')
             ->filter($filters)
             ->discipline($selectedKeys)
-            ->orderByDesc('created_at')
-            ->get()
-            ->map(function ($ad) {
-                $ad->load('advertisable.imageable');
-                $ad->image_path = $ad->advertisable->imageable->map(function ($imageable) {
-                    return $imageable->imagePath;
-                })->toArray();
-                unset($ad->advertisable->imageable);
-                return $ad;
-            });
+            ->orderByDesc('created_at');
 
-        return Inertia::render('Home/Cars',
-        [
-            'premiumAds' => $adsWithImages->where('home_page', 'da'),
-            'ads' => CustomPaginator::paginate($adsWithImages, 9)->withQueryString()
+        // Apply pagination
+        $adsPaginated = $adsQuery->paginate(9)->withQueryString();
 
+        // Process each paginated item for additional data
+        $adsWithImages = $adsPaginated->getCollection()->map(function ($ad) {
+            $ad->load('advertisable.imageable');
+            $ad->image_path = $ad->advertisable->imageable->map(function ($imageable) {
+                return $imageable->imagePath;
+            })->toArray();
+
+            unset($ad->advertisable->imageable);
+            return $ad;
+        });
+
+        // Since we're manipulating the collection after pagination, filter premium ads now
+        $premiumAds = $adsWithImages->filter(function ($ad) {
+            return $ad->home_page === 'da';
+        });
+
+        // Replace the original collection in the paginator
+        $adsPaginated->setCollection($adsWithImages);
+
+        return Inertia::render('Home/Cars', [
+            'premiumAds' => $premiumAds,
+            'ads' => $adsPaginated
         ]);
     }
+
 }

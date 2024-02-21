@@ -10,45 +10,43 @@ use Inertia\Inertia;
 
 class TiresController extends Controller
 {
-    public function __invoke(Request $request){
+    public function __invoke(Request $request)
+    {
         $filters = $request->only(['priceFrom', 'priceTo', 'disciplines', 'search']);
         $selectedKeys = [];
 
-        if(isset($filters['disciplines'])){
-        $selectedKeys = array_keys(array_filter($filters['disciplines'], function ($value) {
-            return $value === "true";
-        }));
+        if (isset($filters['disciplines'])) {
+            $selectedKeys = array_keys(array_filter($filters['disciplines'], function ($value) {
+                return $value === "true";
+            }));
         }
 
+        $adsQuery = Ad::with(['user', 'advertisable'])
+            ->where('advertisable_type', 'parts')
+            ->filter($filters)
+            ->manufacter($selectedKeys)
+            ->orderByDesc('created_at');
 
-        $adsWithImages = Ad::with('user', 'advertisable')
-            ->where('advertisable_type', 'parts')->filter($filters)->manufacter($selectedKeys)
-            ->orderByDesc('created_at')
-            ->get()
-            ->map(function ($ad) {
-                // Eager load only the necessary relationships
-                if($ad->advertisable->type ==='tires'){
-
+        $adsPaginated = $adsQuery->paginate(9)->withQueryString();
+        $adsWithImages = $adsPaginated->getCollection()->map(function ($ad) {
+            if ($ad->advertisable && $ad->advertisable->type === 'tires') {
                 $ad->load('advertisable.imageable');
-                // Map the image paths
                 $ad->image_path = $ad->advertisable->imageable->map(function ($imageable) {
                     return $imageable->imagePath;
                 })->toArray();
-
-                // Unset the unnecessary relation
                 unset($ad->advertisable->imageable);
+                return $ad;
+            }
+            return null;
+        })->filter();
 
-                return $ad;}
-                return null;
-            })->filter();
+        $adsPaginated->setCollection($adsWithImages);
 
-        return Inertia::render(
-            'Home/TiresPage',
-            [
-                'ads' => CustomPaginator::paginate($adsWithImages, 9)->withQueryString(),
-                'filters' => $filters,
-            ]
-        );
+        return Inertia::render('Home/TiresPage', [
+            'ads' => $adsPaginated,
+            'filters' => $filters,
+        ]);
     }
+
 
 }

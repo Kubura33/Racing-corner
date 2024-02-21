@@ -57,8 +57,8 @@ return [
         ],
         'adImages' => [
             'driver' => 'local',
-            'root' => storage_path('app/public/adImages'),
-            'url' => env('APP_URL').'/storage/adImages',
+            'root' => public_path('adImages'),
+            'url' => env('APP_URL').'/adImages',
             'visibility' => 'public',
             'throw' => false,
         ],

@@ -1,10 +1,10 @@
 <template>
     <Head>
         <title>
-            {{ad.title}}
+           Trkacka berza - {{ad.title}}
         </title>
 
-        <meta property="og:title" :content="ad.title" />
+        <meta property="og:title" :content="'Trkacka berza - ' + ad.title" />
         <meta property="og:description" :content="ad.description" />
 
     </Head>

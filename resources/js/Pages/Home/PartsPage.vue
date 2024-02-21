@@ -106,4 +106,5 @@ const clear = () => {
 
     filter()
 }
+console.log(props.ads)
 </script>

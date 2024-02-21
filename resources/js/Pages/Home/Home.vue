@@ -1,6 +1,8 @@
 <script setup>
-import {Head, Link, useForm} from "@inertiajs/vue3";
-
+import {Head, Link, useForm, usePage} from "@inertiajs/vue3";
+import {computed} from "vue";
+const page = usePage();
+const user = computed(() => page.props.auth.user)
 const props = defineProps(
     {
         premiumAds: Array,
@@ -17,7 +19,6 @@ const filter = () => filterForm.get(route('search'), {
 </script>
 <template>
     <Head>
-        <title>Trkacka berza</title>
         <link rel="canonical" href="https://racing-corner.com/">
 
     </Head>
@@ -35,45 +36,88 @@ const filter = () => filterForm.get(route('search'), {
             </div>
         </div>
     </div>
+<!--PREMIUM OGLASI, NE BRISI !!!!-->
 
-    <div>
-        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" v-if="premiumAds.length > 0">
-            <div class="carousel-inner">
-                <div v-for="(group, index) in groups" :key="index"
-                     :class="['carousel-item', { active: index === activeIndex }]">
-                    <div class="premium-kartice">
-                        <span class="traka" id="traka_div_comp"></span>
-                        <div class="row row-cols-1 row-cols-md-3 g-4">
-                            <div class="col" v-for="(card, cardIndex) in group" :key="cardIndex">
-                                <span class="traka" id="traka_div_phone"></span>
-                                <div class="card">
-                                    <img :src="card.image" class="card-img-top" alt="Card image">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{ card.brand }}</h5>
-                                        <h5>CENA: <span class="podatak">{{ card.price }}<span class="podatak">{{
-                                                card.currency
-                                            }}</span></span></h5>
-                                    </div>
-                                    <Link :href="route('ads.show', { ad: card.id })" class="btn btn-primary">Detaljnije
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<!--    <div>-->
+<!--        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" v-if="premiumAds.length > 0">-->
+<!--            <div class="carousel-inner">-->
+<!--                <div v-for="(group, index) in groups" :key="index"-->
+<!--                     :class="['carousel-item', { active: index === activeIndex }]">-->
+<!--                    <div class="premium-kartice">-->
+<!--                        <span class="traka" id="traka_div_comp"></span>-->
+<!--                        <div class="row row-cols-1 row-cols-md-3 g-4">-->
+<!--                            <div class="col" v-for="(card, cardIndex) in group" :key="cardIndex">-->
+<!--                                <span class="traka" id="traka_div_phone"></span>-->
+<!--                                <div class="card">-->
+<!--                                    <img :src="card.image" class="card-img-top" alt="Card image">-->
+<!--                                    <div class="card-body">-->
+<!--                                        <h5 class="card-title">{{ card.brand }}</h5>-->
+<!--                                        <h5>CENA: <span class="podatak">{{ card.price }}<span class="podatak">{{-->
+<!--                                                card.currency-->
+<!--                                            }}</span></span></h5>-->
+<!--                                    </div>-->
+<!--                                    <Link :href="route('ads.show', { ad: card.id })" class="btn btn-primary">Detaljnije-->
+<!--                                    </Link>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <button @click="prev" class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"-->
+<!--                    data-bs-slide="prev">-->
+<!--                <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+<!--                <span class="visually-hidden">Prethodno</span>-->
+<!--            </button>-->
+<!--            <button @click="next" class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"-->
+<!--                    data-bs-slide="next">-->
+<!--                <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+<!--                <span class="visually-hidden">Sledeće</span>-->
+<!--            </button>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    KRAJ PREMIUM OGLASA, NE BRISI OVO IZNAD-->
+    <div class="cta" v-if="!user">
+        <div class="main-cta">
+            <div class="first-part-cta">
+                <h3> <b>Racing-corner trkacka berza</b> </h3>
+                <p>Postanite deo nase zajednice, oglasite vase trkacke automobile, opremu, delove i gume.</p>
+                <p>Zasto postaviti oglas bas kod nas?</p>
+                <ul class="cool-list">
+                    <li><b>Specijalizovana publika</b>
+                        <br>
+                        <span>Platforma napravljena samo za ljubitelje trka, direktno cilja na njihvou zajednicu</span>
+                    </li>
+                    <li><b>Lako postavljanje oglasa</b>
+                        <br>
+                        Nasa platforma omogucava jednostavno i brzo postavljanje oglasa, sve sto je potrebno je da se registrujete i verifikujete vas e-mail
+                    </li>
+                    <li>
+                        <b>Brza prodaja</b>
+                        <br>
+                        Radi specijalizovanog trzista, vasi proizvodi mogu brzo naci put do novog vlasnika
+                    </li>
+                </ul>
             </div>
-            <button @click="prev" class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                    data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Prethodno</span>
-            </button>
-            <button @click="next" class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                    data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Sledeće</span>
-            </button>
+            <div class="second-part-cta">
+                <h3><b>Pridruzite se sada i budite deo nase zajednice!</b></h3>
+                <p>
+                    <i>
+                        Bez obzira da li prodajete trkacki automobil spreman za stazu, trkacke gume, opremu ili delove, Racing-corner trkacka berza je vasa konacna destinacija
+                    </i>
+
+                </p>
+                <div class="button-cta">
+                    <span class="highlight-text">Postavite oglas sada</span>
+
+                    <Link :href="route('login')" class="cta-button">Registracija</Link>
+                </div>
+
+            </div>
         </div>
     </div>
+
     <h2 id="poslednje_dodato" v-if="Object.keys(ads).length != 0">Poslednje dodato</h2>
     <h2 id="poslednje_dodato" v-else>Trenutno nema oglasa </h2>
     <div class="oglasi_home">
@@ -233,19 +277,94 @@ export default {
     }
 };
 
-function toggleBookmark(element) {
-    const svg = element.querySelector('svg');
-    const isBookmarked = svg.classList.contains('bi-bookmark-fill');
+</script>
 
-    if (isBookmarked) {
-        svg.classList.remove('bi-bookmark-fill');
-        svg.classList.add('bi-bookmark');
-    } else {
-        svg.classList.remove('bi-bookmark');
-        svg.classList.add('bi-bookmark-fill');
+<style scoped>
+
+.cta{
+    margin-top: 70px;
+}
+.main-cta{
+    display: flex;
+    flex-direction: row;
+    max-width: 1200px;
+    padding: 20px;
+    margin: 0 auto;
+    gap: 15px;
+    background: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+
+
+}
+.button-cta{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    gap: 20px;
+}
+ul.cool-list {
+    list-style-type: none; /* Remove default bullets */
+    padding: 0;
+}
+
+ul.cool-list li {
+    padding-left: 20px; /* Space for custom bullet */
+    margin-bottom: 10px; /* Space between list items */
+    position: relative; /* Required for absolute positioning of the pseudo-element */
+}
+
+ul.cool-list li::before {
+    content: '•'; /* Custom bullet symbol */
+    color: #365243; /* Bullet color to match your header */
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.cta-button{
+    background-color: #3A795A; /* Main color for the button */
+    color: white; /* Text color */
+    padding: 10px 20px; /* Padding around the text */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners for a modern look */
+    cursor: pointer; /* Change mouse cursor to indicate button */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
+    font-size: 16px; /* Text size */
+    font-weight: bold; /* Text weight */
+}
+.cta-button:hover, .cta-button:focus {
+    background-color: #2d6746; /* Darker shade for the hover/focus state */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect for depth */
+    outline: none; /* Remove outline on focus for aesthetics */
+}
+.highlight-text {
+    font-family: 'Arial', sans-serif; /* Clean, modern font */
+    color: #3A795A; /* Color matching the cool button for consistency */
+    font-size: 24px; /* Larger font size for visibility */
+    font-weight: bold; /* Bold text for emphasis */
+    text-align: center; /* Center the text */
+    display: inline-block; /* Only as wide as the content */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+}
+
+@media screen and (max-width: 767px) {
+    .cta{
+        margin-bottom: 50px;
+    }
+    .main-cta{
+        display: flex;
+        flex-direction: column;
+
+    }
+    .cta-button{
+        width: 50%;
+        text-align: center;
     }
 }
-</script>
+</style>
+
 <!--   <div class="div-oglas">
        <div class="row">
            <div class="col col-md-4 mb-3">

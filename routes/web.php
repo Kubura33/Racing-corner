@@ -17,7 +17,6 @@ use Inertia\Inertia;
 |
 */
 
-
 Route::middleware(['auth', 'verified'])->group(function () {
     //User ROUTES
     Route::get('/profile/created-ads', \App\Http\Controllers\CreatedAdvertisementsController::class)->name('created-ads');
@@ -66,6 +65,7 @@ Route::get('/search', \App\Http\Controllers\SearchController::class)->name('sear
 Route::resource('ads', \App\Http\Controllers\AdController::class)->only(['show']);
 Route::get('/', [\App\Http\Controllers\AdController::class, 'index'])->name('home');
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
 

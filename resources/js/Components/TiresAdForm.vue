@@ -2,16 +2,19 @@
 import {useForm} from "@inertiajs/vue3";
 import InputError from "@/Components/InputError.vue";
 import {computed, ref} from "vue";
+import Compressor from "compressorjs";
+
 const fileInput = ref(null)
-const message = ref(null)
+const message = ref(0)
+const isImageProcessing = ref(false)
 const props = defineProps(
     {
         ad: Object,
-        isEditting:false,
+        isEditting: false,
     }
 )
 const form = useForm({
-    name: props.ad ? props.ad.title :  "",
+    name: props.ad ? props.ad.title : "",
     description: props.ad ? props.ad.advertisable.description : "",
     manufacter: props.ad ? props.ad.advertisable.manufacter : 0,
     price: props.ad ? props.ad.price : "",
@@ -30,22 +33,43 @@ const openFileInput = () => {
 }
 const handleFileChange = () => {
     const files = fileInput.value.files;
-    if (files.length>5){
-        message.value= "Maksimalan broj slika je 5"
-    }
-    else{
-        for(let i=0;i<files.length;i++){
-            form.images.push(files[i])
+    if (files.length > 5) {
+        message.value = 1
+    } else {
+        for (let i = 0; i < files.length; i++) {
+            isImageProcessing.value = true
+
+            if(files[i].size > 8 * 1024 * 1024){
+                message.value = 2
+                form.images = []
+                break;
+            }
+            if(files[i].size <  1024 * 1024){
+                form.images.push(files[i])
+            }
+            else{
+                new Compressor(files[i], {
+                    quality: 0.2,
+                    success(file) {
+                        const myFile = new File([file], file.name, {
+                            type : file.type
+                        })
+                        form.images.push(myFile)
+                        isImageProcessing.value =false
+
+                    }
+                })
+            }
+
+
         }
     }
 }
-const useMessage = computed(() => {
-    message ? message.value : null
-})
+
 const store = () => form.post(route('ads.store'))
-const update = () => form.put(route('ads.update', {ad:props.ad.id}))
-const ruta = computed(()=> {
-    if(props.isEditting)
+const update = () => form.put(route('ads.update', {ad: props.ad.id}))
+const ruta = computed(() => {
+    if (props.isEditting)
         return update()
     else
         return store()
@@ -53,7 +77,7 @@ const ruta = computed(()=> {
 </script>
 <template>
     <div class="signupSection_top"
-        style="display: flex;flex-direction: row;align-items: center;justify-content: center;justify-items: center; width: 100%;">
+         style="display: flex;flex-direction: row;align-items: center;justify-content: center;justify-items: center; width: 100%;">
 
 
         <div class="signupSection">
@@ -68,7 +92,8 @@ const ruta = computed(()=> {
                 <ul class="noBullet">
                     <li>
                         <label for="ime"></label>
-                        <input type="text" class="inputFields" id="ime" name="ime" v-model="form.name" placeholder="Naslov oglasa"
+                        <input type="text" class="inputFields" id="ime" name="ime" v-model="form.name"
+                               placeholder="Naslov oglasa"
                                required/>
                         <InputError v-if="form.errors.name" :message="form.errors.name"/>
                     </li>
@@ -119,7 +144,8 @@ const ruta = computed(()=> {
                     </li>
                     <li>
                         <label for="cena"></label>
-                        <input type="text" v-model="form.price" class="inputFields" id="cena" name="cena" placeholder="Cena(€)" required/>
+                        <input type="text" v-model="form.price" class="inputFields" id="cena" name="cena"
+                               placeholder="Cena(€)" required/>
                         <InputError v-if="form.errors.price" :message="form.errors.price"/>
 
                     </li>
@@ -164,24 +190,27 @@ const ruta = computed(()=> {
                     </li>
                     <li>
                         <div class="Neon Neon-theme-dragdropbox" v-if="!isEditting">
-                            <input ref="fileInput" name="files[]" id="filer_input2" multiple="multiple" type="file" hidden @change="handleFileChange">
+                            <input ref="fileInput" name="files[]" accept="image/png, image/jpeg, image/jpg, image/gif"
+                                   id="filer_input2" multiple="multiple" type="file" hidden @change="handleFileChange">
                             <div class="Neon-input-dragDrop">
                                 <div class="Neon-input-inner">
                                     <div class="Neon-input-icon"><i class="fa fa-file-image-o"></i></div>
                                     <div class="Neon-input-text">
                                         <h3 v-if="form.images.length===0 && !message">*Prva slika je naslovna, max broj slika je 5</h3>
-                                        <h3 v-if="useMessage" style="color: red">{{ useMessage }}</h3>
+                                        <h3 v-if="message==1" style="color: red">Maksimalan broj slika je 5</h3>
+                                        <h3 v-else-if="message == 2" style="color: red">Velicina jedne ili vise slika prelazi 8MB</h3>
 
                                         <div v-else>
                                             <span v-for="image in form.images">
-                                                {{image.name}}
+                                                {{ image.name }}
                                             </span>
 
                                         </div>
                                         <span
                                             style="display:inline-block; margin: 20px 0"></span>
                                     </div>
-                                    <a href="#" class="Neon-input-choose-btn blue" @click.prevent="openFileInput">Odaberi slike</a>
+                                    <a href="#" class="Neon-input-choose-btn blue" @click.prevent="openFileInput">Odaberi
+                                        slike</a>
                                 </div>
                             </div>
                         </div>
@@ -191,7 +220,8 @@ const ruta = computed(()=> {
                         <InputError v-if="form.errors.images" :message="form.errors.images"/>
                     </li>
                     <li id="center-btn" style="margin-top: 50px;">
-                        <input :disabled="form.processing" type="submit" id="join-btn" name="join" alt="Join" :value="isEditting ? 'Edituj oglas' : 'Kreiraj oglas'">
+                        <input :disabled="form.processing || isImageProcessing"  type="submit" id="join-btn" name="join" alt="Join"
+                               :value="isEditting ? 'Edituj oglas' : 'Kreiraj oglas'">
                     </li>
                 </ul>
             </form>

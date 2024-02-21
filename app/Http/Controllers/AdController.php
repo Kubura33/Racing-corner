@@ -28,20 +28,22 @@ class AdController extends Controller
      */
     public function index()
     {
-        $adsWithImages = Ad::with('advertisable.imageable', 'user')
+        $adsWithImages = Ad::latest()->take(3)
+            ->with('advertisable.imageable', 'user')
             ->get()
             ->map(function ($ad) {
-                $ad->load('advertisable.imageable');
                 $ad->image_path = $ad->advertisable->imageable->map(function ($imageable) {
                     return $imageable->imagePath;
                 })->toArray();
+
                 unset($ad->advertisable->imageable);
                 return $ad;
             });
+
         return Inertia::render('Home/Home',
             [
                 'premiumAds' => $adsWithImages->where('home_page', 'da'),
-                'ads' => $adsWithImages->sortByDesc('created_at')->take(3),
+                'ads' => $adsWithImages,
                 'canLogin' => Route::has('login'),
                 'canRegister' => Route::has('register'),
                 'laravelVersion' => Application::VERSION,

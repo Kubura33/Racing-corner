@@ -1,8 +1,10 @@
 <script setup>
 import {useForm} from "@inertiajs/vue3";
 import InputError from "@/Components/InputError.vue";
+import Compressor from 'compressorjs'
 import {ref, computed} from "vue";
-const message = ref(null)
+const message = ref(0)
+const isImageProcessing = ref(false)
 const fileInput = ref(null)
 const props = defineProps(
     {
@@ -31,15 +33,38 @@ const openFileInput = () => {
 const handleFileChange = () => {
     const files = fileInput.value.files;
     if (files.length > 5) {
-        message.value = "Maksimalan broj slika je 5"
+        message.value = 1
     } else {
         for (let i = 0; i < files.length; i++) {
-            form.images.push(files[i])
+            isImageProcessing.value = true
+
+            if(files[i].size > 8 * 1024 * 1024){
+                message.value = 2
+                form.images = []
+                break;
+            }
+            if(files[i].size <  1024 * 1024){
+                form.images.push(files[i])
+            }
+            else{
+                new Compressor(files[i], {
+                    quality: 0.2,
+                    success(file) {
+                        const myFile = new File([file], file.name, {
+                            type : file.type
+                        })
+                        form.images.push(myFile)
+                        isImageProcessing.value =false
+
+                    }
+                })
+            }
+
+
         }
     }
 }
-const useMessage = computed(() => {message ? message.value : null
-})
+
 const store = () => form.post(route('ads.store'))
 const update = () => form.put(route('ads.update', {ad:props.ad.id}))
 const ruta = computed(()=> {
@@ -149,13 +174,14 @@ const ruta = computed(()=> {
 
                     <li>
                         <div class="Neon Neon-theme-dragdropbox" v-if="!isEditting">
-                            <input ref="fileInput" name="files[]" id="filer_input2" multiple="multiple" type="file" hidden @change="handleFileChange">
+                            <input ref="fileInput" name="files[]" id="filer_input2" multiple="multiple" type="file" hidden @change="handleFileChange" accept="image/png, image/jpeg, image/jpg, image/gif">
                             <div class="Neon-input-dragDrop">
                                 <div class="Neon-input-inner">
                                     <div class="Neon-input-icon"><i class="fa fa-file-image-o"></i></div>
                                     <div class="Neon-input-text">
                                         <h3 v-if="form.images.length===0 && !message">*Prva slika je naslovna, max broj slika je 5</h3>
-                                        <h3 v-if="useMessage" style="color: red">{{ useMessage }}</h3>
+                                        <h3 v-if="message==1" style="color: red">Maksimalan broj slika je 5</h3>
+                                        <h3 v-else-if="message == 2" style="color: red">Velicina jedne ili vise slika prelazi 8MB</h3>
 
                                         <div v-else>
                                             <span v-for="image in form.images">
@@ -177,7 +203,7 @@ const ruta = computed(()=> {
                     </li>
                     <li id="center-btn">
 
-                        <input :disabled="form.processing" type="submit" id="join-btn" name="join" alt="Join" :value="isEditting ? 'Edituj oglas' : 'Kreiraj oglas'">
+                        <input :disabled="form.processing || isImageProcessing"  type="submit" id="join-btn" name="join" alt="Join" :value="isEditting ? 'Edituj oglas' : 'Kreiraj oglas'">
                     </li>
                 </ul>
             </form>

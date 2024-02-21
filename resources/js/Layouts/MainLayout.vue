@@ -112,11 +112,11 @@
 
     </div>
     <!--    //End of header-->
-    <div id="alert-success" :style="{top: flashTop +'px'}" @click="messages.success = null" v-if="messages.success" class="alert alert-success" role="alert"
+    <div id="alert-success" :style="{top: flashTop +'px'}" style="position: fixed" @click="messages.success = null" v-if="messages.success" class="alert alert-success" role="alert"
     >
         {{ messages.success }}
     </div>
-    <div id="alet-error" :style="{top: flashTop +'px'}" @click="messages.error = null" v-if="messages.error" class="alert alert-danger" role="alert"
+    <div id="alet-error" :style="{top: flashTop +'px'}" style="position: fixed" @click="messages.error = null" v-if="messages.error" class="alert alert-danger" role="alert"
     >
         {{ messages.error }}
     </div>

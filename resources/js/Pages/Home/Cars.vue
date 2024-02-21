@@ -88,7 +88,7 @@
                     <div class="premium_ads">
                         <div class="slika">
                             <Link :href="route('ads.show', {ad : ad.id})">
-                                <img :src="ad.image_path[0]" alt="Trkački auto">
+                                <img loading="lazy" :src="ad.image_path[0]" alt="Trkački auto">
                                 <span class="traka_premium" id="traka_div"></span>
                             </Link>
                             <div class="data">
