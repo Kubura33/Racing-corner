@@ -45,6 +45,7 @@ jobs:
       - name: 📂 Sync files to Shared Hosting
         uses: SamKirkland/FTP-Deploy-Action@4.1.0
         with:
-          server: ${{ secrets.LARAVEL_SITE_SERVER }}
-          username: ${{ secrets.LARAVEL_SITE_USER }}
-          password: ${{ secrets.LARAVEL_SITE_PASS }}
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          port: ${{ secrets.FTP_PORT }}
