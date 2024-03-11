@@ -111,7 +111,7 @@ const update = () => editForm.patch(route('profile.update'))
 
 <style scoped>
 .main-container {
-    height: 100vh; /* 100% of the viewport height */
+    height: auto; /* 100% of the viewport height */
     width: 100vw; /* 100% of the viewport width */
     margin: 0;
     padding: 0;
@@ -127,6 +127,8 @@ const update = () => editForm.patch(route('profile.update'))
     height: auto;
     display: flex;
     flex-direction: column;
+   padding-top: 3rem;
+    padding-bottom: 4rem;
     justify-content: center;
     align-items: center;
     background-color: #f4f4f4;

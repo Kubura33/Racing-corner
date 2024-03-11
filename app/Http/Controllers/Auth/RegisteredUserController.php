@@ -55,6 +55,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('home')->with('success', 'Dobrodosli, uspesno ste se registrovali!');
+        return redirect()->route('home')->with('success', 'Dobrodošli, uspešno ste se registrovali! Molimo verifikujte vašu e-mail adresu');
     }
 }

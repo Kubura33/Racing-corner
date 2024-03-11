@@ -1,6 +1,7 @@
 <template>
     <div style="width: 100%;
-    background-color: #354649; ">
+    background-color: #FFFFF0;
+">
 
 
         <div id="kartice-div">

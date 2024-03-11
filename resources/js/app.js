@@ -3,10 +3,9 @@ import MainLayout from "@/Layouts/MainLayout.vue";
 import {createApp, h} from 'vue';
 import {createInertiaApp} from '@inertiajs/vue3';
 import {ZiggyVue} from 'ziggy-js';
-import {Ziggy} from "@/ziggy.js";
 import ResizeTextarea from 'resize-textarea-vue3';
 
-const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+const appName = import.meta.env.VITE_APP_NAME || 'Trkacka Berza';
 
 
 createInertiaApp({
@@ -20,7 +19,7 @@ createInertiaApp({
     setup({el, App, props, plugin}) {
         return createApp({render: () => h(App, props)})
             .use(plugin)
-            .use(ZiggyVue, Ziggy)
+            .use(ZiggyVue)
             .use(ResizeTextarea)
             .mount(el);
     },

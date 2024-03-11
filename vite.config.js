@@ -4,12 +4,13 @@ import vue from '@vitejs/plugin-vue';
 import path from 'path'
 
 export default defineConfig({
+    base : 'https://racing-corner.com/',
     resolve: {
         alias : {
             'ziggy-js' : path.resolve('vendor/tightenco/ziggy/dist/vue.es.js'),
         }
     },
-    base : 'https://racing-corner.com/',
+
     plugins: [
         laravel({
             input: ['resources/js/app.js',

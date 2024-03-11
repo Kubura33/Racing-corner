@@ -14,20 +14,17 @@
                 <Link class="nalog" :href="route('login')"> Sign In</Link>
             </b>
         </span>
-            <span pan v-else>
-            <b class="border-around-username" :class="{'radiate' : !isMenuOpen && notificationCount>0 && !isNotifPage }"
-            >
-                <span @click="toggleMenu" class="nalog" style="cursor: pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="27" fill="currentColor"
-                         class="bi bi-person-circle" viewBox="0 0 16 16">
-  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-  <path fill-rule="evenodd"
-        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-</svg>&nbsp;{{ user.username }}
+            <span  v-else>
+
+                <div class="border-around-username" :class="{'radiate' : !isMenuOpen && notificationCount>0 && !isNotifPage }" >
+                    <span @click="toggleMenu" class="nalog" style="cursor: pointer; margin-right: 30px;">
+                    &nbsp;{{ user.username }}
 
 
                 </span>
-            </b>
+                </div>
+
+
             <div :class="{ 'open-menu': isMenuOpen}" class="sub-menu-wrap">
                 <div class="sub-menu">
                     <div class="user-info">
@@ -233,7 +230,16 @@ const isOnNotificationPage = ref(false); //Value thats based on if user is on no
 //FUNCTIONS THAT ARE USED TO WORK WITH PROFILE SUB MENU AND DEALING WITH ANIMATION WHEN THERES NOTIFICATIONS
 const toggleMenu = () => {
     isMenuOpen.value = !isMenuOpen.value
+    if(isMenuOpen.value ){document.addEventListener('click', closeSubMenu)}
+
+    else{
+        document.removeEventListener('click', closeSubMenu)
+    }
 }
+router.on('success', () => {
+    isMenuOpen.value = false
+})
+
 const closeSubMenu = (event) => {
     if (isMenuOpen.value && !event.target.closest('.sub-menu-wrap') && !event.target.classList.contains('nalog')) {
         isMenuOpen.value = false;
@@ -270,27 +276,19 @@ const flashTop = computed(() => {return topOfFlashMessage.value})
 //END OF SCALING THE MAIN BASED ON THE SIZE OF SCREEN
 
 onMounted(() => {
-    //Function that closes the menu when its clicked on one of its items
-    document.addEventListener('click', closeSubMenu)
-    document.querySelectorAll('.sub-menu-link').forEach((item) => {
-        item.addEventListener('click', function () {
-            isMenuOpen.value = false;
-        })
-    })
-    //END OF function that closes the menu when its clicked on one of its items
+
     updateMainMarginTop()
 })
-onUnmounted(() => {
-    document.removeEventListener('click', closeSubMenu)
 
-})
 
 
 </script>
 
 <script>
+
  //Functions that are used to work with drop menus, closing when clicking out of the element and when passing to a different page
 document.addEventListener('DOMContentLoaded', function () {
+
     const navbarCollapse = document.querySelector('.navbar-collapse');
     navbarCollapse.addEventListener('click', function (event) {
         const target = event.target;
@@ -333,7 +331,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 #alet-error, #alert-success{
     height: 55px;
-    width: 400px;
+    width: 800px;
     position: absolute;
     right: 0px;
     top: 54px;
@@ -378,8 +376,16 @@ document.addEventListener('DOMContentLoaded', function () {
     animation: blink 1s infinite;
 }
 
-@media screen and (max-width: 992px) {
-
+@media screen and (max-width: 867px) {
+    #alet-error, #alert-success{
+        width: 600px;
+    }
+}
+@media screen and (max-width: 600px){
+    #alert-success, #alet-error{
+        width: 400px;
+        font-size: 11px;
+    }
 }
 </style>
 

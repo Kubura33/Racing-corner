@@ -102,7 +102,7 @@ const props = defineProps(
 
 @media screen and (max-width: 767px) {
     .notification-container {
-        width: 70%;
+        width: 100%;
 
     }
 

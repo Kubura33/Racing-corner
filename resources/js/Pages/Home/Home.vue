@@ -81,9 +81,9 @@ const filter = () => filterForm.get(route('search'), {
     <div class="cta" v-if="!user">
         <div class="main-cta">
             <div class="first-part-cta">
-                <h3> <b>Racing-corner trkacka berza</b> </h3>
-                <p>Postanite deo nase zajednice, oglasite vase trkacke automobile, opremu, delove i gume.</p>
-                <p>Zasto postaviti oglas bas kod nas?</p>
+                <h3> <b>Racing-corner trkačka berza</b> </h3>
+                <p>Postanite deo naše zajednice, oglasite vaše trkačke automobile, opremu, delove i gume.</p>
+                <p>Zašto postaviti oglas baš kod nas?</p>
                 <ul class="cool-list">
                     <li><b>Specijalizovana publika</b>
                         <br>
@@ -91,20 +91,20 @@ const filter = () => filterForm.get(route('search'), {
                     </li>
                     <li><b>Lako postavljanje oglasa</b>
                         <br>
-                        Nasa platforma omogucava jednostavno i brzo postavljanje oglasa, sve sto je potrebno je da se registrujete i verifikujete vas e-mail
+                        Naša platforma omogućava jednostavno i brzo postavljanje oglasa, sve što je potrebno je da se registrujete i verifikujete vaš e-mail
                     </li>
                     <li>
                         <b>Brza prodaja</b>
                         <br>
-                        Radi specijalizovanog trzista, vasi proizvodi mogu brzo naci put do novog vlasnika
+                        Radi specijalizovanog tržišta, vaši proizvodi mogu brzo naći put do novog vlasnika
                     </li>
                 </ul>
             </div>
             <div class="second-part-cta">
-                <h3><b>Pridruzite se sada i budite deo nase zajednice!</b></h3>
+                <h3><b>Pridružite se sada i budite deo naše zajednice!</b></h3>
                 <p>
                     <i>
-                        Bez obzira da li prodajete trkacki automobil spreman za stazu, trkacke gume, opremu ili delove, Racing-corner trkacka berza je vasa konacna destinacija
+                        Bez obzira da li prodajete trkački automobil spreman za stazu, trkačke gume, opremu ili delove, Racing-corner trkačka berza je vaša konačna destinacija
                     </i>
 
                 </p>

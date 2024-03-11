@@ -11,8 +11,11 @@ class CreatedAdvertisementsController extends Controller
     {
         $ads = $request->user()->ads->load(['advertisable.imageable','likes']);
         foreach ($ads as $ad) {
-            $ad->image_path = $ad->advertisable->imageable->first()->imagePath;
-            $ad->advertisable->unsetRelation('imageable');
+            if($ad->imagePath){
+                $ad->image_path = $ad->advertisable->imageable->first()->imagePath;
+                $ad->advertisable->unsetRelation('imageable');
+            }
+
         }
         return Inertia::render(
             'Profile/UserAdverts',

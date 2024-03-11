@@ -53,7 +53,7 @@ const unfollowAd = ( id) => {
     flex-direction: row;
     justify-content: center;
     background-color: #f9f9f9;
-    margin-bottom: 70px;
+
 }
 .user-followed-adverts-container{
     width: 75%;
@@ -61,7 +61,8 @@ const unfollowAd = ( id) => {
     display: flex;
     flex-direction: column;
     background-color:  #f4f4f4;
-    padding-top: 20px;
+    padding-top: 3rem;
+    padding-bottom: 4rem;
     gap: 15px;
 
 
